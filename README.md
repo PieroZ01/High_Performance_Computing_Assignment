@@ -1,1 +1,3 @@
-[README.md](https://github.com/PieroZ01/High_Performance_Computing_Assignment/files/14487226/README.md)
+# High_Performance_Computing_Assignment
+
+This GitHub repository contains all the materials and codes for my HPC exam's project
