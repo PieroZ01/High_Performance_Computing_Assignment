@@ -18,6 +18,9 @@ module load openMPI/4.1.5/gnu/12.2.1
 cd ./osu-micro-benchmarks-7.3
 make
 
+# Regenerate the configure script with the correct version of libtool
+autoreconf -i
+
 # Compile the OSU benchmark
 ./configure CC=$(which mpicc) CXX=$(which mpicxx)
 make
