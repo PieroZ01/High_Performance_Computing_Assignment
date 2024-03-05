@@ -1,0 +1,258 @@
+Making all in c
+make[1]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c'
+Making all in mpi
+make[2]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi'
+Making all in pt2pt
+make[3]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/pt2pt'
+Making all in standard
+make[4]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/pt2pt/standard'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/pt2pt/standard'
+Making all in persistent
+make[4]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/pt2pt/persistent'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/pt2pt/persistent'
+make[4]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/pt2pt'
+make[4]: Nothing to be done for 'all-am'.
+make[4]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/pt2pt'
+make[3]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/pt2pt'
+Making all in collective
+make[3]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective'
+Making all in neighborhood
+make[4]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective/neighborhood'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective/neighborhood'
+Making all in blocking
+make[4]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective/blocking'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective/blocking'
+Making all in non_blocking
+make[4]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective/non_blocking'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective/non_blocking'
+make[4]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective'
+make[4]: Nothing to be done for 'all-am'.
+make[4]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective'
+make[3]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective'
+Making all in startup
+make[3]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/startup'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/startup'
+Making all in one-sided
+make[3]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/one-sided'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/one-sided'
+make[3]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi'
+make[3]: Nothing to be done for 'all-am'.
+make[3]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi'
+make[2]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi'
+make[2]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c'
+make[2]: Nothing to be done for 'all-am'.
+make[2]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c'
+make[1]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c'
+make[1]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3'
+make[1]: Nothing to be done for 'all-am'.
+make[1]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3'
+libtoolize: Consider adding 'AC_CONFIG_MACRO_DIRS([m4])' to configure.ac,
+libtoolize: and rerunning libtoolize and aclocal.
+libtoolize: Consider adding '-I m4' to ACLOCAL_AMFLAGS in Makefile.am.
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking how to print strings... printf
+checking whether make supports the include directive... yes (GNU style)
+checking for gcc... /opt/programs/openMPI/4.1.5/bin/mpicc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether /opt/programs/openMPI/4.1.5/bin/mpicc accepts -g... yes
+checking for /opt/programs/openMPI/4.1.5/bin/mpicc option to enable C11 features... none needed
+checking whether /opt/programs/openMPI/4.1.5/bin/mpicc understands -c and -o together... yes
+checking dependency style of /opt/programs/openMPI/4.1.5/bin/mpicc... gcc3
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by /opt/programs/openMPI/4.1.5/bin/mpicc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 4718592
+checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for file... file
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for ar... ar
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from /opt/programs/openMPI/4.1.5/bin/mpicc object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... no
+checking if : is a manifest tool... no
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if /opt/programs/openMPI/4.1.5/bin/mpicc supports -fno-rtti -fno-exceptions... no
+checking for /opt/programs/openMPI/4.1.5/bin/mpicc option to produce PIC... -fPIC -DPIC
+checking if /opt/programs/openMPI/4.1.5/bin/mpicc PIC flag -fPIC -DPIC works... yes
+checking if /opt/programs/openMPI/4.1.5/bin/mpicc static flag -static works... no
+checking if /opt/programs/openMPI/4.1.5/bin/mpicc supports -c -o file.o... yes
+checking if /opt/programs/openMPI/4.1.5/bin/mpicc supports -c -o file.o... (cached) yes
+checking whether the /opt/programs/openMPI/4.1.5/bin/mpicc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking for MPI_Session_init... no
+checking whether the compiler supports GNU C... (cached) yes
+checking whether /opt/programs/openMPI/4.1.5/bin/mpicc accepts -g... (cached) yes
+checking for /opt/programs/openMPI/4.1.5/bin/mpicc option to enable C11 features... (cached) none needed
+checking whether /opt/programs/openMPI/4.1.5/bin/mpicc understands -c and -o together... (cached) yes
+checking dependency style of /opt/programs/openMPI/4.1.5/bin/mpicc... (cached) gcc3
+checking whether the compiler supports GNU C++... yes
+checking whether /opt/programs/openMPI/4.1.5/bin/mpicxx accepts -g... yes
+checking for /opt/programs/openMPI/4.1.5/bin/mpicxx option to enable C++11 features... none needed
+checking dependency style of /opt/programs/openMPI/4.1.5/bin/mpicxx... gcc3
+checking how to run the C++ preprocessor... /opt/programs/openMPI/4.1.5/bin/mpicxx -E
+checking for ld used by /opt/programs/openMPI/4.1.5/bin/mpicxx... /usr/bin/ld -m elf_x86_64
+checking if the linker (/usr/bin/ld -m elf_x86_64) is GNU ld... yes
+checking whether the /opt/programs/openMPI/4.1.5/bin/mpicxx linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking for /opt/programs/openMPI/4.1.5/bin/mpicxx option to produce PIC... -fPIC -DPIC
+checking if /opt/programs/openMPI/4.1.5/bin/mpicxx PIC flag -fPIC -DPIC works... yes
+checking if /opt/programs/openMPI/4.1.5/bin/mpicxx static flag -static works... no
+checking if /opt/programs/openMPI/4.1.5/bin/mpicxx supports -c -o file.o... yes
+checking if /opt/programs/openMPI/4.1.5/bin/mpicxx supports -c -o file.o... (cached) yes
+checking whether the /opt/programs/openMPI/4.1.5/bin/mpicxx linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking for library containing sqrt... -lm
+checking for library containing pthread_join... none required
+checking for library containing clock_gettime... none required
+checking for stdlib.h... (cached) yes
+checking for string.h... (cached) yes
+checking for sys/time.h... yes
+checking for unistd.h... (cached) yes
+checking for math.h... yes
+checking for inline... inline
+checking for getpagesize... yes
+checking for gettimeofday... yes
+checking for memset... yes
+checking for sqrt... yes
+checking for /opt/programs/openMPI/4.1.5/bin/mpicc options needed to detect all undeclared functions... none needed
+checking for MPI_Init... yes
+checking for MPI_Accumulate... yes
+checking for MPI_Get_accumulate... yes
+checking for shmem_barrier_all... no
+checking for upc_memput... no
+checking whether upcxx_alltoall is declared... no
+checking for shmem_finalize... no
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating c/Makefile
+config.status: creating c/mpi/Makefile
+config.status: creating c/mpi/pt2pt/Makefile
+config.status: creating c/mpi/startup/Makefile
+config.status: creating c/mpi/one-sided/Makefile
+config.status: creating c/mpi/collective/Makefile
+config.status: creating c/openshmem/Makefile
+config.status: creating c/xccl/collective/Makefile
+config.status: creating c/xccl/pt2pt/Makefile
+config.status: creating c/xccl/Makefile
+config.status: creating c/upc/Makefile
+config.status: creating c/upcxx/Makefile
+config.status: creating c/mpi/pt2pt/standard/Makefile
+config.status: creating c/mpi/pt2pt/persistent/Makefile
+config.status: creating c/mpi/collective/blocking/Makefile
+config.status: creating c/mpi/collective/non_blocking/Makefile
+config.status: creating c/mpi/collective/neighborhood/Makefile
+config.status: creating c/mpi/collective/persistent/Makefile
+config.status: executing depfiles commands
+config.status: executing libtool commands
+Making all in c
+make[1]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c'
+Making all in mpi
+make[2]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi'
+Making all in pt2pt
+make[3]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/pt2pt'
+Making all in standard
+make[4]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/pt2pt/standard'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/pt2pt/standard'
+Making all in persistent
+make[4]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/pt2pt/persistent'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/pt2pt/persistent'
+make[4]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/pt2pt'
+make[4]: Nothing to be done for 'all-am'.
+make[4]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/pt2pt'
+make[3]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/pt2pt'
+Making all in collective
+make[3]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective'
+Making all in neighborhood
+make[4]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective/neighborhood'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective/neighborhood'
+Making all in blocking
+make[4]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective/blocking'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective/blocking'
+Making all in non_blocking
+make[4]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective/non_blocking'
+make[4]: Nothing to be done for 'all'.
+make[4]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective/non_blocking'
+make[4]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective'
+make[4]: Nothing to be done for 'all-am'.
+make[4]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective'
+make[3]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective'
+Making all in startup
+make[3]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/startup'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/startup'
+Making all in one-sided
+make[3]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/one-sided'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/one-sided'
+make[3]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi'
+make[3]: Nothing to be done for 'all-am'.
+make[3]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi'
+make[2]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c/mpi'
+make[2]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c'
+make[2]: Nothing to be done for 'all-am'.
+make[2]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c'
+make[1]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3/c'
+make[1]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3'
+make[1]: Nothing to be done for 'all-am'.
+make[1]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise1/Solution1/Compile_OSU/osu-micro-benchmarks-7.3'
+-------------------------------------------------
+Compilation of the OSU benchmark completed
+-------------------------------------------------
+Run on partition: EPYC
+Host: epyc004
