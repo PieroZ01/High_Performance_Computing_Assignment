@@ -37,7 +37,7 @@ do
         --mca coll_tuned_bcast_algorithm 0 \
         osu_bcast -i $iter -f -z \
         | tail -n 21 | awk -v np="$np" -v map="$map" '{printf "Default,%s,%s,%s,%s\n",map,np,$1, $2}' \
-        | sed 's/,$//' >> $out_csv
+        | sed 's/,$//' >> $output_csv
     done
 done
 
