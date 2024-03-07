@@ -13,14 +13,14 @@ module load openMPI/4.1.5/gnu/12.2.1
 cd ./Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective/blocking/
 
 # Define the output file path
-output_csv = "../../bcast/Results/bcast_default.csv"
+output_csv="../../bcast/Results/bcast_default.csv"
 
 # Define the range of cores values
-n_cores = $(seq 2 4 256)
+n_cores=$(seq 2 4 256)
 # Define the number of iterations
-iter = 1000
+iter=1000
 # Define the map types
-map = "core socket node"
+map="core socket node"
 
 # Go to the csv output file and write the header
 echo "Algorithm,Mapping,Processes,MessageSize,Latency" > $output_csv
