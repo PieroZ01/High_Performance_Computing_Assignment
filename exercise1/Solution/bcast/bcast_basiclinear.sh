@@ -22,7 +22,7 @@ max_cores=256
 # Define the number of iterations
 iter=1000
 # Define the map types
-maps="core socket node"
+maps="core socket"
 
 # Go to the csv output file and write the header
 echo "Algorithm,Mapping,Processes,MessageSize,Latency" > $output_csv
