@@ -16,7 +16,7 @@ cd ./Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective/blocking/
 output_csv="../../../../../../bcast/Results/bcast_default.csv"
 
 # Define the range of cores values
-step=4
+step=2
 min_cores=2
 max_cores=256
 # Define the number of iterations
@@ -38,7 +38,7 @@ do
         --mca coll_tuned_use_dynamic_rules true \
         --mca coll_tuned_bcast_algorithm 0 \
         osu_bcast -i $iter -f -z \
-        | tail -n 21 | awk -v np="$np" -v map="$map" '{printf "Default,%s,%s,%s,%s\n",map,np,$1, $2}' \
+        | tail -n 21 | awk -v cores="$cores" -v map="$map" '{printf "Default,%s,%s,%s,%s\n",map,cores,$1,$2}' \
         | sed 's/,$//' >> $output_csv
     done
 done
