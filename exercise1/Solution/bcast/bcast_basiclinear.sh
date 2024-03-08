@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=bcast_default
+#SBATCH --job-name=bcast_basiclinear
 #SBATCH --nodes=2
 #SBATCH --partition=EPYC
 #SBATCH --exclusive
@@ -13,7 +13,7 @@ module load openMPI/4.1.5/gnu/12.2.1
 cd ./Compile_OSU/osu-micro-benchmarks-7.3/c/mpi/collective/blocking/
 
 # Define the output file path
-output_csv="../../../../../../bcast/Results/bcast_default.csv"
+output_csv="../../../../../../bcast/Results/bcast_basiclinear.csv"
 
 # Define the range of cores values
 step=4
@@ -27,7 +27,7 @@ maps="core socket node"
 # Go to the csv output file and write the header
 echo "Algorithm,Mapping,Processes,MessageSize,Latency" > $output_csv
 
-# Run the benchmark test selecting the default algorithm 0
+# Run the benchmark test selecting the basic linear algorithm 1
 for map in $maps
 do
     for cores in $(seq $min_cores $step $max_cores)
@@ -36,7 +36,7 @@ do
         echo "Benchmarking Bcast with $cores processes and $map mapping"
         mpirun -np $cores --map-by $map \
         --mca coll_tuned_use_dynamic_rules true \
-        --mca coll_tuned_bcast_algorithm 0 \
+        --mca coll_tuned_bcast_algorithm 1 \
         osu_bcast -i $iter -f -z \
         | tail -n 21 | awk -v cores="$cores" -v map="$map" '{printf "Default,%s,%s,%s,%s\n",map,cores,$1,$2}' \
         | sed 's/,$//' >> $output_csv
