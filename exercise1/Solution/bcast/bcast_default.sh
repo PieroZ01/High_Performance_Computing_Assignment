@@ -20,7 +20,7 @@ step=4
 min_cores=2
 max_cores=256
 # Define the number of iterations
-iter=1000
+iter=5000
 # Define the map types
 maps="core socket"
 
@@ -37,7 +37,7 @@ do
         mpirun -np $cores --map-by $map \
         --mca coll_tuned_use_dynamic_rules true \
         --mca coll_tuned_bcast_algorithm 0 \
-        osu_bcast -i $iter -f -z \
+        osu_bcast -x 1000 -i $iter -f -z \
         | tail -n 21 | awk -v cores="$cores" -v map="$map" '{printf "Default,%s,%s,%s,%s\n",map,cores,$1,$2}' \
         | sed 's/,$//' >> $output_csv
     done
@@ -48,7 +48,7 @@ do
     mpirun -np $cores_final --map-by $map \
     --mca coll_tuned_use_dynamic_rules true \
     --mca coll_tuned_bcast_algorithm 0 \
-    osu_bcast -i $iter -f -z \
+    osu_bcast -x 1000 -i $iter -f -z \
     | tail -n 21 | awk -v cores="$cores_final" -v map="$map" '{printf "Default,%s,%s,%s,%s\n",map,cores,$1,$2}' \
     | sed 's/,$//' >> $output_csv
 done
