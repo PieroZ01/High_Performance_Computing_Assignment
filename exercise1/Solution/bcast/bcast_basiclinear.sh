@@ -37,7 +37,7 @@ do
         mpirun -np $cores --map-by $map \
         --mca coll_tuned_use_dynamic_rules true \
         --mca coll_tuned_bcast_algorithm 1 \
-        osu_bcast -x 1000 -i $iter -f -z \
+        osu_bcast -x 500 -i $iter -f -z \
         | tail -n 21 | awk -v cores="$cores" -v map="$map" '{printf "BasicLinear,%s,%s,%s,%s\n",map,cores,$1,$2}' \
         | sed 's/,$//' >> $output_csv
     done
@@ -48,7 +48,7 @@ do
     mpirun -np $cores_final --map-by $map \
     --mca coll_tuned_use_dynamic_rules true \
     --mca coll_tuned_bcast_algorithm 1 \
-    osu_bcast -x 1000 -i $iter -f -z \
+    osu_bcast -x 500 -i $iter -f -z \
     | tail -n 21 | awk -v cores="$cores_final" -v map="$map" '{printf "BasicLinear,%s,%s,%s,%s\n",map,cores,$1,$2}' \
     | sed 's/,$//' >> $output_csv
 done
