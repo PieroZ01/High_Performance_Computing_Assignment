@@ -20,7 +20,7 @@ step=4
 min_cores=2
 max_cores=256
 # Define the number of iterations
-iter=3000
+iter=2000
 # Define the map types
 maps="core socket"
 
