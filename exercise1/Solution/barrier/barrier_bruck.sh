@@ -33,7 +33,7 @@ do
     for cores in $(seq $min_cores $step $max_cores)
     do
         echo "----------------------------------------------------------------------------------------------------------------------------------"
-        echo "Benchmarking Bcast with $cores processes and $map mapping"
+        echo "Benchmarking barrier with $cores processes and $map mapping"
         mpirun -np $cores --map-by $map \
         --mca coll_tuned_use_dynamic_rules true \
         --mca coll_tuned_barrier_algorithm 4 \
@@ -43,7 +43,7 @@ do
     # Run the test with 256 cores as well
     cores_final=256
     echo "----------------------------------------------------------------------------------------------------------------------------------"
-    echo "Benchmarking Bcast with $cores_final processes and $map mapping"
+    echo "Benchmarking barrier with $cores_final processes and $map mapping"
     mpirun -np $cores_final --map-by $map \
     --mca coll_tuned_use_dynamic_rules true \
     --mca coll_tuned_barrier_algorithm 4 \
