@@ -20,9 +20,11 @@ step=4
 min_cores=2
 max_cores=256
 # Define the number of iterations
-iter=2000
+iter=3000
 # Define the map types
 maps="core socket"
+# Define the maximum message size
+max_size=262144
 
 # Go to the csv output file and write the header
 echo "Algorithm,Mapping,Processes,MessageSize,Latency" > $output_csv
@@ -37,7 +39,7 @@ do
         mpirun -np $cores --map-by $map \
         --mca coll_tuned_use_dynamic_rules true \
         --mca coll_tuned_bcast_algorithm 5 \
-        osu_bcast -x 500 -i $iter -f -z \
+        osu_bcast -x 500 -i $iter -m $max_size -f -z \
         | tail -n 21 | awk -v cores="$cores" -v map="$map" '{printf "BinaryTree,%s,%s,%s,%s\n",map,cores,$1,$2}' \
         | sed 's/,$//' >> $output_csv
     done
@@ -48,7 +50,7 @@ do
     mpirun -np $cores_final --map-by $map \
     --mca coll_tuned_use_dynamic_rules true \
     --mca coll_tuned_bcast_algorithm 5 \
-    osu_bcast -x 500 -i $iter -f -z \
+    osu_bcast -x 500 -i $iter -m $max_size -f -z \
     | tail -n 21 | awk -v cores="$cores_final" -v map="$map" '{printf "BinaryTree,%s,%s,%s,%s\n",map,cores,$1,$2}' \
     | sed 's/,$//' >> $output_csv
 done
