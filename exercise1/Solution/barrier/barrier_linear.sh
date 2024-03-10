@@ -20,7 +20,7 @@ step=4
 min_cores=2
 max_cores=256
 # Define the number of iterations
-iter=1500
+iter=5000
 # Define the map types
 maps="core socket"
 
@@ -37,7 +37,7 @@ do
         mpirun -np $cores --map-by $map \
         --mca coll_tuned_use_dynamic_rules true \
         --mca coll_tuned_barrier_algorithm 1 \
-        osu_barrier -x 500 -i $iter -f -z \
+        osu_barrier -x 1000 -i $iter -f -z \
         | tail -n 1 | awk -v cores="$cores" -v map="$map" '{printf "Linear,%s,%s,%s\n",map,cores,$1}' >> $output_csv
     done
     # Run the test with 256 cores as well
@@ -47,7 +47,7 @@ do
     mpirun -np $cores_final --map-by $map \
     --mca coll_tuned_use_dynamic_rules true \
     --mca coll_tuned_barrier_algorithm 1 \
-    osu_barrier -x 500 -i $iter -f -z \
+    osu_barrier -x 1000 -i $iter -f -z \
     | tail -n 1 | awk -v cores="$cores_final" -v map="$map" '{printf "Linear,%s,%s,%s\n",map,cores,$1}' >> $output_csv
 done
 
