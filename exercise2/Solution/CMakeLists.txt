@@ -8,7 +8,7 @@ project(Mandelbrot_hybrid_MPI_OpenMP
 set(CMAKE_C_STANDARD 11)
 
 #C Flags
-set(CMAKE_C_FLAGS_RELEASE "-O3 -march=native -Wall -Wextra -Wpedantic")
+set(CMAKE_C_FLAGS_RELEASE "-O3 -march=native")
 set(CMAKE_C_COMPILER mpicc)
 set(CMAKE_CXX_COMPILER mpicxx)
 
