@@ -1,5 +1,7 @@
 // Libraries
 #include <mpi.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 // Header
 #include "mandelbrot.h"
@@ -9,7 +11,7 @@ int main(int argc, char *argv[])
 {
   // Initialize MPI
   int mpi_provided_thread_level;
-  MPI_Init_threads(&argc, &argv, MPI_THREAD_FUNNELED, &mpi_provided_thread_level);
+  MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &mpi_provided_thread_level);
   if (mpi_provided_thread_level < MPI_THREAD_FUNNELED)
   {
     printf("A problem arise when asking for MPI_THREAD_FUNNELED level\n");
