@@ -2,8 +2,8 @@
 #include <complex.h>
 
 // Constants
-#define XWIDTH 12288
-#define YWIDTH 12288
+#define XWIDTH 10000
+#define YWIDTH 10000
 #define MAXVAL 65535
 
 // Function declarations
