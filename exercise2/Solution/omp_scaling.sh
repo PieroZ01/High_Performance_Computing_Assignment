@@ -24,6 +24,7 @@ step=2
 
 # Run the scaling test with threads from 2 to 128 with a step of 2:
 # write on the csv file the number of threads and the time taken to execute the program
+# (Run the program with 1 MPI task and 2 to 128 OMP threads)
 for ((threads=2; threads<=$max_threads; threads+=$step))
 do
     echo "----------------------------------------------------------------------------------------------------------------------------------"
