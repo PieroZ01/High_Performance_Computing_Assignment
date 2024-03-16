@@ -31,7 +31,8 @@ do
     echo "Running mandelbrot with $tasks tasks"
     export OMP_NUM_THREADS=1
     start_time=$(date +%s.%N)
-    mpirun -np $tasks ./main
+    # Run the program (pass the desired arguments to the program)
+    mpirun -np $tasks ./main 3000 3000 -2.0 -2.0 2.0 2.0 3000
     end_time=$(date +%s.%N)
     elapsed_time=$(echo "$end_time - $start_time" | bc)
     # Write the results to the csv file
