@@ -34,7 +34,7 @@ do
     export OMP_PROC_BIND=spread
     export OMP_PLACES=threads
     start_time=$(date +%s.%N)
-    # Run the program (pass the desired arguments to the program)
+    # Run the program (pass the desired arguments to the program) with a single MPI task
     mpirun -np 1 ./main 3000 3000 -2.0 -2.0 2.0 2.0 3000
     end_time=$(date +%s.%N)
     elapsed_time=$(echo "$end_time - $start_time" | bc)

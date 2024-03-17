@@ -29,6 +29,7 @@ for ((tasks=4; tasks<=$max_tasks; tasks+=$step))
 do
     echo "----------------------------------------------------------------------------------------------------------------------------------"
     echo "Running mandelbrot with $tasks tasks"
+    # Set the number of OMP threads per MPI task to 1
     export OMP_NUM_THREADS=1
     start_time=$(date +%s.%N)
     # Run the program (pass the desired arguments to the program)

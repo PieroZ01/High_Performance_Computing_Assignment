@@ -67,17 +67,21 @@ int main(int argc, char *argv[])
   {
     global_M = (short int *)malloc(n_x * n_y * sizeof(short int));
   }
+
+  // (Wait for all the processes to finish the computation)
+  MPI_Barrier(MPI_COMM_WORLD);
+
   MPI_Gather(local_M, n_x * local_rows, MPI_SHORT, global_M, n_x * local_rows, MPI_SHORT, 0, MPI_COMM_WORLD);
 
-  // The master process writes the image to a pgm file
+  // Free the memory for the local part of the matrix M on each process
+  free(local_M);
+
+  // The master process writes the image to a pgm file and frees the memory
   if (rank == 0)
   {
     write_pgm_image(global_M, I_max, n_x, n_y, "mandelbrot.pgm");
     free(global_M);
   }
-
-  // Free the memory
-  free(local_M);
 
   // Finalize MPI
   MPI_Finalize();
