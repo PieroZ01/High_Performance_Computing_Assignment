@@ -47,11 +47,15 @@ int main(int argc, char *argv[])
   // (Allocate only the memory for the local part of the matrix M on each process)
   short int *local_M = (short int *)malloc(n_x * local_rows * sizeof(short int));
 
+  // Enable nested parallelism
+  omp_set_nested(1);
+
   // Compute the mandelbrot set
   #pragma omp parallel for schedule(dynamic)
     for (int j = 0; j < local_rows; ++j)
     {
         double y = y_L + (start_row + j) * dy;
+        #pragma omp parallel for schedule(dynamic)
         for (int i = 0; i < n_x; ++i)
         {
           double complex c = x_L + i * dx + y * I;
