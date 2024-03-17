@@ -48,11 +48,11 @@ inline double complex f_c(const double complex z, const double complex c)
 const int mandelbrot(const double complex c, const int max_iter)
 {
   double complex z = 0.0;
-  int i = 0;
-  while (creal(z)*creal(z) + cimag(z)*cimag(z) < 4.0 && i < max_iter)
+  int k = 0;
+  while (creal(z)*creal(z) + cimag(z)*cimag(z) < 4.0 && k < max_iter)
   {
     z = f_c(z, c);
-    i++;
+    k++;
   }
-  return i;
+  return k;
 }

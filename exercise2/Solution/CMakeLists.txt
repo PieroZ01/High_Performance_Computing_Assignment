@@ -8,9 +8,10 @@ project(Mandelbrot_hybrid_MPI_OpenMP
 set(CMAKE_C_STANDARD 11)
 
 #C Flags
-set(CMAKE_C_FLAGS_RELEASE "-O3 -march=native")
 set(CMAKE_C_COMPILER mpicc)
 set(CMAKE_CXX_COMPILER mpicxx)
+set(CMAKE_C_FLAGS "-Wall -Wextra -Wpedantic -Werror -fopenmp")
+set(CMAKE_C_FLAGS_RELEASE "-O3 -march=native")
 
 #Add subdirectories with CMakeLists.txt files to compile:
 add_subdirectory(src)

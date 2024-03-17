@@ -18,5 +18,8 @@ include_directories(${INCLUDE_DIRS})
 #Create the library
 add_library(mandelbrot_hybrid SHARED mandelbrot.c)
 
+#Link the library with the external libraries
+target_link_libraries(mandelbrot_hybrid PRIVATE ${MPI_LIBRARIES} ${OpenMP_LIBRARIES}
+
 #Set the version of the library
 set_target_properties(mandelbrot_hybrid PROPERTIES VERSION 1.0.0 SOVERSION 1)

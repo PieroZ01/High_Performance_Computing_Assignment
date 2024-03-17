@@ -12,3 +12,4 @@ add_executable(main main.c)
 
 #Link the library to the executables
 target_link_libraries(main mandelbrot_hybrid)
+target_link_libraries(main MPI::MPI_C)
