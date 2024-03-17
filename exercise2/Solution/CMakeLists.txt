@@ -9,6 +9,8 @@ set(CMAKE_C_STANDARD 11)
 
 #C Flags
 set(CMAKE_C_FLAGS_RELEASE "-O3 -march=native")
+set(CMAKE_C_COMPILER mpicc)
+set(CMAKE_CXX_COMPILER mpicxx)
 
 #Add subdirectories with CMakeLists.txt files to compile:
 add_subdirectory(src)
