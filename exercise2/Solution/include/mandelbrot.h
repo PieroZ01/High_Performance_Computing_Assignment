@@ -1,3 +1,6 @@
+#ifndef MANDELBROT_H
+#define MANDELBROT_H
+
 // Libraries
 #include <complex.h>
 
@@ -9,6 +12,8 @@
 // Function declarations
 void write_pgm_image( void *image, int maxval, int xsize, int ysize, const char *image_name);
 
-double complex f_c(double complex z, double complex c);
+inline double complex f_c(const double complex z, const double complex c);
 
-int mandelbrot(double complex c, int max_iter);
+const int mandelbrot(const double complex c, const int max_iter);
+
+#endif // MANDELBROT_H

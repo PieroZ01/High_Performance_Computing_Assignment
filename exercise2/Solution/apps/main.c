@@ -20,28 +20,28 @@ int main(int argc, char *argv[])
   }
 
   // Get the number of processes and the rank of the process
-  int rank, size;
+  const int rank, size;
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
   MPI_Comm_size(MPI_COMM_WORLD, &size);
 
   // Variables to be read from command line arguments, with default values
-  int n_x = argc > 1 ? atoi(argv[1]) : XWIDTH;
-  int n_y = argc > 2 ? atoi(argv[2]) : YWIDTH;
-  double x_L = argc > 3 ? atof(argv[3]) : -2.0;
-  double y_L = argc > 4 ? atof(argv[4]) : -2.0;
-  double x_R = argc > 5 ? atof(argv[5]) : 2.0;
-  double y_R = argc > 6 ? atof(argv[6]) : 2.0;
-  int I_max = argc > 7 ? atoi(argv[7]) : MAXVAL;
+  const int n_x = argc > 1 ? atoi(argv[1]) : XWIDTH;
+  const int n_y = argc > 2 ? atoi(argv[2]) : YWIDTH;
+  const double x_L = argc > 3 ? atof(argv[3]) : -2.0;
+  const double y_L = argc > 4 ? atof(argv[4]) : -2.0;
+  const double x_R = argc > 5 ? atof(argv[5]) : 2.0;
+  const double y_R = argc > 6 ? atof(argv[6]) : 2.0;
+  const int I_max = argc > 7 ? atoi(argv[7]) : MAXVAL;
 
   // Delta x and y
-  double dx = (x_R - x_L) / n_x;
-  double dy = (y_R - y_L) / n_y;
+  const double dx = (x_R - x_L) / n_x;
+  const double dy = (y_R - y_L) / n_y;
 
   // Get the local amount of rows to be computed by each process
-  int rows_per_process = n_y / size;
-  int start_row = rank * rows_per_process;
-  int end_row = (rank == size - 1) ? n_y : start_row + rows_per_process;
-  int local_rows = end_row - start_row;
+  const int rows_per_process = n_y / size;
+  const int start_row = rank * rows_per_process;
+  const int end_row = (rank == size - 1) ? n_y : start_row + rows_per_process;
+  const int local_rows = end_row - start_row;
 
   // Define the 2D matrix M of integers (short int) whose entries [j][i] are the image's pixels
   // (Allocate only the memory for the local part of the matrix M on each process)
@@ -80,8 +80,10 @@ int main(int argc, char *argv[])
   if (rank == 0)
   {
     write_pgm_image(global_M, I_max, n_x, n_y, "mandelbrot.pgm");
-    free(global_M);
   }
+
+  // Free the memory for the global matrix M
+  free(global_M);
 
   // Finalize MPI
   MPI_Finalize();
