@@ -14,12 +14,6 @@
 // Function to write a PGM file (grey scale image)
 void write_pgm_image( void *image, int maxval, int xsize, int ysize, const char *image_name);
 
-// Define the complex function f_c(z) = z^2 + c
-inline double complex f_c(const double complex z, const double complex c)
-{
-  return z*z + c;
-}
-
 // Declare the function to compute the mandelbrot set
 const int mandelbrot(const double complex c, const int max_iter);
 
