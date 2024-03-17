@@ -40,6 +40,7 @@ do
     elapsed_time=$(echo "$end_time - $start_time" | bc)
     # Write the results to the csv file
     echo "$threads,$elapsed_time" >> $output_csv
+    echo "----------------------------------------------------------------------------------------------------------------------------------"
 done
 
 # Print the completion message

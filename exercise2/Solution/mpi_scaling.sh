@@ -19,10 +19,10 @@ output_csv="../../Results/mpi_scaling_mandelbrot.csv"
 echo "Tasks,Time" > $output_csv
 
 # Define variables
-max_tasks=256
+max_tasks=254
 step=4
 
-# Run the scaling test with tasks from 4 to 256 with a step of 4:
+# Run the scaling test with tasks from 4 to 254 with a step of 4:
 # write on the csv file the number of tasks and the time taken to execute the program
 # (Run the program with 4 to 256 MPI tasks and 1 OMP thread per task)
 for ((tasks=4; tasks<=$max_tasks; tasks+=$step))
@@ -39,6 +39,7 @@ do
     elapsed_time=$(echo "$end_time - $start_time" | bc)
     # Write the results to the csv file
     echo "$tasks,$elapsed_time" >> $output_csv
+    echo "----------------------------------------------------------------------------------------------------------------------------------"
 done
 
 # Print the completion message
