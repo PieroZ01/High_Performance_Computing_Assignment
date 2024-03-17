@@ -48,7 +48,8 @@ int main(int argc, char *argv[])
   short int *local_M = (short int *)malloc(n_x * local_rows * sizeof(short int));
 
   // Compute the mandelbrot set
-  #pragma omp parallel for schedule(dynamic)
+  #pragma omp parallel
+  #pragma omp for schedule(dynamic)
     for (int j = 0; j < local_rows; ++j)
     {
         double y = y_L + (start_row + j) * dy;
