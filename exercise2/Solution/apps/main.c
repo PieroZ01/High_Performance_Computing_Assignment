@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
   MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &mpi_provided_thread_level);
   if (mpi_provided_thread_level < MPI_THREAD_FUNNELED)
   {
-    printf("A problem arise when asking for MPI_THREAD_FUNNELED level\n");
+    printf("A problem arised when asking for MPI_THREAD_FUNNELED level\n");
     MPI_Finalize();
     exit(1);
   }
@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
   short int *local_M = (short int *)malloc(n_x * local_rows * sizeof(short int));
 
   // Compute the mandelbrot set
-  #pragma omp parallel for schedule(static)
+  #pragma omp parallel for schedule(dynamic)
     for (int j = 0; j < local_rows; ++j)
     {
         double y = y_L + (start_row + j) * dy;

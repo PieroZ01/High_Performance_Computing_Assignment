@@ -34,7 +34,7 @@ do
     start_time=$(date +%s.%N)
     # Run the program (pass the desired arguments to the program)
     # (use the --map-by core flag to bind the MPI tasks to the cores of the node)
-    mpirun -np $tasks --map-by core ./main 3000 3000 -2.0 -2.0 2.0 2.0 3000
+    mpirun -np $tasks --map-by core ./main 1000 1000 -2.0 -2.0 2.0 2.0 1000
     end_time=$(date +%s.%N)
     elapsed_time=$(echo "$end_time - $start_time" | bc)
     # Write the results to the csv file

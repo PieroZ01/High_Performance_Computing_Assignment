@@ -35,7 +35,7 @@ do
     export OMP_PLACES=threads
     start_time=$(date +%s.%N)
     # Run the program (pass the desired arguments to the program) with a single MPI task
-    mpirun -np 1 ./main 3000 3000 -2.0 -2.0 2.0 2.0 3000
+    mpirun -np 1 ./main 1000 1000 -2.0 -2.0 2.0 2.0 1000
     end_time=$(date +%s.%N)
     elapsed_time=$(echo "$end_time - $start_time" | bc)
     # Write the results to the csv file
