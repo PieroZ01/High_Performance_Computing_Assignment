@@ -6,7 +6,7 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --time=00:10:00
 #SBATCH -A dssc
-#SBATCH -p EPYC
+#SBATCH --partition=EPYC
 #SBATCH --output=compilation.out
 #SBATCH --error=compilation.err
 #SBATCH --mem-per-cpu=1500MB
