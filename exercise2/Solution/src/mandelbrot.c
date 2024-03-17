@@ -45,7 +45,7 @@ inline double complex f_c(const double complex z, const double complex c)
 }
 
 // Define the function to compute the mandelbrot set
-const int mandelbrot(const double complex c, const int max_iter)
+int mandelbrot(const double complex c, const int max_iter)
 {
   double complex z = 0.0;
   int k = 0;

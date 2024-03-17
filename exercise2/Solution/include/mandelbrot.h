@@ -18,6 +18,6 @@ void write_pgm_image( void *image, int maxval, int xsize, int ysize, const char 
 double complex f_c(const double complex z, const double complex c);
 
 // Declare the function to compute the mandelbrot set
-const int mandelbrot(const double complex c, const int max_iter);
+int mandelbrot(const double complex c, const int max_iter);
 
 #endif // MANDELBROT_H
