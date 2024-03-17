@@ -5,6 +5,7 @@
 #SBATCH --partition=EPYC
 #SBATCH --exclusive
 #SBATCH --time=02:00:00
+#SBATCH --tasks-per-node=1
 
 # Load the required OpenMP module
 module load openMPI/4.1.5/gnu/12.2.1
@@ -35,7 +36,7 @@ do
     export OMP_PLACES=threads
     start_time=$(date +%s.%N)
     # Run the program (pass the desired arguments to the program) with a single MPI task
-    mpirun -np 1 ./main 1000 1000 -2.0 -2.0 2.0 2.0 1000
+    mpirun ./main 1000 1000 -2.0 -2.0 2.0 2.0 1000
     end_time=$(date +%s.%N)
     elapsed_time=$(echo "$end_time - $start_time" | bc)
     # Write the results to the csv file
