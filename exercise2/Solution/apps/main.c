@@ -58,7 +58,8 @@ int main(int argc, char *argv[])
   }
 
   // Measure the time (start the timer)
-  timer = MPI_Wtime();
+  timer = CPU_TIME;
+  // timer = MPI_Wtime();
 
   // Compute the mandelbrot set
   #pragma omp parallel for schedule(dynamic)
@@ -73,7 +74,8 @@ int main(int argc, char *argv[])
     }
 
   // Measure the time (stop the timer)
-  time_taken = MPI_Wtime() - timer;
+  time_taken = CPU_TIME - timer;
+  // time_taken = MPI_Wtime() - timer;
 
   // Define the global matrix M to gather the results from all the processes
   short int *global_M = NULL;
