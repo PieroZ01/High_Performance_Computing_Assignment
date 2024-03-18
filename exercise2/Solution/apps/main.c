@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
       #pragma omp master
       {
       int n_threads = omp_get_num_threads(); // Get the number of threads
-      fprintf(file, "%d, %d, %d, %d, %d, %f, %f\n", size, n_threads, n_x, n_y, I_max, time_taken);
+      fprintf(file, "%d, %d, %d, %d, %d, %f\n", size, n_threads, n_x, n_y, I_max, time_taken);
       fflush(file);
       }
     }
