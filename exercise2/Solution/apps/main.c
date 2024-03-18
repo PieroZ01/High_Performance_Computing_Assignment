@@ -72,12 +72,12 @@ int main(int argc, char *argv[])
   // (Allocate only the memory for the local part of the matrix M on each process)
   short int *local_M = (short int *)malloc(n_x * local_rows * sizeof(short int));
 
-  // Sincrhonize all the processes before starting the computation
-  MPI_Barrier(MPI_COMM_WORLD);
-
   // Loop over the number of iterations
   for (int p = 0; p < n_iter; ++p)
   {
+    // Sincrhonize all the processes before starting the computation
+    MPI_Barrier(MPI_COMM_WORLD);
+
     // The master process measures the time (start the timer)
     if (rank == 0)
     {
@@ -109,8 +109,15 @@ int main(int argc, char *argv[])
   // The master process writes the results to the csv file
   if (rank == 0)
   {
-    int n_threads = omp_get_num_threads(); // Get the number of threads
-    fprintf(file, "%d, %d, %d, %d, %d, %f, %f\n", size, n_threads, n_x, n_y, I_max, mean(time_measures, n_iter), std_dev(time_measures, n_iter));
+    #pragma omp parallel
+    {
+      #pragma omp master
+      {
+      int n_threads = omp_get_num_threads(); // Get the number of threads
+      fprintf(file, "%d, %d, %d, %d, %d, %f, %f\n", size, n_threads, n_x, n_y, I_max, mean(time_measures, n_iter), std_dev(time_measures, n_iter));
+      fflush(file);
+      }
+    }
   }
 
   // Close the csv file
