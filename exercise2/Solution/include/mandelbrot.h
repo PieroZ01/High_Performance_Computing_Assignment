@@ -4,7 +4,6 @@
 // Libraries
 #include <complex.h>
 #include <time.h>
-#include <unistd.h>
 
 // Constants
 #define XWIDTH 12288

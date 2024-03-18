@@ -37,6 +37,7 @@ int main(int argc, char *argv[])
   // Time measurements
   double timer = 0.0;
   double time_taken = 0.0;
+  struct timespec ts;
 
   // Delta x and y
   const double dx = (x_R - x_L) / n_x;
