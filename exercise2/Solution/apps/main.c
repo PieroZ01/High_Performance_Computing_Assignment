@@ -38,24 +38,6 @@ int main(int argc, char *argv[])
   double timer = 0.0;
   double time_taken = 0.0;
 
-  // Open a csv file to write the time measurements (NOTE: change the file name accordingly)
-  FILE *file = fopen("../../Results/omp_scaling_mandelbrot.csv", "a+");
-  if (file == NULL)
-  {
-    printf("Error opening the file\n");
-    MPI_Finalize();
-    exit(1);
-  }
-  if (rank == 0)
-  {
-    fseek(file, 0, SEEK_END);
-    if (ftell(file) == 0)
-    {
-      fprintf(file, "\"n_processes\", \"n_threads\", \"n_x\", \"n_y\", \"I_max\", \"Time (s)\"\n");
-      fflush(file);
-    }
-  }
-
   // Delta x and y
   const double dx = (x_R - x_L) / n_x;
   const double dy = (y_R - y_L) / n_y;
@@ -70,23 +52,13 @@ int main(int argc, char *argv[])
   // (Allocate only the memory for the local part of the matrix M on each process)
   short int *local_M = (short int *)malloc(n_x * local_rows * sizeof(short int));
 
-  //!!!!!!!!!!!!!!!!!!!
-  #pragma omp parallel
-  {
-    // Print an hello message from each thread
-    printf("Hello from thread %d of process %d\n", omp_get_thread_num(), rank);
-  }
-
   // Sinchronize all the processes before starting the computation
   if (size > 1){
     MPI_Barrier(MPI_COMM_WORLD);
   }
 
-  // The master process measures the time (start the timer)
-  if (rank == 0)
-  {
+  // Measure the time (start the timer)
     timer = MPI_Wtime();
-  }
 
   // Compute the mandelbrot set
   #pragma omp parallel for schedule(dynamic)
@@ -105,11 +77,8 @@ int main(int argc, char *argv[])
     MPI_Barrier(MPI_COMM_WORLD);
   }
 
-  // The master process measures the time (stop the timer)
-  if (rank == 0)
-  {
-    time_taken = MPI_Wtime() - timer;
-  }
+  // Measure the time (stop the timer)
+  time_taken = MPI_Wtime() - timer;
 
   // Define the global matrix M to gather the results from all the processes
   short int *global_M = NULL;
@@ -133,6 +102,20 @@ int main(int argc, char *argv[])
 
   // Free the memory for the global matrix M
   free(global_M);
+
+  // Open a csv file to write the time measurements (NOTE: change the file name accordingly)
+  FILE *file = fopen("../../Results/omp_scaling_mandelbrot.csv", "a+");
+  if (file == NULL)
+  {
+    printf("Error opening the file\n");
+    MPI_Finalize();
+    exit(1);
+  }
+  if (rank == 0)
+  {
+      fprintf(file, "\"n_processes\", \"n_threads\", \"n_x\", \"n_y\", \"I_max\", \"Time (s)\"\n");
+      fflush(file);
+  }
 
   // The master process writes the results to the csv file
   if (rank == 0)

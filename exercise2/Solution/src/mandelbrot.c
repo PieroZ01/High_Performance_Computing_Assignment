@@ -38,7 +38,7 @@ void write_pgm_image( void *image, int maxval, int xsize, int ysize, const char 
 }
 
 // Define the function f_c(z)=z^2+c
-double complex f_c(const double complex z, const double complex c)
+inline double complex f_c(const double complex z, const double complex c)
 {
   return z*z + c;
 }
