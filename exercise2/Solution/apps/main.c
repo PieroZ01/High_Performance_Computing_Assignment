@@ -34,18 +34,16 @@ int main(int argc, char *argv[])
   const double y_R = argc > 6 ? atof(argv[6]) : 2.0;
   const int I_max = argc > 7 ? atoi(argv[7]) : MAXVAL;
 
-  // Number of iterations and timer variable
-  const int n_iter = 6;
+  // Time measurements
   double timer = 0.0;
-
-  // Define the array containing the time measurements
-  double *time_measures = (double *)malloc(n_iter * sizeof(double));
+  double time_taken = 0.0;
 
   // Open a csv file to write the time measurements (NOTE: change the file name accordingly)
   FILE *file = fopen("../../Results/omp_scaling_mandelbrot.csv", "a+");
   if (file == NULL)
   {
     printf("Error opening the file\n");
+    MPI_Finalize();
     exit(1);
   }
   if (rank == 0)
@@ -53,7 +51,7 @@ int main(int argc, char *argv[])
     fseek(file, 0, SEEK_END);
     if (ftell(file) == 0)
     {
-      fprintf(file, "\"n_processes\", \"n_threads\", \"n_x\", \"n_y\", \"I_max\", \"Average time (s)\", \"Std. deviation (s)\"\n");
+      fprintf(file, "\"n_processes\", \"n_threads\", \"n_x\", \"n_y\", \"I_max\", \"Time (s)\"\n");
       fflush(file);
     }
   }
@@ -72,38 +70,34 @@ int main(int argc, char *argv[])
   // (Allocate only the memory for the local part of the matrix M on each process)
   short int *local_M = (short int *)malloc(n_x * local_rows * sizeof(short int));
 
-  // Loop over the number of iterations
-  for (int p = 0; p < n_iter; ++p)
+  // Sinchronize all the processes before starting the computation
+  MPI_Barrier(MPI_COMM_WORLD);
+
+  // The master process measures the time (start the timer)
+  if (rank == 0)
   {
-    // Sincrhonize all the processes before starting the computation
-    MPI_Barrier(MPI_COMM_WORLD);
+    timer = MPI_Wtime();
+  }
 
-    // The master process measures the time (start the timer)
-    if (rank == 0)
+  // Compute the mandelbrot set
+  #pragma omp parallel for schedule(dynamic)
+    for (int j = 0; j < local_rows; ++j)
     {
-      timer = MPI_Wtime();
-    }
-
-    // Compute the mandelbrot set
-    #pragma omp parallel for schedule(dynamic)
-      for (int j = 0; j < local_rows; ++j)
+      double y = (y_L + (start_row + j) * dy) * I;
+      for (int i = 0; i < n_x; ++i)
       {
-        double y = (y_L + (start_row + j) * dy) * I;
-        for (int i = 0; i < n_x; ++i)
-        {
-          double complex c = x_L + i * dx + y;
-          local_M[j * n_x + i] = mandelbrot(c, I_max);
-        }
-     }
-  
-    // Wait for all the processes to finish the computation of the mandelbrot set
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    // The master process measures the time (stop the timer)
-    if (rank == 0)
-    {
-      time_measures[p] = MPI_Wtime() - timer;
+        double complex c = x_L + i * dx + y;
+        local_M[j * n_x + i] = mandelbrot(c, I_max);
+      }
     }
+  
+  // Wait for all the processes to finish the computation of the mandelbrot set
+  MPI_Barrier(MPI_COMM_WORLD);
+
+  // The master process measures the time (stop the timer)
+  if (rank == 0)
+  {
+    time_taken = MPI_Wtime() - timer;
   }
 
   // The master process writes the results to the csv file
@@ -114,7 +108,7 @@ int main(int argc, char *argv[])
       #pragma omp master
       {
       int n_threads = omp_get_num_threads(); // Get the number of threads
-      fprintf(file, "%d, %d, %d, %d, %d, %f, %f\n", size, n_threads, n_x, n_y, I_max, mean(time_measures, n_iter), std_dev(time_measures, n_iter));
+      fprintf(file, "%d, %d, %d, %d, %d, %f, %f\n", size, n_threads, n_x, n_y, I_max, time_taken);
       fflush(file);
       }
     }
@@ -122,9 +116,6 @@ int main(int argc, char *argv[])
 
   // Close the csv file
   fclose(file);
-
-  // Free the memory for the time measurements
-  free(time_measures);
 
   // Define the global matrix M to gather the results from all the processes
   short int *global_M = NULL;

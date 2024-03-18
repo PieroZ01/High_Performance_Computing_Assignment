@@ -51,7 +51,7 @@ inline int mandelbrot(const double complex c, const int max_iter)
 }
 
 // Define function to compute the mean value
-double mean(const double *x, const int n)
+const double mean(const double *x, const int n)
 {
   double sum = 0.0;
   for (int i = 0; i < n; ++i)
@@ -62,7 +62,7 @@ double mean(const double *x, const int n)
 }
 
 // Define function to compute the standard deviation
-double std_dev(const double *x, const int n)
+const double std_dev(const double *x, const int n)
 {
   double m = mean(x, n);
   double sum = 0.0;

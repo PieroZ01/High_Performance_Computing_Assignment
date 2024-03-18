@@ -18,9 +18,9 @@ void write_pgm_image( void *image, int maxval, int xsize, int ysize, const char 
 int mandelbrot(const double complex c, const int max_iter);
 
 // Declare function to compute the mean value
-double mean(const double *, const int n);
+const double mean(const double *, const int n);
 
 // Declare function to compute the standard deviation
-double std_dev(const double *, const int n);
+const double std_dev(const double *, const int n);
 
 #endif // MANDELBROT_H
