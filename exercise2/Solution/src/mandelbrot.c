@@ -38,7 +38,7 @@ void write_pgm_image( void *image, int maxval, int xsize, int ysize, const char 
 }
 
 // Define the function to compute the mandelbrot set
-static inline int mandelbrot(const double complex c, const int max_iter)
+inline int mandelbrot(const double complex c, const int max_iter)
 {
   double complex z = 0.0;
   int k = 0;
