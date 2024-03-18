@@ -126,7 +126,7 @@ int main(int argc, char *argv[])
   MPI_Gather(global_M, n_x * local_rows, MPI_SHORT, global_M, n_x * local_rows, MPI_SHORT, 0, MPI_COMM_WORLD);
 
   // Free the memory for the local part of the matrix M on each process
-  free(local_M);
+  //free(local_M);
 
   // The master process writes the image to a pgm file and frees the memory
   if (rank == 0)
