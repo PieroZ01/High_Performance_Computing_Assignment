@@ -72,11 +72,6 @@ int main(int argc, char *argv[])
       }
     }
 
-  // Sinchronize all the processes after the computation
-  if (size > 1){
-    MPI_Barrier(MPI_COMM_WORLD);
-  }
-
   // Measure the time (stop the timer)
   time_taken = MPI_Wtime() - timer;
 
@@ -87,6 +82,11 @@ int main(int argc, char *argv[])
   if (rank == 0)
   {
     global_M = (short int *)malloc(n_x * n_y * sizeof(short int));
+  }
+
+  // Sinchronize all the processes after the computation
+  if (size > 1){
+    MPI_Barrier(MPI_COMM_WORLD);
   }
 
   MPI_Gather(local_M, n_x * local_rows, MPI_SHORT, global_M, n_x * local_rows, MPI_SHORT, 0, MPI_COMM_WORLD);
@@ -113,6 +113,7 @@ int main(int argc, char *argv[])
   }
   if (rank == 0)
   {
+    fseek(file, 0, SEEK_END);
     if (ftell(file) == 0)
     {
       fprintf(file, "\"n_processes\", \"n_threads\", \"n_x\", \"n_y\", \"I_max\", \"Time (s)\"\n");
