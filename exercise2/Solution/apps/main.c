@@ -64,13 +64,18 @@ int main(int argc, char *argv[])
   #pragma omp parallel for schedule(dynamic)
     for (int j = 0; j < local_rows; ++j)
     {
-      double y = (y_L + (start_row + j) * dy) * I;
+      double y = y_L + (start_row + j) * dy;
       for (int i = 0; i < n_x; ++i)
       {
-        double complex c = x_L + i * dx + y;
+        double complex c = x_L + i * dx + y * I;
         local_M[j * n_x + i] = mandelbrot(c, I_max);
       }
     }
+
+  // Sinchronize all the processes after the computation
+  if (size > 1){
+    MPI_Barrier(MPI_COMM_WORLD);
+  }
 
   // Measure the time (stop the timer)
   time_taken = MPI_Wtime() - timer;
@@ -83,9 +88,6 @@ int main(int argc, char *argv[])
   {
     global_M = (short int *)malloc(n_x * n_y * sizeof(short int));
   }
-
-  // Wait for all the processes to finish the computation before gathering the results
-  MPI_Barrier(MPI_COMM_WORLD);
 
   MPI_Gather(local_M, n_x * local_rows, MPI_SHORT, global_M, n_x * local_rows, MPI_SHORT, 0, MPI_COMM_WORLD);
 
@@ -111,8 +113,11 @@ int main(int argc, char *argv[])
   }
   if (rank == 0)
   {
+    if (ftell(file) == 0)
+    {
       fprintf(file, "\"n_processes\", \"n_threads\", \"n_x\", \"n_y\", \"I_max\", \"Time (s)\"\n");
       fflush(file);
+    }
   }
 
   // The master process writes the results to the csv file
