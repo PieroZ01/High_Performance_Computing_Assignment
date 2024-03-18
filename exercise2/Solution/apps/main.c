@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
   }
 
   // Measure the time (start the timer)
-    timer = MPI_Wtime();
+  timer = MPI_Wtime();
 
   // Compute the mandelbrot set
   #pragma omp parallel for schedule(dynamic)
@@ -71,11 +71,6 @@ int main(int argc, char *argv[])
         local_M[j * n_x + i] = mandelbrot(c, I_max);
       }
     }
-  
-  // Wait for all the processes to finish the computation of the mandelbrot set
-  if (size > 1){
-    MPI_Barrier(MPI_COMM_WORLD);
-  }
 
   // Measure the time (stop the timer)
   time_taken = MPI_Wtime() - timer;
@@ -88,6 +83,9 @@ int main(int argc, char *argv[])
   {
     global_M = (short int *)malloc(n_x * n_y * sizeof(short int));
   }
+
+  // Wait for all the processes to finish the computation before gathering the results
+  MPI_Barrier(MPI_COMM_WORLD);
 
   MPI_Gather(local_M, n_x * local_rows, MPI_SHORT, global_M, n_x * local_rows, MPI_SHORT, 0, MPI_COMM_WORLD);
 
