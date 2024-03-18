@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
   double *time_measures = (double *)malloc(n_iter * sizeof(double));
 
   // Open a csv file to write the time measurements (NOTE: change the file name accordingly)
-  FILE *file = fopen("Results/omp_scaling_mandelbrot.csv", "a+");
+  FILE *file = fopen("../../Results/omp_scaling_mandelbrot.csv", "a+");
   if (file == NULL)
   {
     printf("Error opening the file\n");
