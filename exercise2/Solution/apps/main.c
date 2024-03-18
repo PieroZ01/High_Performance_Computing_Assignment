@@ -122,7 +122,8 @@ int main(int argc, char *argv[])
     MPI_Barrier(MPI_COMM_WORLD);
   }
 
-  MPI_Gather(local_M, n_x * local_rows, MPI_SHORT, global_M, n_x * local_rows, MPI_SHORT, 0, MPI_COMM_WORLD);
+  //MPI_Gather(local_M, n_x * local_rows, MPI_SHORT, global_M, n_x * local_rows, MPI_SHORT, 0, MPI_COMM_WORLD);
+  MPI_Gather(global_M, n_x * local_rows, MPI_SHORT, global_M, n_x * local_rows, MPI_SHORT, 0, MPI_COMM_WORLD);
 
   // Free the memory for the local part of the matrix M on each process
   free(local_M);
