@@ -37,6 +37,12 @@ void write_pgm_image( void *image, int maxval, int xsize, int ysize, const char 
   return;
 }
 
+// Define the function f_c(z)=z^2+c
+double complex f_c(const double complex z, const double complex c)
+{
+  return z*z + c;
+}
+
 // Define the function to compute the mandelbrot set
 inline int mandelbrot(const double complex c, const int max_iter)
 {
@@ -44,7 +50,7 @@ inline int mandelbrot(const double complex c, const int max_iter)
   int k = 0;
   while (creal(z)*creal(z) + cimag(z)*cimag(z) < 4.0 && k < max_iter)
   {
-    z = z*z + c;
+    z = f_c(z, c);
     k++;
   }
   return k;

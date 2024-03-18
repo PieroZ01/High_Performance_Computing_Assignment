@@ -70,8 +70,17 @@ int main(int argc, char *argv[])
   // (Allocate only the memory for the local part of the matrix M on each process)
   short int *local_M = (short int *)malloc(n_x * local_rows * sizeof(short int));
 
+  //!!!!!!!!!!!!!!!!!!!
+  #pragma omp parallel
+  {
+    // Print an hello message from each thread
+    printf("Hello from thread %d of process %d\n", omp_get_thread_num(), rank);
+  }
+
   // Sinchronize all the processes before starting the computation
-  MPI_Barrier(MPI_COMM_WORLD);
+  if (size > 1){
+    MPI_Barrier(MPI_COMM_WORLD);
+  }
 
   // The master process measures the time (start the timer)
   if (rank == 0)
@@ -92,30 +101,15 @@ int main(int argc, char *argv[])
     }
   
   // Wait for all the processes to finish the computation of the mandelbrot set
-  MPI_Barrier(MPI_COMM_WORLD);
+  if (size > 1){
+    MPI_Barrier(MPI_COMM_WORLD);
+  }
 
   // The master process measures the time (stop the timer)
   if (rank == 0)
   {
     time_taken = MPI_Wtime() - timer;
   }
-
-  // The master process writes the results to the csv file
-  if (rank == 0)
-  {
-    #pragma omp parallel
-    {
-      #pragma omp master
-      {
-      int n_threads = omp_get_num_threads(); // Get the number of threads
-      fprintf(file, "%d, %d, %d, %d, %d, %f\n", size, n_threads, n_x, n_y, I_max, time_taken);
-      fflush(file);
-      }
-    }
-  }
-
-  // Close the csv file
-  fclose(file);
 
   // Define the global matrix M to gather the results from all the processes
   short int *global_M = NULL;
@@ -139,6 +133,23 @@ int main(int argc, char *argv[])
 
   // Free the memory for the global matrix M
   free(global_M);
+
+  // The master process writes the results to the csv file
+  if (rank == 0)
+  {
+    #pragma omp parallel
+    {
+      #pragma omp master
+      {
+      int n_threads = omp_get_num_threads(); // Get the number of threads
+      fprintf(file, "%d, %d, %d, %d, %d, %f\n", size, n_threads, n_x, n_y, I_max, time_taken);
+      fflush(file);
+      }
+    }
+  }
+
+  // Close the csv file
+  fclose(file);
 
   // Finalize MPI
   MPI_Finalize();
