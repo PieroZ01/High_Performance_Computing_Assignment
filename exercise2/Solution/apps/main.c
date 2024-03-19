@@ -8,7 +8,7 @@
 #include "mandelbrot.h"
 
 // Define the function to compute the mandelbrot set
-inline int mandelbrot(const double complex c, const int max_iter)
+static inline int mandelbrot(const double complex c, const int max_iter)
 {
   double complex z = 0.0;
   int k = 0;
