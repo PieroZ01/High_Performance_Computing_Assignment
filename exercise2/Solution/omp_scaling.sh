@@ -3,9 +3,10 @@
 #SBATCH --job-name=omp_scaling_mandelbrot
 #SBATCH --nodes=1
 #SBATCH --partition=EPYC
-#SBATCH --exclusive
+##SBATCH --exclusive
 #SBATCH --time=02:00:00
 #SBATCH --ntasks=1
+#SBATCH --cpus-per-task=128
 
 # Load the required OpenMP module
 module load openMPI/4.1.5/gnu/12.2.1
