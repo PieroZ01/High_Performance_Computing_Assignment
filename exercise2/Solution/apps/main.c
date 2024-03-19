@@ -115,6 +115,13 @@ int main(int argc, char *argv[])
       }
     }
 
+  #pragma omp parallel
+  {
+    double time_single = MPI_Wtime() - timer;
+    int id = omp_get_thread_num();
+    printf("I am thread %d of process %d and I took %f seconds\n", id, rank, time_single);
+  }
+
   // Sinchronize all the processes after the computation
   if (size > 1){
     MPI_Barrier(MPI_COMM_WORLD);
