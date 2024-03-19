@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
   }
 
   // Compute the mandelbrot set
-  #pragma omp parallel for schedule(guided)
+  #pragma omp parallel for schedule(dynamic)
     for (int j = 0; j < local_rows; ++j)
     {
       double y = y_L + (start_row + j) * dy;
@@ -142,6 +142,33 @@ int main(int argc, char *argv[])
 
   // Close the csv file
   fclose(file);
+
+  
+
+  // Small test to see if omp scaling is working, let's use a very
+  // simple problem and see if the time goes down as we increase the
+  // number of threads
+  // Measure the time (start the timer)
+  if (rank == 0)
+  {
+    timer = MPI_Wtime();
+  }
+  #pragma omp parallel for schedule(dynamic)
+  for (int j = 0; j < 10000; ++j)
+  {
+    double x = 0.0;
+    for (int i = 0; i < 10000; ++i)
+    {
+      x += 1.0;
+    }
+  }
+  // Measure the time (stop the timer)
+  if (rank == 0)
+  {
+    time_taken = MPI_Wtime() - timer;
+    printf("Time taken for simple problem: %f\n", time_taken);
+  }
+
 
   // Define the global matrix M to gather the results from all the processes
   short int *global_M = NULL;
