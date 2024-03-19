@@ -79,9 +79,10 @@ int main(int argc, char *argv[])
   timer = MPI_Wtime();
 
   // Compute the mandelbrot set
-  #pragma omp parallel for schedule(dynamic)
+  #pragma omp parallel for schedule(dynamic, 1)
     for (int j = 0; j < local_rows; ++j)
     {
+      printf("Thread %d of process %d is computing row %d\n", omp_get_thread_num(), rank, start_row + j);
       double y = y_L + (start_row + j) * dy;
       for (int i = 0; i < n_x; ++i)
       {
