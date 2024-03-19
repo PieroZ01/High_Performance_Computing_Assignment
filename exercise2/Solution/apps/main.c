@@ -91,17 +91,6 @@ int main(int argc, char *argv[])
   // (Each thread will compute a part of the local part of the matrix M)
   // (The number of threads is defined by the environment variable OMP_NUM_THREADS)
 
-  // To improve memory efficiency, each thread initializes its part of the local part of the matrix M
-  #pragma omp parallel for schedule(dynamic)
-    for (int j = 0; j < local_rows; ++j)
-    {
-      int index = j * n_x;
-      for (int i = 0; i < n_x; ++i)
-      {
-        local_M[index + i] = 0;
-      }
-    }
-
   // Sinchronize all the processes before starting the computation
   if (size > 1){
     MPI_Barrier(MPI_COMM_WORLD);
@@ -119,6 +108,7 @@ int main(int argc, char *argv[])
     {
       double y = y_L + (start_row + j) * dy;
       int index = j * n_x;
+      #pragma omp simd
       for (int i = 0; i < n_x; ++i)
       {
         double complex c = x_L + i * dx + y * I;
