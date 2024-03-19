@@ -7,6 +7,9 @@ set(INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/include)
 #Include the directories that will be linked to the executables
 include_directories(${INCLUDE_DIRS})
 
+#Find the MPI package
+find_package(MPI REQUIRED)
+
 #Create the executables
 add_executable(main main.c)
 
