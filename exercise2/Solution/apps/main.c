@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
   double time_taken = 0.0;
 
   // Number of iterations to measure the average time
-  const int n_iterations = 6;
+  //const int n_iterations = 6;
 
   // Delta x and y
   const double dx = (x_R - x_L) / n_x;
