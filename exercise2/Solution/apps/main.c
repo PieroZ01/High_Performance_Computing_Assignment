@@ -106,8 +106,8 @@ int main(int argc, char *argv[])
   #pragma omp parallel for schedule(dynamic)
     for (int j = 0; j < local_rows; ++j)
     {
-      double y = y_L + (start_row + j) * dy;
-      int index = j * n_x;
+      const y = y_L + (start_row + j) * dy;
+      const index = j * n_x;
       for (int i = 0; i < n_x; ++i)
       {
         double complex c = x_L + i * dx + y * I;
