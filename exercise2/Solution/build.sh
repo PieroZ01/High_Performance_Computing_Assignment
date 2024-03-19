@@ -8,7 +8,6 @@
 # set -x
 
 # Load the required modules
-module load architecture/AMD
 module load openMPI/4.1.5/gnu/12.2.1
 module load cmake/3.28.1
 
