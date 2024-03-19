@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
   }
 
   // Compute the mandelbrot set
-  #pragma omp parallel for schedule(dynamic)
+  #pragma omp parallel for schedule(dynamic, 1)
     for (int j = 0; j < local_rows; ++j)
     {
       double y = y_L + (start_row + j) * dy;
