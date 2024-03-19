@@ -8,7 +8,7 @@ project(Mandelbrot_hybrid_MPI_OpenMP
 set(CMAKE_C_STANDARD 11)
 
 #C Flags
-set(CMAKE_C_FLAGS "-O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp")
+set(CMAKE_C_FLAGS "-Wall -Wextra -Wpedantic -Werror -lm -fopenmp") #-O3 -march=native
 
 # Define the local variables
 set(INCLUDE_DIR "include/")
