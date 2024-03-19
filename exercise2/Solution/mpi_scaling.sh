@@ -6,7 +6,7 @@
 #SBATCH --exclusive
 #SBATCH --time=02:00:00
 
-# Load the required OpenMP module
+# Load the required module
 module load openMPI/4.1.5/gnu/12.2.1
 
 # Navigate to the /build/bin directory

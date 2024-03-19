@@ -4,8 +4,11 @@ project(Mandelbrot_hybrid
         DESCRIPTION "HPC exam - Exercise2C"
         LANGUAGES C)
 
-#C Flags
-set(CMAKE_C_FLAGS "-O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp")
+# C Standard to use
+set(CMAKE_C_STANDARD 11)
+
+# C Flags
+set(CMAKE_C_FLAGS "-O3 --march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp")
 
 # Define the local variables
 set(INCLUDE_DIR "include/")

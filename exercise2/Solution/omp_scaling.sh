@@ -7,7 +7,7 @@
 #SBATCH --time=02:00:00
 #SBATCH --ntasks=1
 
-# Load the required OpenMP module
+# Load the required module
 module load openMPI/4.1.5
 
 # Navigate to the /build/bin directory
@@ -28,7 +28,7 @@ do
     export OMP_PLACES=threads
     export OMP_PROC_BIND=spread
     # Run the program (pass the desired arguments to the program) with a single MPI task
-    mpirun ./main 1000 1000 -2.0 -2.0 2.0 2.0 1000
+    mpirun --map-by core ./main 1000 1000 -2.0 -2.0 2.0 2.0 1000
     echo "----------------------------------------------------------------------------------------------------------------------------------"
 done
 
