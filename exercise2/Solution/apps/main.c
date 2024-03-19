@@ -7,8 +7,6 @@
 // Header
 #include "mandelbrot.h"
 
-// SISTEMARE ORDINE E TUTTO IL RESTO
-
 // Main function
 int main(int argc, char *argv[])
 {
@@ -21,6 +19,9 @@ int main(int argc, char *argv[])
     MPI_Finalize();
     exit(1);
   }
+
+  // Enable nested parallelism
+  omp_set_nested(1);
 
   // Get the number of processes and the rank of the process
   int rank, size;
@@ -51,17 +52,14 @@ int main(int argc, char *argv[])
   const int end_row = (rank == size - 1) ? n_y : start_row + rows_per_process;
   const int local_rows = end_row - start_row;
 
+  // Define the 2D matrix M of integers (short int) whose entries [j][i] are the image's pixels
+  // (Allocate only the memory for the local part of the matrix M on each process)
+  short int *local_M = (short int *)malloc(n_x * local_rows * sizeof(short int));
+
   // Sinchronize all the processes before starting the computation
   if (size > 1){
     MPI_Barrier(MPI_COMM_WORLD);
   }
-
-  if (size > 1)
-  {
-
-  // Define the 2D matrix M of integers (short int) whose entries [j][i] are the image's pixels
-  // (Allocate only the memory for the local part of the matrix M on each process)
-  short int *local_M = (short int *)malloc(n_x * local_rows * sizeof(short int));
 
   // Measure the time (start the timer)
   //timer = CPU_TIME;
@@ -83,31 +81,6 @@ int main(int argc, char *argv[])
   //time_taken = CPU_TIME - timer;
   time_taken = MPI_Wtime() - timer;
 
-  }
-  else
-  {
-    short int *local_M = (short int *)malloc(n_x * n_y * sizeof(short int));
-
-    timer = MPI_Wtime();
-
-    // Compute the mandelbrot set
-    #pragma omp parallel for schedule(dynamic)
-      for (int j = 0; j < n_y; ++j)
-      {
-        double y = y_L + j * dy;
-        for (int i = 0; i < n_x; ++i)
-        {
-          double complex c = x_L + i * dx + y * I;
-          local_M[j * n_x + i] = mandelbrot(c, I_max);
-        }
-      }
-
-    // Measure the time (stop the timer)
-    //time_taken = CPU_TIME - timer;
-    time_taken = MPI_Wtime() - timer;
-
-  }
-
   // Define the global matrix M to gather the results from all the processes
   short int *global_M = NULL;
 
@@ -122,11 +95,10 @@ int main(int argc, char *argv[])
     MPI_Barrier(MPI_COMM_WORLD);
   }
 
-  //MPI_Gather(local_M, n_x * local_rows, MPI_SHORT, global_M, n_x * local_rows, MPI_SHORT, 0, MPI_COMM_WORLD);
-  MPI_Gather(global_M, n_x * local_rows, MPI_SHORT, global_M, n_x * local_rows, MPI_SHORT, 0, MPI_COMM_WORLD);
+  MPI_Gather(local_M, n_x * local_rows, MPI_SHORT, global_M, n_x * local_rows, MPI_SHORT, 0, MPI_COMM_WORLD);
 
   // Free the memory for the local part of the matrix M on each process
-  //free(local_M);
+  free(local_M);
 
   // The master process writes the image to a pgm file and frees the memory
   if (rank == 0)
