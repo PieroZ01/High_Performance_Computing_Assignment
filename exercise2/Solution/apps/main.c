@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
   MPI_Comm_size(MPI_COMM_WORLD, &size);
 
-  // Open a csv file to write the time measurements (NOTE: change the file name accordingly)
+  // Open a csv file to write the time measurements (NOTE: change the file's name accordingly)
   FILE *file = fopen("../../Results/omp_scaling_mandelbrot.csv", "a+");
   if (file == NULL)
   {
@@ -72,6 +72,9 @@ int main(int argc, char *argv[])
   double timer = 0.0;
   double time_taken = 0.0;
 
+  // Number of iterations to measure the average time
+  const int n_iterations = 6;
+
   // Delta x and y
   const double dx = (x_R - x_L) / n_x;
   const double dy = (y_R - y_L) / n_y;
@@ -85,6 +88,19 @@ int main(int argc, char *argv[])
   // Define the 2D matrix M of integers (short int) whose entries [j][i] are the image's pixels
   // (Allocate only the memory for the local part of the matrix M on each process)
   short int *local_M = (short int *)malloc(n_x * local_rows * sizeof(short int));
+  // (Each thread will compute a part of the local part of the matrix M)
+  // (The number of threads is defined by the environment variable OMP_NUM_THREADS)
+
+  // To improve memory efficiency, each thread initializes its part of the local part of the matrix M
+  #pragma omp parallel for schedule(dynamic)
+    for (int j = 0; j < local_rows; ++j)
+    {
+      int index = j * n_x;
+      for (int i = 0; i < n_x; ++i)
+      {
+        local_M[index + i] = 0;
+      }
+    }
 
   // Sinchronize all the processes before starting the computation
   if (size > 1){
@@ -103,7 +119,6 @@ int main(int argc, char *argv[])
     {
       double y = y_L + (start_row + j) * dy;
       int index = j * n_x;
-      //#pragma omp parallel for schedule(dynamic)
       for (int i = 0; i < n_x; ++i)
       {
         double complex c = x_L + i * dx + y * I;
@@ -153,7 +168,7 @@ int main(int argc, char *argv[])
   // Free the memory for the local part of the matrix M on each process
   free(local_M);
 
-  // The master process writes the image to a pgm file and frees the memory
+  // The master process writes the image to a pgm file in the build/bin directory and frees the memory
   if (rank == 0)
   {
     write_pgm_image(global_M, I_max, n_x, n_y, "mandelbrot.pgm");
