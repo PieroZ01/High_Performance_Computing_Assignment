@@ -8,7 +8,7 @@
 # set -x
 
 # Load the required modules
-module load openMPI/4.1.5
+module load openMPI/4.1.5/gcc/10.3.0
 module load cmake/3.28.1
 
 # Build the project
