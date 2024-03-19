@@ -10,7 +10,7 @@ find_package(MPI REQUIRED)
 include_directories(${MPI_INCLUDE_PATH})
 
 find_package(OpenMP REQUIRED)
-#include_directories(${OpenMP_INCLUDE_PATH})
+include_directories(${OpenMP_INCLUDE_PATH})
 
 #Include the directories to look for header files
 set(INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/include)

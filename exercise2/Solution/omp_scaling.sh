@@ -5,6 +5,7 @@
 #SBATCH --partition=EPYC
 #SBATCH --exclusive
 #SBATCH --time=02:00:00
+#SBATCH --ntasks=1
 
 # Load the required OpenMP module
 module load openMPI/4.1.5/gnu/12.2.1
@@ -24,10 +25,10 @@ do
     echo "Running mandelbrot with $threads threads"
     # Export OpenMP environment variables
     export OMP_NUM_THREADS=$threads
-    export OMP_PROC_BIND=spread
-    export OMP_PLACES=threads
+    #export OMP_PROC_BIND=spread
+    #export OMP_PLACES=threads
     # Run the program (pass the desired arguments to the program) with a single MPI task
-    mpirun -np 1 ./main 1000 1000 -2.0 -2.0 2.0 2.0 1000
+    mpirun ./main 1000 1000 -2.0 -2.0 2.0 2.0 1000
     echo "----------------------------------------------------------------------------------------------------------------------------------"
 done
 
