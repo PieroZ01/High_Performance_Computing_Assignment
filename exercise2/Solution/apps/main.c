@@ -11,15 +11,14 @@
 int main(int argc, char *argv[])
 {
   // Initialize MPI
-  //int mpi_provided_thread_level;
-  //MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &mpi_provided_thread_level);
-  //if (mpi_provided_thread_level < MPI_THREAD_FUNNELED)
-  //{
-  //  printf("A problem arised when asking for MPI_THREAD_FUNNELED level\n");
-  //  MPI_Finalize();
-  //  exit(1);
-  //}
-  MPI_Init(&argc, &argv);
+  int mpi_provided_thread_level;
+  MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &mpi_provided_thread_level);
+  if (mpi_provided_thread_level < MPI_THREAD_FUNNELED)
+  {
+    printf("A problem arised when asking for MPI_THREAD_FUNNELED level\n");
+    MPI_Finalize();
+    exit(1);
+  }
 
   // Get the number of processes and the rank of the process
   int rank, size;

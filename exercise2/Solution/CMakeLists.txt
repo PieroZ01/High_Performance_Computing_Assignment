@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.27.7)
+cmake_minimum_required(VERSION 3.28.1)
 project(Mandelbrot_hybrid_MPI_OpenMP
         VERSION 1.0
         DESCRIPTION "HPC exam - Exercise2C"
@@ -12,6 +12,9 @@ set(CMAKE_C_COMPILER mpicc)
 set(CMAKE_CXX_COMPILER mpicxx)
 set(CMAKE_C_FLAGS "-Wall -Wextra -Wpedantic -Werror -fopenmp")
 set(CMAKE_C_FLAGS_RELEASE "-O3 -march=native")
+
+# Set a definition to include the mpi header
+add_definitions(-DUSE_MPI)
 
 #Add subdirectories with CMakeLists.txt files to compile:
 add_subdirectory(src)

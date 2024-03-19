@@ -12,4 +12,7 @@ add_executable(main main.c)
 
 #Link the library to the executables
 target_link_libraries(main mandelbrot_hybrid)
-target_link_libraries(main ${MPI_LIBRARIES} ${OpenMP_LIBRARIES})
+target_link_libraries(main MPI::MPI_C)
+
+set_target_properties(main PROPERTIES COMPILE_FLAGS "${MPI_COMPILE_FLAGS}")
+set_target_properties(main PROPERTIES LINK_FLAGS "${MPI_LINK_FLAGS}")
