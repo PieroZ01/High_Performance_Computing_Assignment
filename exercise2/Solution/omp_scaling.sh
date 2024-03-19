@@ -8,7 +8,7 @@
 #SBATCH --ntasks=1
 
 # Load the required module
-module load openMPI/4.1.5
+module load openMPI/4.1.5/gnu/12.2.1
 
 # Navigate to the /build/bin directory
 cd ./build/bin
