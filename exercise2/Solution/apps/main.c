@@ -3,6 +3,7 @@
 #include <omp.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <complex.h>
 
 // Header
 #include "mandelbrot.h"
@@ -89,10 +90,13 @@ int main(int argc, char *argv[])
   }
 
   // Measure the time (start the timer)
-  timer = MPI_Wtime();
+  if (rank == 0)
+  {
+    timer = MPI_Wtime();
+  }
 
   // Compute the mandelbrot set
-  #pragma omp parallel for schedule(dynamic)
+  #pragma omp parallel for schedule(dynamic, 2)
     for (int j = 0; j < local_rows; ++j)
     {
       double y = y_L + (start_row + j) * dy;
@@ -103,8 +107,16 @@ int main(int argc, char *argv[])
       }
     }
 
+  // Sinchronize all the processes after the computation
+  if (size > 1){
+    MPI_Barrier(MPI_COMM_WORLD);
+  }
+
   // Measure the time (stop the timer)
-  time_taken = MPI_Wtime() - timer;
+  if (rank == 0)
+  {
+    time_taken = MPI_Wtime() - timer;
+  }
 
   // The master process writes the results to the csv file
   if (rank == 0)
@@ -130,11 +142,6 @@ int main(int argc, char *argv[])
   if (rank == 0)
   {
     global_M = (short int *)malloc(n_x * n_y * sizeof(short int));
-  }
-
-  // Sinchronize all the processes after the computation
-  if (size > 1){
-    MPI_Barrier(MPI_COMM_WORLD);
   }
 
   MPI_Gather(local_M, n_x * local_rows, MPI_SHORT, global_M, n_x * local_rows, MPI_SHORT, 0, MPI_COMM_WORLD);

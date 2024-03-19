@@ -1,9 +1,6 @@
 #ifndef MANDELBROT_H
 #define MANDELBROT_H
 
-// Libraries
-#include <complex.h>
-
 // Constants
 #define XWIDTH 12288
 #define YWIDTH 12288
