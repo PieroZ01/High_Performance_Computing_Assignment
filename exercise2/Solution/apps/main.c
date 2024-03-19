@@ -49,7 +49,9 @@ int main(int argc, char *argv[])
   }
   if (rank == 0)
   {
+    // Move the file pointer to the end of the file
     fseek(file, 0, SEEK_END);
+    // If the file is empty, write the header
     if (ftell(file) == 0)
     {
       fprintf(file, "\"n_processes\", \"n_threads\", \"n_x\", \"n_y\", \"I_max\", \"Time (s)\"\n");
