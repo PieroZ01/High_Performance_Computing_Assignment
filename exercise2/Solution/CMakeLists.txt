@@ -13,9 +13,6 @@ set(CMAKE_CXX_COMPILER mpicxx)
 set(CMAKE_C_FLAGS "-Wall -Wextra -Wpedantic -Werror -fopenmp")
 set(CMAKE_C_FLAGS_RELEASE "-O3 -march=native")
 
-# Set a definition to include the mpi header
-add_definitions(-DUSE_MPI)
-
 #Add subdirectories with CMakeLists.txt files to compile:
 add_subdirectory(src)
 add_subdirectory(apps)

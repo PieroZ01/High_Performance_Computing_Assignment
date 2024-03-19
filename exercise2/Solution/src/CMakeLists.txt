@@ -2,6 +2,10 @@
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 #Find the external libraries installed in the system (MPI, OpenMP)
+
+# Set a definition to include the mpi header
+add_definitions(-DUSE_MPI)
+
 find_package(MPI REQUIRED)
 include_directories(${MPI_INCLUDE_PATH})
 
