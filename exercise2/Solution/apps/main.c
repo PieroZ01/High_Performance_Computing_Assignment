@@ -7,6 +7,19 @@
 // Header
 #include "mandelbrot.h"
 
+// Define the function to compute the mandelbrot set
+inline int mandelbrot(const double complex c, const int max_iter)
+{
+  double complex z = 0.0;
+  int k = 0;
+  while (creal(z)*creal(z) + cimag(z)*cimag(z) < 4.0 && k < max_iter)
+  {
+    z = z*z + c;
+    k++;
+  }
+  return k;
+}
+
 // Main function
 int main(int argc, char *argv[])
 {
@@ -79,10 +92,9 @@ int main(int argc, char *argv[])
   timer = MPI_Wtime();
 
   // Compute the mandelbrot set
-  #pragma omp parallel for schedule(dynamic, 1)
+  #pragma omp parallel for schedule(dynamic)
     for (int j = 0; j < local_rows; ++j)
     {
-      printf("Thread %d of process %d is computing row %d\n", omp_get_thread_num(), rank, start_row + j);
       double y = y_L + (start_row + j) * dy;
       for (int i = 0; i < n_x; ++i)
       {
