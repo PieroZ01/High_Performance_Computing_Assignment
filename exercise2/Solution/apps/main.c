@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
   const double y_R = argc > 6 ? atof(argv[6]) : 2.0;
   const int I_max = argc > 7 ? atoi(argv[7]) : MAXVAL;
 
-  // Time measurements
+  // Time measurements' variables
   double timer = 0.0;
   double time_taken = 0.0;
 
@@ -96,14 +96,16 @@ int main(int argc, char *argv[])
   }
 
   // Compute the mandelbrot set
-  #pragma omp parallel for schedule(dynamic, 2)
+  #pragma omp parallel for schedule(dynamic)
     for (int j = 0; j < local_rows; ++j)
     {
       double y = y_L + (start_row + j) * dy;
+      int index = j * n_x;
+      #pragma omp parallel for schedule(dynamic)
       for (int i = 0; i < n_x; ++i)
       {
         double complex c = x_L + i * dx + y * I;
-        local_M[j * n_x + i] = mandelbrot(c, I_max);
+        local_M[index + i] = mandelbrot(c, I_max);
       }
     }
 
