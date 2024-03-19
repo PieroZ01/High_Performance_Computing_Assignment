@@ -4,9 +4,6 @@ project(Mandelbrot_hybrid
         DESCRIPTION "HPC exam - Exercise2C"
         LANGUAGES C)
 
-# C Standard to use
-set(CMAKE_C_STANDARD 11)
-
 #C Flags
 set(CMAKE_C_FLAGS "-O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp")
 
@@ -31,19 +28,11 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 # Add the executable
 add_executable(${EXE_FILE} ${SRC_DIR}${SRC_FILE} ${APPS_DIR}${APPS_FILE})
 
-add_executable(test test.c)
-
 # Set the compile options for openMP
 target_compile_options(${EXE_FILE} PRIVATE ${OpenMP_C_FLAGS})
-
-target_compile_options(test PRIVATE ${OpenMP_C_FLAGS})
 
 # Include the directories
 target_include_directories(${EXE_FILE} PUBLIC ${INCLUDE_DIR} ${MPI_INCLUDE_PATH} ${OpenMP_INCLUDE_PATH})
 
-target_include_directories(test PUBLIC ${INCLUDE_DIR} ${MPI_INCLUDE_PATH} ${OpenMP_INCLUDE_PATH})
-
 # Link the executable with the MPI and OpenMP libraries
 target_link_libraries(${EXE_FILE} ${MPI_LIBRARIES} ${OpenMP_LIBRARIES} gomp)
-
-target_link_libraries(test ${MPI_LIBRARIES} ${OpenMP_LIBRARIES} gomp)
