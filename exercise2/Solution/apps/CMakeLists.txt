@@ -4,11 +4,16 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 #Include the header file for the executables
 set(INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/include)
 
+# Set a definition to include the mpi header
+add_definitions(-DUSE_MPI)
+
+find_package(MPI REQUIRED)
+include_directories(${MPI_INCLUDE_PATH})
+
+find_package(OpenMP REQUIRED)
+
 #Include the directories that will be linked to the executables
 include_directories(${INCLUDE_DIRS})
-
-#Find the MPI package
-find_package(MPI REQUIRED)
 
 #Create the executables
 add_executable(main main.c)
