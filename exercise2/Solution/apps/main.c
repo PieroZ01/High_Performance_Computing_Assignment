@@ -11,22 +11,38 @@
 int main(int argc, char *argv[])
 {
   // Initialize MPI
-  int mpi_provided_thread_level;
-  MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &mpi_provided_thread_level);
-  if (mpi_provided_thread_level < MPI_THREAD_FUNNELED)
-  {
-    printf("A problem arised when asking for MPI_THREAD_FUNNELED level\n");
-    MPI_Finalize();
-    exit(1);
-  }
-
-  // Enable nested parallelism
-  omp_set_nested(1);
+  //int mpi_provided_thread_level;
+  //MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &mpi_provided_thread_level);
+  //if (mpi_provided_thread_level < MPI_THREAD_FUNNELED)
+  //{
+  //  printf("A problem arised when asking for MPI_THREAD_FUNNELED level\n");
+  //  MPI_Finalize();
+  //  exit(1);
+  //}
+  MPI_Init(&argc, &argv);
 
   // Get the number of processes and the rank of the process
   int rank, size;
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
   MPI_Comm_size(MPI_COMM_WORLD, &size);
+
+  // Open a csv file to write the time measurements (NOTE: change the file name accordingly)
+  FILE *file = fopen("../../Results/omp_scaling_mandelbrot.csv", "a+");
+  if (file == NULL)
+  {
+    printf("Error opening the file\n");
+    MPI_Finalize();
+    exit(1);
+  }
+  if (rank == 0)
+  {
+    fseek(file, 0, SEEK_END);
+    if (ftell(file) == 0)
+    {
+      fprintf(file, "\"n_processes\", \"n_threads\", \"n_x\", \"n_y\", \"I_max\", \"Time (s)\"\n");
+      fflush(file);
+    }
+  }
 
   // Variables to be read from command line arguments, with default values
   const int n_x = argc > 1 ? atoi(argv[1]) : XWIDTH;
@@ -40,7 +56,6 @@ int main(int argc, char *argv[])
   // Time measurements
   double timer = 0.0;
   double time_taken = 0.0;
-  //struct timespec ts;
 
   // Delta x and y
   const double dx = (x_R - x_L) / n_x;
@@ -62,7 +77,6 @@ int main(int argc, char *argv[])
   }
 
   // Measure the time (start the timer)
-  //timer = CPU_TIME;
   timer = MPI_Wtime();
 
   // Compute the mandelbrot set
@@ -78,8 +92,24 @@ int main(int argc, char *argv[])
     }
 
   // Measure the time (stop the timer)
-  //time_taken = CPU_TIME - timer;
   time_taken = MPI_Wtime() - timer;
+
+  // The master process writes the results to the csv file
+  if (rank == 0)
+  {
+    #pragma omp parallel
+    {
+      #pragma omp master
+      {
+      int n_threads = omp_get_num_threads(); // Get the number of threads
+      fprintf(file, "%d, %d, %d, %d, %d, %f\n", size, n_threads, n_x, n_y, I_max, time_taken);
+      fflush(file);
+      }
+    }
+  }
+
+  // Close the csv file
+  fclose(file);
 
   // Define the global matrix M to gather the results from all the processes
   short int *global_M = NULL;
@@ -108,41 +138,6 @@ int main(int argc, char *argv[])
 
   // Free the memory for the global matrix M
   free(global_M);
-
-  // Open a csv file to write the time measurements (NOTE: change the file name accordingly)
-  FILE *file = fopen("../../Results/omp_scaling_mandelbrot.csv", "a+");
-  if (file == NULL)
-  {
-    printf("Error opening the file\n");
-    MPI_Finalize();
-    exit(1);
-  }
-  if (rank == 0)
-  {
-    fseek(file, 0, SEEK_END);
-    if (ftell(file) == 0)
-    {
-      fprintf(file, "\"n_processes\", \"n_threads\", \"n_x\", \"n_y\", \"I_max\", \"Time (s)\"\n");
-      fflush(file);
-    }
-  }
-
-  // The master process writes the results to the csv file
-  if (rank == 0)
-  {
-    #pragma omp parallel
-    {
-      #pragma omp master
-      {
-      int n_threads = omp_get_num_threads(); // Get the number of threads
-      fprintf(file, "%d, %d, %d, %d, %d, %f\n", size, n_threads, n_x, n_y, I_max, time_taken);
-      fflush(file);
-      }
-    }
-  }
-
-  // Close the csv file
-  fclose(file);
 
   // Finalize MPI
   MPI_Finalize();

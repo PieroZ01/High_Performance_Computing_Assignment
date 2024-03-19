@@ -3,15 +3,11 @@
 
 // Libraries
 #include <complex.h>
-#include <time.h>
 
 // Constants
 #define XWIDTH 12288
 #define YWIDTH 12288
 #define MAXVAL 65535
-
-// measure the wall-clock time
-#define CPU_TIME (clock_gettime( CLOCK_REALTIME, &ts ), (double)ts.tv_sec + (double)ts.tv_nsec * 1e-9)
 
 // Function declarations
 
