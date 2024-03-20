@@ -29,7 +29,7 @@ do
     export OMP_PLACES=cores
     export OMP_PROC_BIND=spread
     # Run the program (pass the desired arguments to the program) with a single MPI task
-    mpirun -np 1 --map-by socket --bind to socket ./main 1000 1000 -2.0 -2.0 2.0 2.0 1000
+    mpirun -np 1 --map-by socket --bind-to socket ./main 1000 1000 -2.0 -2.0 2.0 2.0 1000
     echo "----------------------------------------------------------------------------------------------------------------------------------"
 done
 
