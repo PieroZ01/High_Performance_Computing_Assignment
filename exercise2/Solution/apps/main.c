@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
   MPI_Comm_size(MPI_COMM_WORLD, &size);
 
   // Open a csv file to write the time measurements (NOTE: change the file's name accordingly)
-  FILE *file = fopen("../../Results/omp_scaling_mandelbrot.csv", "a+");
+  FILE *file = fopen("../../Results/mpi_scaling_mandelbrot.csv", "a+");
   if (file == NULL)
   {
     printf("Error opening the file\n");
