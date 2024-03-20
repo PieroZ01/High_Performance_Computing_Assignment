@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --job-name=omp_scaling_mandelbrot
-#SBATCH --nodes=1
+#SBATCH --nodes=2
 #SBATCH --partition=EPYC
 #SBATCH --exclusive
 #SBATCH --time=02:00:00
@@ -25,10 +25,10 @@ do
     echo "Running mandelbrot with $threads threads"
     # Export OpenMP environment variables
     export OMP_NUM_THREADS=$threads
-    export OMP_PLACES=threads
+    export OMP_PLACES=sockets
     export OMP_PROC_BIND=spread
     # Run the program (pass the desired arguments to the program) with a single MPI task
-    mpirun ./main 1000 1000 -2.0 -2.0 2.0 2.0 1000
+    mpirun -np 1 ./main 1000 1000 -2.0 -2.0 2.0 2.0 1000
     echo "----------------------------------------------------------------------------------------------------------------------------------"
 done
 
