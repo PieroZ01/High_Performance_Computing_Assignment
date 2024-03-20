@@ -26,6 +26,7 @@ do
     echo "Running mandelbrot with $threads_n threads"
     # Export OpenMP environment variables
     export OMP_NUM_THREADS=$threads_n
+    # Choose the places and the binding policy (threads, cores, sockets - close, spread)
     export OMP_PLACES=cores
     export OMP_PROC_BIND=spread
     # Run the program (pass the desired arguments to the program) with a single MPI task

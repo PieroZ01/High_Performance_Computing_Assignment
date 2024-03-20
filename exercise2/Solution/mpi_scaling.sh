@@ -25,7 +25,7 @@ do
     # Set the number of OMP threads per MPI task to 1
     export OMP_NUM_THREADS=1
     # Run the program (pass the desired arguments to the program)
-    # (use the --map-by core flag to bind the MPI tasks to the cores of the node)
+    # (Choose the mapping policy (core, socket, node))
     mpirun -np $tasks --map-by core ./main 1000 1000 -2.0 -2.0 2.0 2.0 1000
     echo "----------------------------------------------------------------------------------------------------------------------------------"
 done
