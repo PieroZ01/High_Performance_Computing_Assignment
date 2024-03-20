@@ -85,6 +85,9 @@ int main(int argc, char *argv[])
   const int end_row = (rank == size - 1) ? n_y : start_row + rows_per_process;
   const int local_rows = end_row - start_row;
 
+  // Enable nested parallelism
+  omp_set_nested(1);
+
   // Define the 2D matrix M of integers (short int) whose entries [j][i] are the image's pixels
   // (Allocate only the memory for the local part of the matrix M on each process)
   short int *local_M = (short int *)malloc(n_x * local_rows * sizeof(short int));
