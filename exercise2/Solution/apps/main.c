@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
     // If the file is empty, write the header
     if (ftell(file) == 0)
     {
-      fprintf(file, "\"n_processes\", \"n_threads\", \"n_x\", \"n_y\", \"I_max\", \"Average time\",\"Standard deviation\", \"Communication time\"\n");
+      fprintf(file, "\"n_processes\", \"n_threads\", \"n_x\", \"n_y\", \"I_max\", \"Average time\", \"Standard deviation\", \"Communication time\"\n");
       fflush(file);
     }
   }
