@@ -26,7 +26,7 @@ do
     export OMP_NUM_THREADS=1
     # Run the program (pass the desired arguments to the program)
     # (Choose the mapping policy (core, socket, node))
-    mpirun -np $tasks --map-by core ./main 1000 1000 -2.0 -2.0 2.0 2.0 1000
+    mpirun -np $tasks --map-by core ./main 5000 5000 -2.0 -2.0 2.0 2.0 5000
     echo "----------------------------------------------------------------------------------------------------------------------------------"
 done
 

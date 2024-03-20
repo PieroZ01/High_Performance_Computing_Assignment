@@ -15,7 +15,7 @@ module load openMPI/4.1.5/gnu/12.2.1
 cd ./build/bin
 
 # Define variables
-max_threads=128
+max_threads=64
 step=2
 
 # Run the scaling test with threads from 2 to 128 with a step of 2:
@@ -30,7 +30,7 @@ do
     export OMP_PLACES=cores
     export OMP_PROC_BIND=spread
     # Run the program (pass the desired arguments to the program) with a single MPI task
-    mpirun -np 1 --map-by socket --bind-to socket ./main 1000 1000 -2.0 -2.0 2.0 2.0 1000
+    mpirun -np 1 --map-by socket --bind-to socket ./main 5000 5000 -2.0 -2.0 2.0 2.0 5000
     echo "----------------------------------------------------------------------------------------------------------------------------------"
 done
 

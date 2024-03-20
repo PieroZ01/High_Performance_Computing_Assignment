@@ -17,7 +17,7 @@ cd ./build/bin
 echo "----------------------------------------------------------------------------------------------------------------------------------"
 echo "Running mandelbrot with 1 MPI task and 1 OMP thread"
 export OMP_NUM_THREADS=1
-mpirun -np 1 --map-by socket --bind-to socket ./main 1000 1000 -2.0 -2.0 2.0 2.0 1000
+mpirun -np 1 --map-by socket --bind-to socket ./main 5000 5000 -2.0 -2.0 2.0 2.0 5000
 echo "----------------------------------------------------------------------------------------------------------------------------------"
 
 # Print the completion message
