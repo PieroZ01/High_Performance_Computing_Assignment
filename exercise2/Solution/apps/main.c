@@ -153,6 +153,16 @@ int main(int argc, char *argv[])
     displ += recvcounts[z];
   }
 
+  // Allocate the memory for the local part of the matrix M on each process as a contiguous array
+  short int *contiguous_local_M = (short int *)malloc(n_x * local_rows * sizeof(short int));
+
+  // Copy the local part of the matrix M on each process to a contiguous array
+  #pragma omp parallel for schedule(dynamic)
+  for (int j = 0; j < local_rows; ++j)
+  {
+  memcpy(&contiguous_local_M[j * n_x], &local_M[(start_row + j * size) * n_x], n_x * sizeof(short int));
+  }
+
   // Gather the results to the master process and start the timer to measure the communication time
   if (rank == 0)
   {
@@ -162,7 +172,7 @@ int main(int argc, char *argv[])
 
   // Gather the results from the local part of the matrix M on each process to the global matrix M
   // (Use MPI_Gatherv because the amount of data to be gathered from each process is possibly different)
-  MPI_Gatherv(local_M, local_rows * n_x, MPI_SHORT, global_M, recvcounts, displs, MPI_SHORT, 0, MPI_COMM_WORLD);
+  MPI_Gatherv(contiguous_local_M, n_x * local_rows, MPI_SHORT, global_M, recvcounts, displs, MPI_SHORT, 0, MPI_COMM_WORLD);
 
   // Stop the timer to measure the communication time
   if (rank == 0)
@@ -172,6 +182,7 @@ int main(int argc, char *argv[])
 
   // Free the memory for the local part of the matrix M on each process
   free(local_M);
+  free(contiguous_local_M);
 
   // Free the memory for the arrays to be used by the MPI_Gatherv function
   free(recvcounts);
