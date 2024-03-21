@@ -159,10 +159,11 @@ int main(int argc, char *argv[])
 
   // Copy the local part of the matrix M on each process to a contiguous array
   #pragma omp parallel for schedule(dynamic)
-  for (int j = 0; j < local_rows; ++j)
-  {
-    memcpy(&contiguous_local_M[j * n_x], &local_M[j * n_x], n_x * sizeof(short int));
-  }
+    for (int j = 0; j < local_rows; ++j)
+    {
+      int index = (start_row + j * size) * n_x;
+      memcpy(&contiguous_local_M[j * n_x], &local_M[index], n_x * sizeof(short int));
+    }
 
   // Gather the results to the master process and start the timer to measure the communication time
   if (rank == 0)

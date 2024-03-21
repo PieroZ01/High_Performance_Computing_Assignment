@@ -13,7 +13,7 @@ module load openMPI/4.1.5/gnu/12.2.1
 cd ./build/bin
 
 # Define variables
-max_tasks=254
+max_tasks=8
 step=4
 
 # Run the scaling test with tasks from 4 to 254 with a step of 4:
