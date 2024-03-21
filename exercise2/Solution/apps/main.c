@@ -81,10 +81,12 @@ int main(int argc, char *argv[])
   const double dy = (y_R - y_L) / n_y;
 
   // Get the local amount of rows to be computed by each process
+  // (The rows will be assigned to each process in a round-robin fashion
+  // If the number of rows is not divisible by the number of processes,
+  // the remaining rows will be assigned spread over the first processes)
   const int rows_per_process = n_y / size;
-  const int start_row = rank * rows_per_process;
-  const int end_row = (rank == size - 1) ? n_y : start_row + rows_per_process;
-  const int local_rows = end_row - start_row;
+  const int start_row = rank;
+  const int local_rows = (rank < n_y % size) ? rows_per_process + 1 : rows_per_process;
 
   // Define the 2D matrix M of integers (short int) whose entries [j][i] are the image's pixels
   // (Allocate only the memory for the local part of the matrix M on each process)
@@ -107,10 +109,14 @@ int main(int argc, char *argv[])
       timer = MPI_Wtime();
     }
 
+    // Compute the local part of the matrix M on each process
+    // (Each thread will compute a part of the local part of the matrix M;
+    // consider that the rows were assigned to each process in a round-robin fashion,
+    // so the rows are not contiguous)
     #pragma omp parallel for schedule(dynamic)
       for (int j = 0; j < local_rows; ++j)
       {
-        const double y = y_L + (start_row + j) * dy;
+        const double y = y_L + (start_row + j * size) * dy;
         const int index = j * n_x;
         for (int i = 0; i < n_x; ++i)
         {
