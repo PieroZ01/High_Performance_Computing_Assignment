@@ -39,8 +39,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-eMJAxA"
-      binary: "/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-eMJAxA"
+      source: "/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-g1OBOT"
+      binary: "/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-g1OBOT"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -49,13 +49,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-eMJAxA'
+        Change Dir: '/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-g1OBOT'
         
-        Run Build Command(s): /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c69a6/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_c69a6.dir/build.make CMakeFiles/cmTC_c69a6.dir/build
-        gmake[1]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-eMJAxA'
-        Building C object CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o
-        /usr/bin/cc   -v -o CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o -c /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3d40a/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_3d40a.dir/build.make CMakeFiles/cmTC_3d40a.dir/build
+        gmake[1]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-g1OBOT'
+        Building C object CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -v -o CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o -c /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/share/cmake-3.28/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=/usr/bin/cc
         OFFLOAD_TARGET_NAMES=nvptx-none
@@ -65,8 +65,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 12.2.1 20221121 (Red Hat 12.2.1-4) (GCC) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c69a6.dir/'
-         /usr/libexec/gcc/x86_64-redhat-linux/12/cc1 -quiet -v /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_c69a6.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/ccZwFbjM.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3d40a.dir/'
+         /usr/libexec/gcc/x86_64-redhat-linux/12/cc1 -quiet -v /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_3d40a.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/ccra32KD.s
         GNU C17 (GCC) version 12.2.1 20221121 (Red Hat 12.2.1-4) (x86_64-redhat-linux)
         	compiled by GNU C version 12.2.1 20221121 (Red Hat 12.2.1-4), GMP version 6.2.1, MPFR version 4.1.0-p13, MPC version 1.2.1, isl version isl-0.24-GMP
         
@@ -84,15 +84,15 @@ events:
         
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
         Compiler executable checksum: 2dc77a3908f8aaed47471452c81e16ba
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c69a6.dir/'
-         as -v --64 -o CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o /tmp/ccZwFbjM.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3d40a.dir/'
+         as -v --64 -o CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o /tmp/ccra32KD.s
         GNU assembler version 2.37 (x86_64-redhat-linux) using BFD version version 2.37-37.fc36
         COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/12/:/usr/libexec/gcc/x86_64-redhat-linux/12/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/12/:/usr/lib/gcc/x86_64-redhat-linux/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/12/:/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/12/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.'
-        Linking C executable cmTC_c69a6
-        /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c69a6.dir/link.txt --verbose=1
-        /usr/bin/cc  -v CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o -o cmTC_c69a6 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_3d40a
+        /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3d40a.dir/link.txt --verbose=1
+        /usr/bin/cc  -v CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o -o cmTC_3d40a 
         Using built-in specs.
         COLLECT_GCC=/usr/bin/cc
         COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/12/lto-wrapper
@@ -105,10 +105,10 @@ events:
         gcc version 12.2.1 20221121 (Red Hat 12.2.1-4) (GCC) 
         COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/12/:/usr/libexec/gcc/x86_64-redhat-linux/12/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/12/:/usr/lib/gcc/x86_64-redhat-linux/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/12/:/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/12/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c69a6' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_c69a6.'
-         /usr/libexec/gcc/x86_64-redhat-linux/12/collect2 -plugin /usr/libexec/gcc/x86_64-redhat-linux/12/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc8HelQ2.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_c69a6 /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/12/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/12 -L/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/12/../../.. CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-redhat-linux/12/crtend.o /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c69a6' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_c69a6.'
-        gmake[1]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-eMJAxA'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3d40a' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3d40a.'
+         /usr/libexec/gcc/x86_64-redhat-linux/12/collect2 -plugin /usr/libexec/gcc/x86_64-redhat-linux/12/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc6IUzoW.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_3d40a /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/12/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/12 -L/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/12/../../.. CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-redhat-linux/12/crtend.o /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3d40a' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3d40a.'
+        gmake[1]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-g1OBOT'
         
       exitCode: 0
   -
@@ -140,13 +140,13 @@ events:
     message: |
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-eMJAxA']
+        ignore line: [Change Dir: '/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-g1OBOT']
         ignore line: []
-        ignore line: [Run Build Command(s): /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c69a6/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_c69a6.dir/build.make CMakeFiles/cmTC_c69a6.dir/build]
-        ignore line: [gmake[1]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-eMJAxA']
-        ignore line: [Building C object CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o]
-        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o -c /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3d40a/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_3d40a.dir/build.make CMakeFiles/cmTC_3d40a.dir/build]
+        ignore line: [gmake[1]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-g1OBOT']
+        ignore line: [Building C object CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o -c /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/cc]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
@@ -156,8 +156,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 12.2.1 20221121 (Red Hat 12.2.1-4) (GCC) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c69a6.dir/']
-        ignore line: [ /usr/libexec/gcc/x86_64-redhat-linux/12/cc1 -quiet -v /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_c69a6.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/ccZwFbjM.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3d40a.dir/']
+        ignore line: [ /usr/libexec/gcc/x86_64-redhat-linux/12/cc1 -quiet -v /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_3d40a.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/ccra32KD.s]
         ignore line: [GNU C17 (GCC) version 12.2.1 20221121 (Red Hat 12.2.1-4) (x86_64-redhat-linux)]
         ignore line: [	compiled by GNU C version 12.2.1 20221121 (Red Hat 12.2.1-4)  GMP version 6.2.1  MPFR version 4.1.0-p13  MPC version 1.2.1  isl version isl-0.24-GMP]
         ignore line: []
@@ -175,15 +175,15 @@ events:
         ignore line: []
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
         ignore line: [Compiler executable checksum: 2dc77a3908f8aaed47471452c81e16ba]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c69a6.dir/']
-        ignore line: [ as -v --64 -o CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o /tmp/ccZwFbjM.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3d40a.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o /tmp/ccra32KD.s]
         ignore line: [GNU assembler version 2.37 (x86_64-redhat-linux) using BFD version version 2.37-37.fc36]
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/12/:/usr/libexec/gcc/x86_64-redhat-linux/12/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/12/:/usr/lib/gcc/x86_64-redhat-linux/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/12/:/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/12/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_c69a6]
-        ignore line: [/orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c69a6.dir/link.txt --verbose=1]
-        ignore line: [/usr/bin/cc  -v CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o -o cmTC_c69a6 ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_3d40a]
+        ignore line: [/orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3d40a.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/cc  -v CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o -o cmTC_3d40a ]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/cc]
         ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/12/lto-wrapper]
@@ -196,13 +196,13 @@ events:
         ignore line: [gcc version 12.2.1 20221121 (Red Hat 12.2.1-4) (GCC) ]
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/12/:/usr/libexec/gcc/x86_64-redhat-linux/12/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/12/:/usr/lib/gcc/x86_64-redhat-linux/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/12/:/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/12/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c69a6' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_c69a6.']
-        link line: [ /usr/libexec/gcc/x86_64-redhat-linux/12/collect2 -plugin /usr/libexec/gcc/x86_64-redhat-linux/12/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc8HelQ2.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_c69a6 /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/12/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/12 -L/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/12/../../.. CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-redhat-linux/12/crtend.o /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3d40a' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3d40a.']
+        link line: [ /usr/libexec/gcc/x86_64-redhat-linux/12/collect2 -plugin /usr/libexec/gcc/x86_64-redhat-linux/12/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc6IUzoW.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_3d40a /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/12/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/12 -L/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/12/../../.. CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-redhat-linux/12/crtend.o /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o]
           arg [/usr/libexec/gcc/x86_64-redhat-linux/12/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/usr/libexec/gcc/x86_64-redhat-linux/12/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/12/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/cc8HelQ2.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cc6IUzoW.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -217,7 +217,7 @@ events:
           arg [-dynamic-linker] ==> ignore
           arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_c69a6] ==> ignore
+          arg [cmTC_3d40a] ==> ignore
           arg [/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o] ==> obj [/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o]
           arg [/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o] ==> obj [/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o]
           arg [/usr/lib/gcc/x86_64-redhat-linux/12/crtbegin.o] ==> obj [/usr/lib/gcc/x86_64-redhat-linux/12/crtbegin.o]
@@ -226,7 +226,7 @@ events:
           arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
           arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
           arg [-L/usr/lib/gcc/x86_64-redhat-linux/12/../../..] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/12/../../..]
-          arg [CMakeFiles/cmTC_c69a6.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [CMakeFiles/cmTC_3d40a.dir/CMakeCCompilerABI.c.o] ==> ignore
           arg [-lgcc] ==> lib [gcc]
           arg [--push-state] ==> ignore
           arg [--as-needed] ==> ignore
@@ -263,8 +263,8 @@ events:
       - "CMakeLists.txt:23 (find_package)"
     description: "The MPI test test_mpi for C in mode normal"
     directories:
-      source: "/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-PY9Zoi"
-      binary: "/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-PY9Zoi"
+      source: "/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-Jzm8s5"
+      binary: "/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-Jzm8s5"
     cmakeVariables:
       CMAKE_C_FLAGS: "-O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp"
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -273,17 +273,17 @@ events:
       variable: "MPI_RESULT_C_test_mpi_normal"
       cached: true
       stdout: |
-        Change Dir: '/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-PY9Zoi'
+        Change Dir: '/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-Jzm8s5'
         
-        Run Build Command(s): /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_92a2f/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_92a2f.dir/build.make CMakeFiles/cmTC_92a2f.dir/build
-        gmake[1]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-PY9Zoi'
-        Building C object CMakeFiles/cmTC_92a2f.dir/test_mpi.c.o
-        /usr/bin/cc  -isystem /orfeo/cephfs/opt/programs/amd/fedora36/openMPI/4.1.5/include -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp  -std=gnu11 -o CMakeFiles/cmTC_92a2f.dir/test_mpi.c.o -c /u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-PY9Zoi/test_mpi.c
-        Linking C executable cmTC_92a2f
-        /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92a2f.dir/link.txt --verbose=1
-        /usr/bin/cc -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp  -Wl,-rpath -Wl,/opt/programs/openMPI/4.1.5/lib -Wl,--enable-new-dtags CMakeFiles/cmTC_92a2f.dir/test_mpi.c.o -o cmTC_92a2f  -Wl,-rpath,/orfeo/cephfs/opt/programs/amd/fedora36/openMPI/4.1.5/lib /orfeo/cephfs/opt/programs/amd/fedora36/openMPI/4.1.5/lib/libmpi.so 
-        gmake[1]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-PY9Zoi'
+        Run Build Command(s): /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_56ea8/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_56ea8.dir/build.make CMakeFiles/cmTC_56ea8.dir/build
+        gmake[1]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-Jzm8s5'
+        Building C object CMakeFiles/cmTC_56ea8.dir/test_mpi.c.o
+        /usr/bin/cc  -isystem /orfeo/cephfs/opt/programs/amd/fedora36/openMPI/4.1.5/include -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp  -std=gnu11 -o CMakeFiles/cmTC_56ea8.dir/test_mpi.c.o -c /u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-Jzm8s5/test_mpi.c
+        Linking C executable cmTC_56ea8
+        /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_56ea8.dir/link.txt --verbose=1
+        /usr/bin/cc -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp  -Wl,-rpath -Wl,/opt/programs/openMPI/4.1.5/lib -Wl,--enable-new-dtags CMakeFiles/cmTC_56ea8.dir/test_mpi.c.o -o cmTC_56ea8  -Wl,-rpath,/orfeo/cephfs/opt/programs/amd/fedora36/openMPI/4.1.5/lib /orfeo/cephfs/opt/programs/amd/fedora36/openMPI/4.1.5/lib/libmpi.so 
+        gmake[1]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-Jzm8s5'
         
       exitCode: 0
   -
@@ -294,8 +294,8 @@ events:
       - "CMakeLists.txt:25 (find_package)"
     description: "Detecting C OpenMP compiler info"
     directories:
-      source: "/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-zZ4P6r"
-      binary: "/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-zZ4P6r"
+      source: "/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-HGpmjt"
+      binary: "/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-HGpmjt"
     cmakeVariables:
       CMAKE_C_FLAGS: "-O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp"
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -304,13 +304,13 @@ events:
       variable: "OpenMP_COMPILE_RESULT_C_fopenmp"
       cached: true
       stdout: |
-        Change Dir: '/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-zZ4P6r'
+        Change Dir: '/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-HGpmjt'
         
-        Run Build Command(s): /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_38324/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_38324.dir/build.make CMakeFiles/cmTC_38324.dir/build
-        gmake[1]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-zZ4P6r'
-        Building C object CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o
-        /usr/bin/cc   -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp -fopenmp -v -std=gnu11 -o CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o -c /u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-zZ4P6r/OpenMPTryFlag.c
+        Run Build Command(s): /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_60cc4/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_60cc4.dir/build.make CMakeFiles/cmTC_60cc4.dir/build
+        gmake[1]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-HGpmjt'
+        Building C object CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o
+        /usr/bin/cc   -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp -fopenmp -v -std=gnu11 -o CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o -c /u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-HGpmjt/OpenMPTryFlag.c
         Using built-in specs.
         COLLECT_GCC=/usr/bin/cc
         OFFLOAD_TARGET_NAMES=nvptx-none
@@ -320,8 +320,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 12.2.1 20221121 (Red Hat 12.2.1-4) (GCC) 
-        COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o' '-c' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_38324.dir/'
-         /usr/libexec/gcc/x86_64-redhat-linux/12/cc1 -quiet -v -D_REENTRANT /u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-zZ4P6r/OpenMPTryFlag.c -march=znver2 -mmmx -mpopcnt -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2 -mavx -mavx2 -msse4a -mno-fma4 -mno-xop -mfma -mno-avx512f -mbmi -mbmi2 -maes -mpclmul -mno-avx512vl -mno-avx512bw -mno-avx512dq -mno-avx512cd -mno-avx512er -mno-avx512pf -mno-avx512vbmi -mno-avx512ifma -mno-avx5124vnniw -mno-avx5124fmaps -mno-avx512vpopcntdq -mno-avx512vbmi2 -mno-gfni -mno-vpclmulqdq -mno-avx512vnni -mno-avx512bitalg -mno-avx512bf16 -mno-avx512vp2intersect -mno-3dnow -madx -mabm -mno-cldemote -mclflushopt -mclwb -mclzero -mcx16 -mno-enqcmd -mf16c -mfsgsbase -mfxsr -mno-hle -msahf -mno-lwp -mlzcnt -mmovbe -mno-movdir64b -mno-movdiri -mmwaitx -mno-pconfig -mno-pku -mno-prefetchwt1 -mprfchw -mno-ptwrite -mrdpid -mrdrnd -mrdseed -mno-rtm -mno-serialize -mno-sgx -msha -mno-shstk -mno-tbm -mno-tsxldtrk -mno-vaes -mno-waitpkg -mwbnoinvd -mxsave -mxsavec -mxsaveopt -mxsaves -mno-amx-tile -mno-amx-int8 -mno-amx-bf16 -mno-uintr -mno-hreset -mno-kl -mno-widekl -mno-avxvnni -mno-avx512fp16 --param l1-cache-size=32 --param l1-cache-line-size=64 --param l2-cache-size=512 -mtune=znver2 -quiet -dumpdir CMakeFiles/cmTC_38324.dir/ -dumpbase OpenMPTryFlag.c.c -dumpbase-ext .c -O3 -Wall -Wextra -Wpedantic -Werror -std=gnu11 -version -fopenmp -o /tmp/ccUQ7SOT.s
+        COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o' '-c' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_60cc4.dir/'
+         /usr/libexec/gcc/x86_64-redhat-linux/12/cc1 -quiet -v -D_REENTRANT /u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-HGpmjt/OpenMPTryFlag.c -march=znver2 -mmmx -mpopcnt -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2 -mavx -mavx2 -msse4a -mno-fma4 -mno-xop -mfma -mno-avx512f -mbmi -mbmi2 -maes -mpclmul -mno-avx512vl -mno-avx512bw -mno-avx512dq -mno-avx512cd -mno-avx512er -mno-avx512pf -mno-avx512vbmi -mno-avx512ifma -mno-avx5124vnniw -mno-avx5124fmaps -mno-avx512vpopcntdq -mno-avx512vbmi2 -mno-gfni -mno-vpclmulqdq -mno-avx512vnni -mno-avx512bitalg -mno-avx512bf16 -mno-avx512vp2intersect -mno-3dnow -madx -mabm -mno-cldemote -mclflushopt -mclwb -mclzero -mcx16 -mno-enqcmd -mf16c -mfsgsbase -mfxsr -mno-hle -msahf -mno-lwp -mlzcnt -mmovbe -mno-movdir64b -mno-movdiri -mmwaitx -mno-pconfig -mno-pku -mno-prefetchwt1 -mprfchw -mno-ptwrite -mrdpid -mrdrnd -mrdseed -mno-rtm -mno-serialize -mno-sgx -msha -mno-shstk -mno-tbm -mno-tsxldtrk -mno-vaes -mno-waitpkg -mwbnoinvd -mxsave -mxsavec -mxsaveopt -mxsaves -mno-amx-tile -mno-amx-int8 -mno-amx-bf16 -mno-uintr -mno-hreset -mno-kl -mno-widekl -mno-avxvnni -mno-avx512fp16 --param l1-cache-size=32 --param l1-cache-line-size=64 --param l2-cache-size=512 -mtune=znver2 -quiet -dumpdir CMakeFiles/cmTC_60cc4.dir/ -dumpbase OpenMPTryFlag.c.c -dumpbase-ext .c -O3 -Wall -Wextra -Wpedantic -Werror -std=gnu11 -version -fopenmp -o /tmp/cche2hBn.s
         GNU C11 (GCC) version 12.2.1 20221121 (Red Hat 12.2.1-4) (x86_64-redhat-linux)
         	compiled by GNU C version 12.2.1 20221121 (Red Hat 12.2.1-4), GMP version 6.2.1, MPFR version 4.1.0-p13, MPC version 1.2.1, isl version isl-0.24-GMP
         
@@ -339,15 +339,15 @@ events:
         
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
         Compiler executable checksum: 2dc77a3908f8aaed47471452c81e16ba
-        COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o' '-c' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_38324.dir/'
-         as -v --64 -o CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o /tmp/ccUQ7SOT.s
+        COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o' '-c' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_60cc4.dir/'
+         as -v --64 -o CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o /tmp/cche2hBn.s
         GNU assembler version 2.37 (x86_64-redhat-linux) using BFD version version 2.37-37.fc36
         COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/12/:/usr/libexec/gcc/x86_64-redhat-linux/12/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/12/:/usr/lib/gcc/x86_64-redhat-linux/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/12/:/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/12/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o' '-c' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.'
-        Linking C executable cmTC_38324
-        /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_38324.dir/link.txt --verbose=1
-        /usr/bin/cc -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp -fopenmp -v CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o -o cmTC_38324  -v 
+        COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o' '-c' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.'
+        Linking C executable cmTC_60cc4
+        /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_60cc4.dir/link.txt --verbose=1
+        /usr/bin/cc -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp -fopenmp -v CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o -o cmTC_60cc4  -v 
         Using built-in specs.
         COLLECT_GCC=/usr/bin/cc
         COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/12/lto-wrapper
@@ -361,10 +361,10 @@ events:
         COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/12/:/usr/libexec/gcc/x86_64-redhat-linux/12/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/12/:/usr/lib/gcc/x86_64-redhat-linux/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/12/:/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/12/../../../:/lib/:/usr/lib/
         Reading specs from /usr/lib/gcc/x86_64-redhat-linux/12/libgomp.spec
-        COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-o' 'cmTC_38324' '-v' '-pthread' '-dumpdir' 'cmTC_38324.'
-         /usr/libexec/gcc/x86_64-redhat-linux/12/collect2 -plugin /usr/libexec/gcc/x86_64-redhat-linux/12/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccPN3XFj.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_38324 /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/12/crtbegin.o /usr/lib/gcc/x86_64-redhat-linux/12/crtoffloadbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/12 -L/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/12/../../.. -lm CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o -lgomp -lgcc --push-state --as-needed -lgcc_s --pop-state -lpthread -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-redhat-linux/12/crtend.o /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o /usr/lib/gcc/x86_64-redhat-linux/12/crtoffloadend.o
-        COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-o' 'cmTC_38324' '-v' '-pthread' '-dumpdir' 'cmTC_38324.'
-        gmake[1]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-zZ4P6r'
+        COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-o' 'cmTC_60cc4' '-v' '-pthread' '-dumpdir' 'cmTC_60cc4.'
+         /usr/libexec/gcc/x86_64-redhat-linux/12/collect2 -plugin /usr/libexec/gcc/x86_64-redhat-linux/12/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccdipBR9.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_60cc4 /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/12/crtbegin.o /usr/lib/gcc/x86_64-redhat-linux/12/crtoffloadbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/12 -L/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/12/../../.. -lm CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o -lgomp -lgcc --push-state --as-needed -lgcc_s --pop-state -lpthread -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-redhat-linux/12/crtend.o /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o /usr/lib/gcc/x86_64-redhat-linux/12/crtoffloadend.o
+        COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-o' 'cmTC_60cc4' '-v' '-pthread' '-dumpdir' 'cmTC_60cc4.'
+        gmake[1]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-HGpmjt'
         
       exitCode: 0
   -
@@ -376,13 +376,13 @@ events:
     message: |
       Parsed C OpenMP implicit link information from above output:
         link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-zZ4P6r']
+        ignore line: [Change Dir: '/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-HGpmjt']
         ignore line: []
-        ignore line: [Run Build Command(s): /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_38324/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_38324.dir/build.make CMakeFiles/cmTC_38324.dir/build]
-        ignore line: [gmake[1]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-zZ4P6r']
-        ignore line: [Building C object CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o]
-        ignore line: [/usr/bin/cc   -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp -fopenmp -v -std=gnu11 -o CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o -c /u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-zZ4P6r/OpenMPTryFlag.c]
+        ignore line: [Run Build Command(s): /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_60cc4/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_60cc4.dir/build.make CMakeFiles/cmTC_60cc4.dir/build]
+        ignore line: [gmake[1]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-HGpmjt']
+        ignore line: [Building C object CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o]
+        ignore line: [/usr/bin/cc   -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp -fopenmp -v -std=gnu11 -o CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o -c /u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-HGpmjt/OpenMPTryFlag.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/cc]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
@@ -392,8 +392,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 12.2.1 20221121 (Red Hat 12.2.1-4) (GCC) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o' '-c' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_38324.dir/']
-        ignore line: [ /usr/libexec/gcc/x86_64-redhat-linux/12/cc1 -quiet -v -D_REENTRANT /u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-zZ4P6r/OpenMPTryFlag.c -march=znver2 -mmmx -mpopcnt -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2 -mavx -mavx2 -msse4a -mno-fma4 -mno-xop -mfma -mno-avx512f -mbmi -mbmi2 -maes -mpclmul -mno-avx512vl -mno-avx512bw -mno-avx512dq -mno-avx512cd -mno-avx512er -mno-avx512pf -mno-avx512vbmi -mno-avx512ifma -mno-avx5124vnniw -mno-avx5124fmaps -mno-avx512vpopcntdq -mno-avx512vbmi2 -mno-gfni -mno-vpclmulqdq -mno-avx512vnni -mno-avx512bitalg -mno-avx512bf16 -mno-avx512vp2intersect -mno-3dnow -madx -mabm -mno-cldemote -mclflushopt -mclwb -mclzero -mcx16 -mno-enqcmd -mf16c -mfsgsbase -mfxsr -mno-hle -msahf -mno-lwp -mlzcnt -mmovbe -mno-movdir64b -mno-movdiri -mmwaitx -mno-pconfig -mno-pku -mno-prefetchwt1 -mprfchw -mno-ptwrite -mrdpid -mrdrnd -mrdseed -mno-rtm -mno-serialize -mno-sgx -msha -mno-shstk -mno-tbm -mno-tsxldtrk -mno-vaes -mno-waitpkg -mwbnoinvd -mxsave -mxsavec -mxsaveopt -mxsaves -mno-amx-tile -mno-amx-int8 -mno-amx-bf16 -mno-uintr -mno-hreset -mno-kl -mno-widekl -mno-avxvnni -mno-avx512fp16 --param l1-cache-size=32 --param l1-cache-line-size=64 --param l2-cache-size=512 -mtune=znver2 -quiet -dumpdir CMakeFiles/cmTC_38324.dir/ -dumpbase OpenMPTryFlag.c.c -dumpbase-ext .c -O3 -Wall -Wextra -Wpedantic -Werror -std=gnu11 -version -fopenmp -o /tmp/ccUQ7SOT.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o' '-c' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_60cc4.dir/']
+        ignore line: [ /usr/libexec/gcc/x86_64-redhat-linux/12/cc1 -quiet -v -D_REENTRANT /u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-HGpmjt/OpenMPTryFlag.c -march=znver2 -mmmx -mpopcnt -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2 -mavx -mavx2 -msse4a -mno-fma4 -mno-xop -mfma -mno-avx512f -mbmi -mbmi2 -maes -mpclmul -mno-avx512vl -mno-avx512bw -mno-avx512dq -mno-avx512cd -mno-avx512er -mno-avx512pf -mno-avx512vbmi -mno-avx512ifma -mno-avx5124vnniw -mno-avx5124fmaps -mno-avx512vpopcntdq -mno-avx512vbmi2 -mno-gfni -mno-vpclmulqdq -mno-avx512vnni -mno-avx512bitalg -mno-avx512bf16 -mno-avx512vp2intersect -mno-3dnow -madx -mabm -mno-cldemote -mclflushopt -mclwb -mclzero -mcx16 -mno-enqcmd -mf16c -mfsgsbase -mfxsr -mno-hle -msahf -mno-lwp -mlzcnt -mmovbe -mno-movdir64b -mno-movdiri -mmwaitx -mno-pconfig -mno-pku -mno-prefetchwt1 -mprfchw -mno-ptwrite -mrdpid -mrdrnd -mrdseed -mno-rtm -mno-serialize -mno-sgx -msha -mno-shstk -mno-tbm -mno-tsxldtrk -mno-vaes -mno-waitpkg -mwbnoinvd -mxsave -mxsavec -mxsaveopt -mxsaves -mno-amx-tile -mno-amx-int8 -mno-amx-bf16 -mno-uintr -mno-hreset -mno-kl -mno-widekl -mno-avxvnni -mno-avx512fp16 --param l1-cache-size=32 --param l1-cache-line-size=64 --param l2-cache-size=512 -mtune=znver2 -quiet -dumpdir CMakeFiles/cmTC_60cc4.dir/ -dumpbase OpenMPTryFlag.c.c -dumpbase-ext .c -O3 -Wall -Wextra -Wpedantic -Werror -std=gnu11 -version -fopenmp -o /tmp/cche2hBn.s]
         ignore line: [GNU C11 (GCC) version 12.2.1 20221121 (Red Hat 12.2.1-4) (x86_64-redhat-linux)]
         ignore line: [	compiled by GNU C version 12.2.1 20221121 (Red Hat 12.2.1-4)  GMP version 6.2.1  MPFR version 4.1.0-p13  MPC version 1.2.1  isl version isl-0.24-GMP]
         ignore line: []
@@ -411,15 +411,15 @@ events:
         ignore line: []
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
         ignore line: [Compiler executable checksum: 2dc77a3908f8aaed47471452c81e16ba]
-        ignore line: [COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o' '-c' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_38324.dir/']
-        ignore line: [ as -v --64 -o CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o /tmp/ccUQ7SOT.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o' '-c' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_60cc4.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o /tmp/cche2hBn.s]
         ignore line: [GNU assembler version 2.37 (x86_64-redhat-linux) using BFD version version 2.37-37.fc36]
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/12/:/usr/libexec/gcc/x86_64-redhat-linux/12/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/12/:/usr/lib/gcc/x86_64-redhat-linux/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/12/:/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/12/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o' '-c' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.']
-        ignore line: [Linking C executable cmTC_38324]
-        ignore line: [/orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_38324.dir/link.txt --verbose=1]
-        ignore line: [/usr/bin/cc -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp -fopenmp -v CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o -o cmTC_38324  -v ]
+        ignore line: [COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-std=gnu11' '-o' 'CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o' '-c' '-pthread' '-dumpdir' 'CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.']
+        ignore line: [Linking C executable cmTC_60cc4]
+        ignore line: [/orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_60cc4.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/cc -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp -fopenmp -v CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o -o cmTC_60cc4  -v ]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/cc]
         ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/12/lto-wrapper]
@@ -433,13 +433,13 @@ events:
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/12/:/usr/libexec/gcc/x86_64-redhat-linux/12/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/12/:/usr/lib/gcc/x86_64-redhat-linux/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/12/:/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/12/../../../:/lib/:/usr/lib/]
         ignore line: [Reading specs from /usr/lib/gcc/x86_64-redhat-linux/12/libgomp.spec]
-        ignore line: [COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-o' 'cmTC_38324' '-v' '-pthread' '-dumpdir' 'cmTC_38324.']
-        link line: [ /usr/libexec/gcc/x86_64-redhat-linux/12/collect2 -plugin /usr/libexec/gcc/x86_64-redhat-linux/12/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccPN3XFj.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_38324 /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/12/crtbegin.o /usr/lib/gcc/x86_64-redhat-linux/12/crtoffloadbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/12 -L/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/12/../../.. -lm CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o -lgomp -lgcc --push-state --as-needed -lgcc_s --pop-state -lpthread -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-redhat-linux/12/crtend.o /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o /usr/lib/gcc/x86_64-redhat-linux/12/crtoffloadend.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-O3' '-march=native' '-Wall' '-Wextra' '-Wpedantic' '-Werror' '-fopenmp' '-v' '-o' 'cmTC_60cc4' '-v' '-pthread' '-dumpdir' 'cmTC_60cc4.']
+        link line: [ /usr/libexec/gcc/x86_64-redhat-linux/12/collect2 -plugin /usr/libexec/gcc/x86_64-redhat-linux/12/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccdipBR9.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_60cc4 /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/12/crtbegin.o /usr/lib/gcc/x86_64-redhat-linux/12/crtoffloadbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/12 -L/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/12/../../.. -lm CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o -lgomp -lgcc --push-state --as-needed -lgcc_s --pop-state -lpthread -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-redhat-linux/12/crtend.o /usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64/crtn.o /usr/lib/gcc/x86_64-redhat-linux/12/crtoffloadend.o]
           arg [/usr/libexec/gcc/x86_64-redhat-linux/12/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/usr/libexec/gcc/x86_64-redhat-linux/12/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/12/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccPN3XFj.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccdipBR9.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
@@ -455,14 +455,14 @@ events:
           arg [-dynamic-linker] ==> ignore
           arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_38324] ==> ignore
+          arg [cmTC_60cc4] ==> ignore
           arg [-L/usr/lib/gcc/x86_64-redhat-linux/12] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/12]
           arg [-L/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/12/../../../../lib64]
           arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
           arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
           arg [-L/usr/lib/gcc/x86_64-redhat-linux/12/../../..] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/12/../../..]
           arg [-lm] ==> lib [m]
-          arg [CMakeFiles/cmTC_38324.dir/OpenMPTryFlag.c.o] ==> ignore
+          arg [CMakeFiles/cmTC_60cc4.dir/OpenMPTryFlag.c.o] ==> ignore
           arg [-lgomp] ==> lib [gomp]
           arg [-lgcc] ==> lib [gcc]
           arg [--push-state] ==> ignore
@@ -495,8 +495,8 @@ events:
       - "CMakeLists.txt:25 (find_package)"
     description: "Detecting C OpenMP version"
     directories:
-      source: "/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-d5SChD"
-      binary: "/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-d5SChD"
+      source: "/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-wnrJO0"
+      binary: "/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-wnrJO0"
     cmakeVariables:
       CMAKE_C_FLAGS: "-O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp"
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -505,17 +505,17 @@ events:
       variable: "OpenMP_SPECTEST_C_"
       cached: true
       stdout: |
-        Change Dir: '/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-d5SChD'
+        Change Dir: '/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-wnrJO0'
         
-        Run Build Command(s): /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_9b4c1/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_9b4c1.dir/build.make CMakeFiles/cmTC_9b4c1.dir/build
-        gmake[1]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-d5SChD'
-        Building C object CMakeFiles/cmTC_9b4c1.dir/OpenMPCheckVersion.c.o
-        /usr/bin/cc   -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp -fopenmp -std=gnu11 -o CMakeFiles/cmTC_9b4c1.dir/OpenMPCheckVersion.c.o -c /u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-d5SChD/OpenMPCheckVersion.c
-        Linking C executable cmTC_9b4c1
-        /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9b4c1.dir/link.txt --verbose=1
-        /usr/bin/cc -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp -fopenmp CMakeFiles/cmTC_9b4c1.dir/OpenMPCheckVersion.c.o -o cmTC_9b4c1 
-        gmake[1]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-d5SChD'
+        Run Build Command(s): /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b4ba2/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_b4ba2.dir/build.make CMakeFiles/cmTC_b4ba2.dir/build
+        gmake[1]: Entering directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-wnrJO0'
+        Building C object CMakeFiles/cmTC_b4ba2.dir/OpenMPCheckVersion.c.o
+        /usr/bin/cc   -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp -fopenmp -std=gnu11 -o CMakeFiles/cmTC_b4ba2.dir/OpenMPCheckVersion.c.o -c /u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-wnrJO0/OpenMPCheckVersion.c
+        Linking C executable cmTC_b4ba2
+        /orfeo/cephfs/opt/programs/amd/fedora36/cmake/3.28.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b4ba2.dir/link.txt --verbose=1
+        /usr/bin/cc -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp -fopenmp CMakeFiles/cmTC_b4ba2.dir/OpenMPCheckVersion.c.o -o cmTC_b4ba2 
+        gmake[1]: Leaving directory '/orfeo/cephfs/home/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/CMakeScratch/TryCompile-wnrJO0'
         
       exitCode: 0
 ...
