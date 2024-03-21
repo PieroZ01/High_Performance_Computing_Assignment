@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <complex.h>
-#include <string.h>
 
 // Header
 #include "mandelbrot.h"
@@ -82,13 +81,13 @@ int main(int argc, char *argv[])
   const double dy = (y_R - y_L) / n_y;
 
   // Get the local amount of rows to be computed by each process
-  // (The rows will be assigned to each process in a round-robin fashion
-  // If the number of rows is not divisible by the number of processes,
-  // the remaining rows will be assigned to the master process)
+  // (If the number of rows is not divisible by the number of processes, the remaining rows are assigned to the
+  // first remaining_rows processes)
   const int rows_per_process = n_y / size;
-  const int start_row = rank;
+  const int start_row = rank * rows_per_process;
   const int remaining_rows = n_y % size;
-  const int local_rows = (rank == 0) ? rows_per_process + remaining_rows : rows_per_process;
+  const int end_row = start_row + rows_per_process + (rank < remaining_rows ? 1 : 0);
+  const int local_rows = end_row - start_row;
 
   // Define the 2D matrix M of integers (short int) whose entries [j][i] are the image's pixels
   // (Allocate only the memory for the local part of the matrix M on each process)
@@ -112,13 +111,11 @@ int main(int argc, char *argv[])
     }
 
     // Compute the local part of the matrix M on each process
-    // (Each thread will compute a part of the local part of the matrix M;
-    // consider that the rows were assigned to each process in a round-robin fashion,
-    // so the rows are not contiguous)
+    // (Each thread will compute a part of the local part of the matrix M)
     #pragma omp parallel for schedule(dynamic)
       for (int j = 0; j < local_rows; ++j)
       {
-        const double y = y_L + (start_row + j * size) * dy;
+        const double y = y_L + (start_row + j) * dy;
         const int index = j * n_x;
         for (int i = 0; i < n_x; ++i)
         {
