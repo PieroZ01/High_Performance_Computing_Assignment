@@ -1,4 +1,4 @@
-"n_processes", "n_threads", "n_x", "n_y", "I_max", "Average time", "Standard deviation", "Communication time"
+"n_processes","n_threads","n_x","n_y","I_max","Average time","Standard deviation","Communication time"
 4, 1, 3000, 3000, 3000, 4.153963, 0.001195, 0.007345
 8, 1, 3000, 3000, 3000, 3.430469, 0.011107, 0.009053
 12, 1, 3000, 3000, 3000, 2.566873, 0.002365, 0.008815

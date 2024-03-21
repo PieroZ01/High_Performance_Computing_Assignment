@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
     // If the file is empty, write the header
     if (ftell(file) == 0)
     {
-      fprintf(file, "\"n_processes\", \"n_threads\", \"n_x\", \"n_y\", \"I_max\", \"Average time\", \"Standard deviation\", \"Communication time\"\n");
+      fprintf(file, "\"n_processes\",\"n_threads\",\"n_x\",\"n_y\",\"I_max\",\"Average time\",\"Standard deviation\",\"Communication time\"\n");
       fflush(file);
     }
   }
@@ -62,9 +62,9 @@ int main(int argc, char *argv[])
   // Variables to be read from command line arguments, with default values
   const int n_x = argc > 1 ? atoi(argv[1]) : XWIDTH;
   const int n_y = argc > 2 ? atoi(argv[2]) : YWIDTH;
-  const double x_L = argc > 3 ? atof(argv[3]) : -2.0;
+  const double x_L = argc > 3 ? atof(argv[3]) : -2.75;
   const double y_L = argc > 4 ? atof(argv[4]) : -2.0;
-  const double x_R = argc > 5 ? atof(argv[5]) : 2.0;
+  const double x_R = argc > 5 ? atof(argv[5]) : 1.25;
   const double y_R = argc > 6 ? atof(argv[6]) : 2.0;
   const int I_max = argc > 7 ? atoi(argv[7]) : MAXVAL;
 
@@ -80,15 +80,15 @@ int main(int argc, char *argv[])
   const double dx = (x_R - x_L) / n_x;
   const double dy = (y_R - y_L) / n_y;
 
-  // Get the local amount of rows to be computed by each process
-  const int rows_per_process = n_y / size;
-  const int start_row = rank * rows_per_process;
-  const int end_row = (rank == size - 1) ? n_y : start_row + rows_per_process;
-  const int local_rows = end_row - start_row;
+  // Get the local amount of columns to be computed by each process
+  const int columns_per_process = n_x / size;
+  const int start_col = rank * columns_per_process;
+  const int end_col = (rank == size - 1) ? n_x : start_col + columns_per_process;
+  const int local_columns = end_col - start_col;
 
   // Define the 2D matrix M of integers (short int) whose entries [j][i] are the image's pixels
   // (Allocate only the memory for the local part of the matrix M on each process)
-  short int *local_M = (short int *)malloc(n_x * local_rows * sizeof(short int));
+  short int *local_M = (short int *)malloc(n_y * local_columns * sizeof(short int));
   // (Each thread will compute a part of the local part of the matrix M)
   // (The number of threads is defined by the environment variable OMP_NUM_THREADS)
 
@@ -107,16 +107,15 @@ int main(int argc, char *argv[])
       timer = MPI_Wtime();
     }
 
-    // Compute the mandelbrot set
     #pragma omp parallel for schedule(dynamic)
-      for (int j = 0; j < local_rows; ++j)
+      for (int i = 0; i < local_columns; ++i)
       {
-        const double y = y_L + (start_row + j) * dy;
-        const int index = j * n_x;
-        for (int i = 0; i < n_x; ++i)
+        const double x = x_L + (start_col + i) * dx;
+        const int index = i * n_y;
+        for (int j = 0; j < n_y; ++j)
         {
-          double complex c = x_L + i * dx + y * I;
-          local_M[index + i] = mandelbrot(c, I_max);
+          double complex c = x + (y_L + j * dy) * I;
+          local_M[index + j] = mandelbrot(c, I_max);
         }
       }
 
@@ -143,7 +142,7 @@ int main(int argc, char *argv[])
     timer = MPI_Wtime();
   }
 
-  MPI_Gather(local_M, n_x * local_rows, MPI_SHORT, global_M, n_x * local_rows, MPI_SHORT, 0, MPI_COMM_WORLD);
+  MPI_Gather(local_M, n_y * local_columns, MPI_SHORT, global_M, n_y * local_columns, MPI_SHORT, 0, MPI_COMM_WORLD);
 
   // Stop the timer to measure the communication time
   if (rank == 0)
