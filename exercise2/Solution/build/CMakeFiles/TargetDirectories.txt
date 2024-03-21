@@ -1,0 +1,3 @@
+/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/main.dir
+/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/edit_cache.dir
+/u/dssc/pzappi/Assignment/High_Performance_Computing_Assignment/exercise2/Solution/build/CMakeFiles/rebuild_cache.dir
