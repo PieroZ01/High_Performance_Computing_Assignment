@@ -161,7 +161,7 @@ int main(int argc, char *argv[])
   #pragma omp parallel for schedule(dynamic)
   for (int j = 0; j < local_rows; ++j)
   {
-  memcpy(&contiguous_local_M[j * n_x], &local_M[(start_row + j * size) * n_x], n_x * sizeof(short int));
+    memcpy(&contiguous_local_M[j * n_x], &local_M[j * n_x], n_x * sizeof(short int));
   }
 
   // Gather the results to the master process and start the timer to measure the communication time
