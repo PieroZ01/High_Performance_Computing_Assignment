@@ -80,15 +80,15 @@ int main(int argc, char *argv[])
   const double dx = (x_R - x_L) / n_x;
   const double dy = (y_R - y_L) / n_y;
 
-  // Get the local amount of columns to be computed by each process
-  const int columns_per_process = n_x / size;
-  const int start_col = rank * columns_per_process;
-  const int end_col = (rank == size - 1) ? n_x : start_col + columns_per_process;
-  const int local_columns = end_col - start_col;
+  // Get the local amount of rows to be computed by each process
+  const int rows_per_process = n_y / size;
+  const int start_row = rank * rows_per_process;
+  const int end_row = (rank == size - 1) ? n_y : start_row + rows_per_process;
+  const int local_rows = end_row - start_row;
 
   // Define the 2D matrix M of integers (short int) whose entries [j][i] are the image's pixels
   // (Allocate only the memory for the local part of the matrix M on each process)
-  short int *local_M = (short int *)malloc(n_y * local_columns * sizeof(short int));
+  short int *local_M = (short int *)malloc(n_x * local_rows * sizeof(short int));
   // (Each thread will compute a part of the local part of the matrix M)
   // (The number of threads is defined by the environment variable OMP_NUM_THREADS)
 
@@ -108,14 +108,14 @@ int main(int argc, char *argv[])
     }
 
     #pragma omp parallel for schedule(dynamic)
-      for (int i = 0; i < local_columns; ++i)
+      for (int j = 0; j < local_rows; ++j)
       {
-        const double x = x_L + (start_col + i) * dx;
-        const int index = i * n_y;
-        for (int j = 0; j < n_y; ++j)
+        const double y = y_L + (start_row + j) * dy;
+        const int index = j * n_x;
+        for (int i = 0; i < n_x; ++i)
         {
-          double complex c = x + (y_L + j * dy) * I;
-          local_M[index + j] = mandelbrot(c, I_max);
+          double complex c = x_L + i * dx + y * I;
+          local_M[index + i] = mandelbrot(c, I_max);
         }
       }
 
@@ -142,7 +142,7 @@ int main(int argc, char *argv[])
     timer = MPI_Wtime();
   }
 
-  MPI_Gather(local_M, n_y * local_columns, MPI_SHORT, global_M, n_y * local_columns, MPI_SHORT, 0, MPI_COMM_WORLD);
+  MPI_Gather(local_M, n_x * local_rows, MPI_SHORT, global_M, n_x * local_rows, MPI_SHORT, 0, MPI_COMM_WORLD);
 
   // Stop the timer to measure the communication time
   if (rank == 0)
