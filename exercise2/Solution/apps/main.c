@@ -141,11 +141,6 @@ int main(int argc, char *argv[])
   // Define the global matrix M to gather the results from all the processes
   short int *global_M = NULL;
 
-  // Define the arrays to gather the results from all the processes
-  int *sendcounts = malloc(sizeof(int) * size);
-  int *displs = malloc(sizeof(int) * size);
-  int *recvcounts = malloc(sizeof(int) * size);
-
   // Gather the results to the master process and start the timer to measure the communication time
   if (rank == 0)
   {
@@ -155,7 +150,7 @@ int main(int argc, char *argv[])
 
   // Gather the results from the local part of the matrix M on each process to the global matrix M
   // (Use MPI_Gatherv because the amount of data to be gathered from each process is possibly different)
-  MPI_Gatherv(local_M, n_x * local_rows, MPI_SHORT, global_M, recvcounts, displs, MPI_SHORT, 0, MPI_COMM_WORLD);
+  MPI_Gatherv(local_M, n_x * local_rows, MPI_SHORT, global_M, NULL, NULL, MPI_SHORT, 0, MPI_COMM_WORLD);
 
   // Stop the timer to measure the communication time
   if (rank == 0)
@@ -165,11 +160,6 @@ int main(int argc, char *argv[])
 
   // Free the memory for the local part of the matrix M on each process
   free(local_M);
-
-  // Free the memory for the sendcounts, displs and recvcounts arrays
-  free(sendcounts);
-  free(displs);
-  free(recvcounts);
 
   // The master process writes the results to the csv file
   if (rank == 0)
