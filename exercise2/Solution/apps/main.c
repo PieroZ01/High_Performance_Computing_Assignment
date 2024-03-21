@@ -146,9 +146,11 @@ int main(int argc, char *argv[])
   int *displs = (int *)malloc(size * sizeof(int));
 
   // Compute the arrays to be used by the MPI_Gatherv function
+  int displ = 0;
   for (int z = 0; z < size; ++z) {
     recvcounts[z] = (z < n_y % size) ? (rows_per_process + 1) * n_x : rows_per_process * n_x;
-    displs[z] = (z < n_y % size) ? (z * (rows_per_process + 1)) * n_x : (z * rows_per_process + n_y % size) * n_x;
+    displs[z] = displ;
+    displ += recvcounts[z];
   }
 
   // Gather the results to the master process and start the timer to measure the communication time
@@ -161,7 +163,7 @@ int main(int argc, char *argv[])
   // Gather the results from the local part of the matrix M on each process to the global matrix M
   // (Use MPI_Gatherv because the amount of data to be gathered from each process is possibly different)
   MPI_Gatherv(local_M, local_rows * n_x, MPI_SHORT, global_M, recvcounts, displs, MPI_SHORT, 0, MPI_COMM_WORLD);
-  
+
   // Stop the timer to measure the communication time
   if (rank == 0)
   {
