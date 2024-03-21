@@ -82,12 +82,11 @@ int main(int argc, char *argv[])
 
   // Get the local amount of rows to be computed by each process
   // (If the number of rows is not divisible by the number of processes, the remaining rows are assigned to the
-  // first remaining_rows processes)
+  // master process; therefore, the master process will compute more rows than the other processes)
   const int rows_per_process = n_y / size;
-  const int start_row = rank * rows_per_process;
   const int remaining_rows = n_y % size;
-  const int end_row = start_row + rows_per_process + (rank < remaining_rows ? 1 : 0);
-  const int local_rows = end_row - start_row;
+  const int start_row = rank * rows_per_process + (rank != 0 ? remaining_rows : 0);
+  const int local_rows = rows_per_process + (rank == 0 ? remaining_rows : 0);
 
   // Define the 2D matrix M of integers (short int) whose entries [j][i] are the image's pixels
   // (Allocate only the memory for the local part of the matrix M on each process)
