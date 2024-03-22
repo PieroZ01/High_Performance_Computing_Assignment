@@ -147,9 +147,21 @@ int main(int argc, char *argv[])
   for (int i = 0; i < size; ++i)
   {
     receivedcounts[i] = n_x * ((n_y + size - i - 1) / size);
-    displs[i] = i > 0 ? displs[i-1] + receivedcounts[i-1] : 0;
+    displs[i] = i * n_x;
   }
   
+  // Adjust the displacements for round-robin distribution
+  for (int i = 0; i < n_y; ++i)
+  {
+    for (int j = 0; j < size; ++j)
+    {
+        if (i / size < receivedcounts[j] / n_x)
+        {
+            displs[j] = i * n_x;
+            break;
+        }
+    }
+  }
 
   // Gather the results to the master process and start the timer to measure the communication time
   if (rank == 0)
