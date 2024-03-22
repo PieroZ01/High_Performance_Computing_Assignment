@@ -82,11 +82,11 @@ int main(int argc, char *argv[])
 
   // Get the local amount of rows to be computed by each process
   // (If the number of rows is not divisible by the number of processes, the remaining rows are assigned to the
-  // master process; therefore, the master process will compute more rows than the other processes)
+  // last process)
   const int rows_per_process = n_y / size;
-  const int remaining_rows = n_y % size;
-  const int start_row = rank * rows_per_process + (rank != 0 ? remaining_rows : 0);
-  const int local_rows = rows_per_process + (rank == 0 ? remaining_rows : 0);
+  const int start_row = rank * rows_per_process;
+  const int end_row = (rank == size - 1) ? n_y : start_row + rows_per_process;
+  const int local_rows = end_row - start_row;
 
   // Define the 2D matrix M of integers (short int) whose entries [j][i] are the image's pixels
   // (Allocate only the memory for the local part of the matrix M on each process)
@@ -139,6 +139,17 @@ int main(int argc, char *argv[])
   // Define the global matrix M to gather the results from all the processes
   short int *global_M = NULL;
 
+  // Define the variables receivedcounts and displs to be used in the MPI_Gatherv function
+  int *receivedcounts = (int *)malloc(size * sizeof(int));
+  int *displs = (int *)malloc(size * sizeof(int));
+
+  for (int i = 0; i < size; ++i)
+  {
+    displs[i] = i * rows_per_process * n_x;
+    receivedcounts[i] = (i == size - 1) ? n_x * (n_y - i * rows_per_process) : n_x * rows_per_process;
+  }
+  
+
   // Gather the results to the master process and start the timer to measure the communication time
   if (rank == 0)
   {
@@ -147,8 +158,10 @@ int main(int argc, char *argv[])
   }
 
   // Gather the results from the local part of the matrix M on each process to the global matrix M
-  // (Use MPI_Gatherv because the amount of data to be gathered from each process is possibly different)
-  MPI_Gather(local_M, n_x * local_rows, MPI_SHORT, global_M, n_x * local_rows, MPI_SHORT, 0, MPI_COMM_WORLD);
+  // (Use MPI_Gatherv because the amount of data to be gathered from each process is possibly different,
+  // since the number of rows is not necessarily divisible by the number of processes and the remaining rows
+  // are assigned to the last process)
+  MPI_Gatherv(local_M, n_x * local_rows, MPI_SHORT, global_M, receivedcounts, displs, MPI_SHORT, 0, MPI_COMM_WORLD);
 
   // Stop the timer to measure the communication time
   if (rank == 0)
@@ -158,6 +171,10 @@ int main(int argc, char *argv[])
 
   // Free the memory for the local part of the matrix M on each process
   free(local_M);
+
+  // Free the memory for the receivedcounts and displs arrays
+  free(receivedcounts);
+  free(displs);
 
   // The master process writes the results to the csv file
   if (rank == 0)
