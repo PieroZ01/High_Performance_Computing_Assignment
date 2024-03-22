@@ -81,12 +81,12 @@ int main(int argc, char *argv[])
   const double dy = (y_R - y_L) / n_y;
 
   // Get the local amount of rows to be computed by each process
-  // (If the number of rows is not divisible by the number of processes, the remaining rows are assigned to the
-  // last process)
+  // (The rows are distributed among the processes in a round robin fashion with the first
+  // processes getting one more row if the number of rows is not divisible by the number of processes)
   const int rows_per_process = n_y / size;
-  const int start_row = rank * rows_per_process;
-  const int end_row = (rank == size - 1) ? n_y : start_row + rows_per_process;
-  const int local_rows = end_row - start_row;
+  const int start_row = rank;
+  const int remaining_rows = n_y % size;
+  const int local_rows = (rank < remaining_rows) ? rows_per_process + 1 : rows_per_process;
 
   // Define the 2D matrix M of integers (short int) whose entries [j][i] are the image's pixels
   // (Allocate only the memory for the local part of the matrix M on each process)
@@ -110,11 +110,12 @@ int main(int argc, char *argv[])
     }
 
     // Compute the local part of the matrix M on each process
-    // (Each thread will compute a part of the local part of the matrix M)
+    // (Each thread will compute a part of the local part of the matrix M;
+    // each process is assigned its rows to be computed in a round robin fashion)
     #pragma omp parallel for schedule(dynamic)
       for (int j = 0; j < local_rows; ++j)
       {
-        const double y = y_L + (start_row + j) * dy;
+        const double y = y_L + (start_row + j * size) * dy;
         const int index = j * n_x;
         for (int i = 0; i < n_x; ++i)
         {
@@ -145,8 +146,8 @@ int main(int argc, char *argv[])
 
   for (int i = 0; i < size; ++i)
   {
-    displs[i] = i * rows_per_process * n_x;
-    receivedcounts[i] = (i == size - 1) ? n_x * (n_y - i * rows_per_process) : n_x * rows_per_process;
+    receivedcounts[i] = n_x * ((n_y + size - i - 1) / size);
+    displs[i] = i > 0 ? displs[i-1] + receivedcounts[i-1] : 0;
   }
   
 
@@ -160,7 +161,7 @@ int main(int argc, char *argv[])
   // Gather the results from the local part of the matrix M on each process to the global matrix M
   // (Use MPI_Gatherv because the amount of data to be gathered from each process is possibly different,
   // since the number of rows is not necessarily divisible by the number of processes and the remaining rows
-  // are assigned to the last process)
+  // are assigned to the first processes)
   MPI_Gatherv(local_M, n_x * local_rows, MPI_SHORT, global_M, receivedcounts, displs, MPI_SHORT, 0, MPI_COMM_WORLD);
 
   // Stop the timer to measure the communication time
