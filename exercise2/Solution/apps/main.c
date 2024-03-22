@@ -154,7 +154,7 @@ int main(int argc, char *argv[])
     else
     {
       receivedcounts[i] = rows_per_process * n_x;
-      displs[i] = i * rows_per_process * n_x + remaining_rows * (rows_per_process + 1) * n_x;
+      displs[i] = remaining_rows * (rows_per_process + 1) * n_x + (i - remaining_rows) * rows_per_process * n_x;
     }
   }
   
