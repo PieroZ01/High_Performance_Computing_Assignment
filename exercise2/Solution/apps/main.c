@@ -184,10 +184,10 @@ int main(int argc, char *argv[])
   if (rank == 0)
   {
     write_pgm_image(global_M, I_max, n_x, n_y, "mandelbrot.pgm");
-  }
 
-  // Free the memory for the global matrix M
-  free(global_M);
+    // Free the memory for the global matrix M
+    free(global_M);
+  }
 
   // Finalize MPI
   MPI_Finalize();
