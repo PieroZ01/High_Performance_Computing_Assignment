@@ -21,6 +21,11 @@ static inline int mandelbrot(const double complex c, const int max_iter)
   return k;
 }
 
+static inline double min(const double a, const double b)
+{
+  return a < b ? a : b;
+}
+
 // Main function
 int main(int argc, char *argv[])
 {
