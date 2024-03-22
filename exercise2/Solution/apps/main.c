@@ -144,23 +144,12 @@ int main(int argc, char *argv[])
   int *receivedcounts = (int *)malloc(size * sizeof(int));
   int *displs = (int *)malloc(size * sizeof(int));
 
+  int disp = 0;
   for (int i = 0; i < size; ++i)
   {
     receivedcounts[i] = n_x * ((n_y + size - i - 1) / size);
-    displs[i] = i * n_x;
-  }
-  
-  // Adjust the displacements for round-robin distribution
-  for (int i = 0; i < n_y; ++i)
-  {
-    for (int j = 0; j < size; ++j)
-    {
-        if (i / size < receivedcounts[j] / n_x)
-        {
-            displs[j] = i * n_x;
-            break;
-        }
-    }
+    displs[i] = disp;
+    disp += receivedcounts[i];
   }
 
   // Gather the results to the master process and start the timer to measure the communication time
