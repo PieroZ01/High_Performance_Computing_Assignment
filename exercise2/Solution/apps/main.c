@@ -146,12 +146,18 @@ int main(int argc, char *argv[])
 
   for (int i = 0; i < size; ++i)
   {
-    receivedcounts[i] = n_x * ((n_y + size - i - 1) / size);
+    if (i < remaining_rows)
+    {
+      receivedcounts[i] = (rows_per_process + 1) * n_x;
+      displs[i] = i * (rows_per_process + 1) * n_x;
+    }
+    else
+    {
+      receivedcounts[i] = rows_per_process * n_x;
+      displs[i] = i * rows_per_process * n_x + remaining_rows * (rows_per_process + 1) * n_x;
+    }
   }
-  for (int i = 0; i < n_y; ++i)
-  {
-    displs[i % size] = i * n_x;
-  }
+  
 
   // Gather the results to the master process and start the timer to measure the communication time
   if (rank == 0)
