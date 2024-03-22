@@ -144,7 +144,6 @@ int main(int argc, char *argv[])
   int *receivedcounts = (int *)malloc(size * sizeof(int));
   int *displs = (int *)malloc(size * sizeof(int));
 
-  int disp = 0;
   for (int i = 0; i < size; ++i)
   {
     receivedcounts[i] = n_x * ((n_y + size - i - 1) / size);
