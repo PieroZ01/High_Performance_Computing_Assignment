@@ -146,16 +146,8 @@ int main(int argc, char *argv[])
 
   for (int i = 0; i < size; ++i)
   {
-    if (i < remaining_rows)
-    {
-      receivedcounts[i] = (rows_per_process + 1) * n_x;
-      displs[i] = i * (rows_per_process + 1) * n_x;
-    }
-    else
-    {
-      receivedcounts[i] = rows_per_process * n_x;
-      displs[i] = remaining_rows * (rows_per_process + 1) * n_x + (i - remaining_rows) * rows_per_process * n_x;
-    }
+    receivedcounts[i] = (i < remaining_rows) ? (rows_per_process + 1) * n_x : rows_per_process * n_x;
+    displs[i] = i * rows_per_process * n_x + min(i, remaining_rows) * n_x;
   }
   
 
