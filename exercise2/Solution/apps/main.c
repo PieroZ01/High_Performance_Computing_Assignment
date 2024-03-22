@@ -148,8 +148,10 @@ int main(int argc, char *argv[])
   for (int i = 0; i < size; ++i)
   {
     receivedcounts[i] = n_x * ((n_y + size - i - 1) / size);
-    displs[i] = disp;
-    disp += receivedcounts[i];
+  }
+  for (int i = 0; i < n_y; ++i)
+  {
+    displs[i % size] = i * n_x;
   }
 
   // Gather the results to the master process and start the timer to measure the communication time
