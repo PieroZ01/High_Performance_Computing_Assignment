@@ -176,6 +176,34 @@ int main(int argc, char *argv[])
   free(receivedcounts);
   free(displs);
 
+  // The master process reorders the matrix M to write the image to a pgm file: the global matrix M is
+  // now composed of blocks of rows computed by each process in a round robin fashion; we need to reorder
+  // the rows to write the image correctly: each row has to be placed in the correct position in the image, 
+  // so the first row of process 0 has to be placed in the first row of the image, the first row of process 1
+  // has to be placed in the second row of the image, and so on
+  if (rank == 0)
+  {
+    // Reorder the matrix M
+    short int *reordered_M = (short int *)malloc(n_x * n_y * sizeof(short int));
+    for (int r = 0; r < size; ++r)
+    {
+      const int start_row = r;
+      const int local_rows = (r < remaining_rows) ? rows_per_process + 1 : rows_per_process;
+      for (int j = 0; j < local_rows; ++j)
+      {
+        for (int i = 0; i < n_x; ++i)
+        {
+          reordered_M[(start_row + j * size) * n_x + i] = global_M[j * n_x + i];
+        }
+      }
+    }
+
+    global_M = reordered_M;
+
+    // Free the memory for the reordered matrix M
+    // free(reordered_M);
+  }
+
   // The master process writes the results to the csv file
   if (rank == 0)
   {
