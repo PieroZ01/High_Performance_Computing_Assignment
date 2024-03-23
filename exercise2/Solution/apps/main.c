@@ -188,17 +188,18 @@ int main(int argc, char *argv[])
     {
       // Reorder the matrix M
       short int *reordered_M = (short int *)malloc(n_x * n_y * sizeof(short int));
+      int current_row = 0;
       for (int r = 0; r < size; ++r)
       {
-       const int start_row = r;
         const int local_rows = (r < remaining_rows) ? rows_per_process + 1 : rows_per_process;
-       for (int j = 0; j < local_rows; ++j)
-       {
-        for (int i = 0; i < n_x; ++i)
+        for (int j = 0; j < local_rows; ++j)
         {
-          reordered_M[(start_row + j * size) * n_x + i] = global_M[j * n_x + i];
+          for (int i = 0; i < n_x; ++i)
+          {
+            reordered_M[current_row * n_x + i] = global_M[(r * rows_per_process + j) * n_x + i];
+          }
+          current_row++;
         }
-       }
       }
 
       // Free the memory for the global matrix M
