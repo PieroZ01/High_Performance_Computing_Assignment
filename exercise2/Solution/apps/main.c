@@ -160,7 +160,6 @@ int main(int argc, char *argv[])
   }
 
   // Each process sends its local part of the matrix M to the master process
-  // (We use MPI_Ssend to make sure that the data is sent in the correct order)
   
   // Loop over the number of round
   for (int r = 0; r < rows_per_process; ++r)
@@ -169,7 +168,7 @@ int main(int argc, char *argv[])
     int position = 0;
 
     // Each process sends to the master process it's r-th row of the local part of the matrix M
-    MPI_Ssend(local_M[r], n_x, MPI_SHORT, 0, r, MPI_COMM_WORLD);
+    MPI_Send(local_M[r], n_x, MPI_SHORT, 0, r, MPI_COMM_WORLD);
 
     // The master process receives the r-th row of the local part of the matrix M from each process
     // and stores it in the correct position in the global matrix M
@@ -192,7 +191,7 @@ int main(int argc, char *argv[])
     int position = n_y - remaining_rows;
 
     // Each process sends to the master process it's last row of the local part of the matrix M
-    MPI_Ssend(local_M[local_rows - 1], n_x, MPI_SHORT, 0, rows_per_process, MPI_COMM_WORLD);
+    MPI_Send(local_M[local_rows - 1], n_x, MPI_SHORT, 0, rows_per_process, MPI_COMM_WORLD);
 
     // The master process receives the last row of the local part of the matrix M from each process
     // and stores it in the correct position in the global matrix M
