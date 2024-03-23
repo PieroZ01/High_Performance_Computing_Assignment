@@ -190,8 +190,11 @@ int main(int argc, char *argv[])
   {
     int position = n_y - remaining_rows;
 
-    // Each process sends to the master process it's last row of the local part of the matrix M
-    MPI_Send(local_M[local_rows - 1], n_x, MPI_SHORT, 0, rows_per_process, MPI_COMM_WORLD);
+    if (rank < remaining_rows)
+    {
+      // The process sends to the master process it's last row of the local part of the matrix M
+      MPI_Send(local_M[local_rows - 1], n_x, MPI_SHORT, 0, rows_per_process, MPI_COMM_WORLD);
+    }
 
     // The master process receives the last row of the local part of the matrix M from each process
     // and stores it in the correct position in the global matrix M
