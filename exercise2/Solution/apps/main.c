@@ -21,11 +21,6 @@ static inline int mandelbrot(const double complex c, const int max_iter)
   return k;
 }
 
-static inline double min(const double a, const double b)
-{
-  return a < b ? a : b;
-}
-
 // Main function
 int main(int argc, char *argv[])
 {
@@ -145,17 +140,6 @@ int main(int argc, char *argv[])
   // Define the global matrix M to gather the results from all the processes
   short int *global_M = NULL;
 
-  // Define the variables receivedcounts and displs to be used in the MPI_Gatherv function
-  int *receivedcounts = (int *)malloc(size * sizeof(int));
-  int *displs = (int *)malloc(size * sizeof(int));
-
-  for (int i = 0; i < size; ++i)
-  {
-    receivedcounts[i] = (i < remaining_rows) ? (rows_per_process + 1) * n_x : rows_per_process * n_x;
-    displs[i] = i * rows_per_process * n_x + min(i, remaining_rows) * n_x;
-  }
-  
-
   // Gather the results to the master process and start the timer to measure the communication time
   if (rank == 0)
   {
@@ -163,12 +147,70 @@ int main(int argc, char *argv[])
     timer = MPI_Wtime();
   }
 
-  // Gather the results from the local part of the matrix M on each process to the global matrix M
-  // (Use MPI_Gatherv because the amount of data to be gathered from each process is possibly different,
-  // since the number of rows is not necessarily divisible by the number of processes and the remaining rows
-  // are assigned to the first processes)
-  MPI_Gatherv(local_M, n_x * local_rows, MPI_SHORT, global_M, receivedcounts, displs, MPI_SHORT, 0, MPI_COMM_WORLD);
+  // Each process sends its local part of the matrix M to the master process
+  // row by row, in order to make sure that the data is received in the correct order by the master process
+  // and that the global matrix M is correctly reconstructed (in fact, each process' rows are not contiguous
+  // in the global matrix M. They are distributed in a round robin fashion among the processes, so the master
+  // process needs to receive the rows in the correct order to reconstruct the global matrix M correctly, row by row,
+  // following the precise order used to distribute the rows among the processes)
+  // (We use MPI_Ssend to make sure that the data is sent in the correct order)
+  
+  // Loop over the number of rounds - 1
+  for (int r = 0; r < rows_per_process; ++r)
+  {
+    // Loop over the number of processes (each process, identified by its rank, sends its row to the master process)
+    for (int p = 0; p < size; ++p)
+    {
+      // If the process' rank is equal to the current p, it sends its r row to the master process
+      // (The r row of the matrix local_M is selected by the formula: r * n_x)
+      if (rank == p)
+      {
+        MPI_Ssend(local_M + r * n_x, n_x, MPI_SHORT, 0, r * p, MPI_COMM_WORLD);
+      }
 
+      // If the process' rank is equal to 0, it receives the r row from the process p and stores it in the global matrix M,
+      // in the correct position, which is the r + p row of the matrix global_M
+      if (rank == 0)
+      {
+        MPI_Recv(global_M + (r + p) * n_x, n_x, MPI_SHORT, p, r * p, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+      }
+
+      // Sinchronize all the processes after the communication
+      if (size > 1)
+      {
+        MPI_Barrier(MPI_COMM_WORLD);
+      }
+    }
+
+    // Sinchronize all the processes after the communication
+    if (size > 1)
+    {
+      MPI_Barrier(MPI_COMM_WORLD);
+    }
+  }
+
+  // Loop over the number of remaining rows: the first remaining_rows processes send their (rows_per_process + 1) row
+  // to the master process
+  for (int q = 0; q < remaining_rows; ++q)
+  {
+    if (rank == q)
+    {
+      MPI_Ssend(local_M + rows_per_process * n_x, n_x, MPI_SHORT, 0, q, MPI_COMM_WORLD);
+    }
+
+    if (rank == 0)
+    {
+      MPI_Recv(global_M + (rows_per_process + q) * n_x, n_x, MPI_SHORT, q, q, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    }
+
+    // Sinchronize all the processes after the communication
+    if (size > 1)
+    {
+      MPI_Barrier(MPI_COMM_WORLD);
+    }
+
+  }
+  
   // Stop the timer to measure the communication time
   if (rank == 0)
   {
@@ -177,10 +219,6 @@ int main(int argc, char *argv[])
 
   // Free the memory for the local part of the matrix M on each process
   free(local_M);
-
-  // Free the memory for the receivedcounts and displs arrays
-  free(receivedcounts);
-  free(displs);
 
   // The master process writes the results to the csv file
   if (rank == 0)
