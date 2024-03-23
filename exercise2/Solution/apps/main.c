@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
   if (rank == 0)
   {
     // Alllocate a multidimensional array of integers (short int)
-    short int **global_M = (short int **)malloc(n_y * sizeof(short int *));
+    global_M = (short int **)malloc(n_y * sizeof(short int *));
     for (int p = 0; p < n_y; ++p)
     {
       global_M[p] = (short int *)malloc(n_x * sizeof(short int));
