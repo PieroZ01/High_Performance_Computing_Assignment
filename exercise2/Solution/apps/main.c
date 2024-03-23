@@ -161,11 +161,13 @@ int main(int argc, char *argv[])
     // Loop over the number of processes (each process, identified by its rank, sends its row to the master process)
     for (int p = 0; p < size; ++p)
     {
-
       // If the process' rank is equal to the current p, it sends its r row to the master process
       // (The r row of the matrix local_M is selected by the formula: r * n_x)
       if (rank == p)
       {
+        // Print the rank of the process and the row to be sent
+        printf("Rank: %d, Row: %d\n", rank, r);
+
         MPI_Ssend(local_M + r * n_x, n_x, MPI_SHORT, 0, r * p, MPI_COMM_WORLD);
       }
 
