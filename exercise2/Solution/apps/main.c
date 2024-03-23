@@ -159,52 +159,25 @@ int main(int argc, char *argv[])
     timer = MPI_Wtime();
   }
 
-  // Each process sends its local part of the matrix M to the master process
-  
-  // Loop over the number of round
-  for (int r = 0; r < rows_per_process; ++r)
+  // Gather the local parts of the matrix M from all the processes to the master process
+  // (We need to use MPI_Gatherv because the number of rows computed by each process could
+  // be different and the master process needs to know the number of rows computed by each process:
+  // some process could have computed one more row than the others)
+  int *sendcounts = (int *)malloc(size * sizeof(int));
+  int *displs = (int *)malloc(size * sizeof(int));
+
+  for (int r = 0; r < size; ++r)
   {
-    // Position variable
-    int position = 0;
-
-    // Each process sends to the master process it's r-th row of the local part of the matrix M
-    MPI_Send(local_M[r], n_x, MPI_SHORT, 0, r, MPI_COMM_WORLD);
-
-    // The master process receives the r-th row of the local part of the matrix M from each process
-    // and stores it in the correct position in the global matrix M
-    if (rank == 0)
-    {
-      for (int p = 0; p < size; ++p)
-      {
-        MPI_Recv(global_M[position + p], n_x, MPI_SHORT, p, r, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-      }
-    }
-
-    // Increment the position
-    position += size;
+    sendcounts[r] = (r < remaining_rows) ? (rows_per_process + 1) * n_x : rows_per_process * n_x;
+    displs[r] = r * rows_per_process * n_x + (r < remaining_rows ? r * n_x : remaining_rows * n_x);
   }
 
-  // Manage case where the number of rows is not divisible by the number of processes
-  if (remaining_rows > 0)
-  {
-    int position = n_y - remaining_rows;
+  // The master process gathers the local parts of the matrix M from all the processes
+  MPI_Gatherv(local_M[0], local_rows * n_x, MPI_SHORT, global_M[0], sendcounts, displs, MPI_SHORT, 0, MPI_COMM_WORLD);
 
-    if (rank < remaining_rows)
-    {
-      // The process sends to the master process it's last row of the local part of the matrix M
-      MPI_Send(local_M[local_rows - 1], n_x, MPI_SHORT, 0, rows_per_process, MPI_COMM_WORLD);
-    }
-
-    // The master process receives the last row of the local part of the matrix M from each process
-    // and stores it in the correct position in the global matrix M
-    if (rank == 0)
-    {
-      for (int p = 0; p < remaining_rows; ++p)
-      {
-        MPI_Recv(global_M[position + p], n_x, MPI_SHORT, p, rows_per_process, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-      }
-    }
-  }
+  // Free the memory for the sendcounts and displs arrays
+  free(sendcounts);
+  free(displs);
 
   // Stop the timer to measure the communication time
   if (rank == 0)
