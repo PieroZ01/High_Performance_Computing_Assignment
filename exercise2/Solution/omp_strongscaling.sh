@@ -28,7 +28,7 @@ do
     export OMP_NUM_THREADS=$threads_n
     # Choose the places and the binding policy (threads, cores, sockets - close, spread)
     export OMP_PLACES=cores
-    export OMP_PROC_BIND=close
+    export OMP_PROC_BIND=spread
     # Run the program (pass the desired arguments to the program) with a single MPI task
     mpirun -np 1 --map-by socket --bind-to socket ./main 1000 1000 -2.75 -2.0 1.25 2.0 65535
     echo "----------------------------------------------------------------------------------------------------------------------------------"
