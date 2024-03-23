@@ -89,9 +89,26 @@ int main(int argc, char *argv[])
   const int local_rows = (rank < remaining_rows) ? rows_per_process + 1 : rows_per_process;
 
   // Define the 2D matrix M of integers (short int) whose entries [j][i] are the image's pixels
+  short int **global_M = NULL;
+  // The master process allocates the memory for the global matrix M
+  if (rank == 0)
+  {
+    // Alllocate a multidimensional array of integers (short int)
+    short int **global_M = (short int **)malloc(n_y * sizeof(short int *));
+    for (int p = 0; p < n_y; ++p)
+    {
+      global_M[p] = (short int *)malloc(n_x * sizeof(short int));
+    }
+  }
+
+  // Define the local part of the matrix M on each process
   // (Allocate only the memory for the local part of the matrix M on each process)
-  short int *local_M = (short int *)malloc(n_x * local_rows * sizeof(short int));
-  // (Each thread will compute a part of the local part of the matrix M)
+  short int **local_M = (short int **)malloc(local_rows * sizeof(short int *));
+  for (int q = 0; q < local_rows; ++q)
+  {
+    local_M[q] = (short int *)malloc(n_x * sizeof(short int));
+  }
+  // (Each thread will compute a part of the local part of the global matrix M)
   // (The number of threads is defined by the environment variable OMP_NUM_THREADS)
 
   // Loop over the number of iterations to measure the average time and the standard deviation
@@ -116,11 +133,10 @@ int main(int argc, char *argv[])
       for (int j = 0; j < local_rows; ++j)
       {
         const double y = y_L + (start_row + j * size) * dy;
-        const int index = j * n_x;
         for (int i = 0; i < n_x; ++i)
         {
           double complex c = x_L + i * dx + y * I;
-          local_M[index + i] = mandelbrot(c, I_max);
+          local_M[j][i] = mandelbrot(c, I_max);
         }
       }
 
@@ -137,67 +153,58 @@ int main(int argc, char *argv[])
     }
   }
 
-  // Define the global matrix M to gather the results from all the processes
-  short int *global_M = NULL;
-
   // Gather the results to the master process and start the timer to measure the communication time
   if (rank == 0)
   {
-    global_M = (short int *)malloc(n_x * n_y * sizeof(short int));
     timer = MPI_Wtime();
   }
 
   // Each process sends its local part of the matrix M to the master process
-  // row by row, in order to make sure that the data is received in the correct order by the master process
-  // and that the global matrix M is correctly reconstructed (in fact, each process' rows are not contiguous
-  // in the global matrix M. They are distributed in a round robin fashion among the processes, so the master
-  // process needs to receive the rows in the correct order to reconstruct the global matrix M correctly, row by row,
-  // following the precise order used to distribute the rows among the processes)
   // (We use MPI_Ssend to make sure that the data is sent in the correct order)
   
-  // Loop over the number of rounds - 1
+  // Loop over the number of round
   for (int r = 0; r < rows_per_process; ++r)
   {
-    // Loop over the number of processes (each process, identified by its rank, sends its row to the master process)
-    for (int p = 0; p < size; ++p)
+    // Position variable
+    int position = 0;
+
+    // Each process sends to the master process it's r-th row of the local part of the matrix M
+    MPI_Ssend(local_M[r], n_x, MPI_SHORT, 0, r, MPI_COMM_WORLD);
+
+    // The master process receives the r-th row of the local part of the matrix M from each process
+    // and stores it in the correct position in the global matrix M
+    if (rank == 0)
     {
-      // If the process' rank is equal to the current p, it sends its r row to the master process
-      // (The r row of the matrix local_M is selected by the formula: r * n_x)
-      if (rank == p)
+      for (int p = 0; p < size; ++p)
       {
-        // Print the rank of the process and the row to be sent
-        printf("Rank: %d, Row: %d\n", rank, r);
-
-        MPI_Ssend(local_M + r * n_x, n_x, MPI_SHORT, 0, r * p, MPI_COMM_WORLD);
-      }
-
-      // If the process' rank is equal to 0, it receives the r row from the process p and stores it in the global matrix M,
-      // in the correct position, which is the r + p row of the matrix global_M
-      if (rank == 0)
-      {
-        MPI_Recv(global_M + (r + p) * n_x, n_x, MPI_SHORT, p, r * p, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        MPI_Recv(global_M[position + p], n_x, MPI_SHORT, p, r, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
       }
     }
+
+    // Increment the position
+    position += size;
+      
   }
 
-  // Loop over the number of remaining rows: the first remaining_rows processes send their (rows_per_process + 1) row
-  // to the master process
-  if (remaining_rows != 0)
+  // Manage case where the number of rows is not divisible by the number of processes
+  if (remaining_rows > 0)
   {
-    for (int q = 0; q < remaining_rows; ++q)
-    {
-      if (rank == q)
-      {
-        MPI_Ssend(local_M + rows_per_process * n_x, n_x, MPI_SHORT, 0, q, MPI_COMM_WORLD);
-      }
+    int position = n_y - remaining_rows;
 
-      if (rank == 0)
+    // Each process sends to the master process it's last row of the local part of the matrix M
+    MPI_Ssend(local_M[local_rows - 1], n_x, MPI_SHORT, 0, rows_per_process, MPI_COMM_WORLD);
+
+    // The master process receives the last row of the local part of the matrix M from each process
+    // and stores it in the correct position in the global matrix M
+    if (rank == 0)
+    {
+      for (int p = 0; p < remaining_rows; ++p)
       {
-        MPI_Recv(global_M + (rows_per_process + q) * n_x, n_x, MPI_SHORT, q, q, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        MPI_Recv(global_M[position + p], n_x, MPI_SHORT, p, rows_per_process, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
       }
     }
   }
-  
+
   // Stop the timer to measure the communication time
   if (rank == 0)
   {
@@ -205,6 +212,10 @@ int main(int argc, char *argv[])
   }
 
   // Free the memory for the local part of the matrix M on each process
+  for (int q = 0; q < local_rows; ++q)
+  {
+    free(local_M[q]);
+  }
   free(local_M);
 
   // The master process writes the results to the csv file
@@ -234,6 +245,10 @@ int main(int argc, char *argv[])
     write_pgm_image(global_M, I_max, n_x, n_y, "mandelbrot.pgm");
 
     // Free the memory for the global matrix M
+    for (int j = 0; j < n_y; ++j)
+    {
+      free(global_M[j]);
+    }
     free(global_M);
   }
 
