@@ -195,7 +195,7 @@ int main(int argc, char *argv[])
        {
         for (int i = 0; i < n_x; ++i)
         {
-          reordered_M[(r + j * size) * n_x + i] = global_M[(r * local_rows + j + (r < remaining_rows ? remaining_rows : 0)) * n_x + i];
+          reordered_M[(r + j * size) * n_x + i] = global_M[(r * local_rows + j + (r >= remaining_rows ? remaining_rows : 0)) * n_x + i];
         }
        }
       }
