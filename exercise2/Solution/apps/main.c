@@ -161,7 +161,6 @@ int main(int argc, char *argv[])
     // Loop over the number of processes (each process, identified by its rank, sends its row to the master process)
     for (int p = 0; p < size; ++p)
     {
-      MPI_Barrier(MPI_COMM_WORLD);
 
       // If the process' rank is equal to the current p, it sends its r row to the master process
       // (The r row of the matrix local_M is selected by the formula: r * n_x)
@@ -185,7 +184,6 @@ int main(int argc, char *argv[])
   {
     for (int q = 0; q < remaining_rows; ++q)
     {
-      MPI_Barrier(MPI_COMM_WORLD);
       if (rank == q)
       {
         MPI_Ssend(local_M + rows_per_process * n_x, n_x, MPI_SHORT, 0, q, MPI_COMM_WORLD);
