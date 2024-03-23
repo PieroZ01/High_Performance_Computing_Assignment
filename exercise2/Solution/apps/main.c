@@ -177,6 +177,7 @@ int main(int argc, char *argv[])
         MPI_Recv(global_M + (r + p) * n_x, n_x, MPI_SHORT, p, r * p, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
       }
     }
+  }
 
   // Loop over the number of remaining rows: the first remaining_rows processes send their (rows_per_process + 1) row
   // to the master process
