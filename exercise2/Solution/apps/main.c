@@ -161,6 +161,8 @@ int main(int argc, char *argv[])
     // Loop over the number of processes (each process, identified by its rank, sends its row to the master process)
     for (int p = 0; p < size; ++p)
     {
+      MPI_Barrier(MPI_COMM_WORLD);
+
       // If the process' rank is equal to the current p, it sends its r row to the master process
       // (The r row of the matrix local_M is selected by the formula: r * n_x)
       if (rank == p)
@@ -174,20 +176,7 @@ int main(int argc, char *argv[])
       {
         MPI_Recv(global_M + (r + p) * n_x, n_x, MPI_SHORT, p, r * p, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
       }
-
-      // Sinchronize all the processes after the communication
-      if (size > 1)
-      {
-        MPI_Barrier(MPI_COMM_WORLD);
-      }
     }
-
-    // Sinchronize all the processes after the communication
-    if (size > 1)
-    {
-      MPI_Barrier(MPI_COMM_WORLD);
-    }
-  }
 
   // Loop over the number of remaining rows: the first remaining_rows processes send their (rows_per_process + 1) row
   // to the master process
@@ -195,6 +184,7 @@ int main(int argc, char *argv[])
   {
     for (int q = 0; q < remaining_rows; ++q)
     {
+      MPI_Barrier(MPI_COMM_WORLD);
       if (rank == q)
       {
         MPI_Ssend(local_M + rows_per_process * n_x, n_x, MPI_SHORT, 0, q, MPI_COMM_WORLD);
@@ -203,12 +193,6 @@ int main(int argc, char *argv[])
       if (rank == 0)
       {
         MPI_Recv(global_M + (rows_per_process + q) * n_x, n_x, MPI_SHORT, q, q, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-      }
-
-      // Sinchronize all the processes after the communication
-      if (size > 1)
-      {
-        MPI_Barrier(MPI_COMM_WORLD);
       }
     }
   }
