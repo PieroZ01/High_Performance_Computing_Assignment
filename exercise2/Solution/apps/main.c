@@ -190,7 +190,7 @@ int main(int argc, char *argv[])
       short int *reordered_M = (short int *)malloc(n_x * n_y * sizeof(short int));
       for (int r = 0; r < size; ++r)
       {
-        const int start_row = r * rows_per_process + min(r, remaining_rows);
+        const int start_row = r * rows_per_process + (r < remaining_rows ? r : remaining_rows);
         const int local_rows = (r < remaining_rows) ? rows_per_process + 1 : rows_per_process;
        for (int j = 0; j < local_rows; ++j)
        {
