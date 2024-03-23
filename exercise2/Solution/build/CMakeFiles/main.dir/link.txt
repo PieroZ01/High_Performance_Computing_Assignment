@@ -1,1 +1,0 @@
-/usr/bin/cc -O3 -march=native -Wall -Wextra -Wpedantic -Werror -lm -fopenmp CMakeFiles/main.dir/src/mandelbrot.c.o CMakeFiles/main.dir/apps/main.c.o -o bin/main  -Wl,-rpath,/orfeo/cephfs/opt/programs/amd/fedora36/openMPI/4.1.5/lib /orfeo/cephfs/opt/programs/amd/fedora36/openMPI/4.1.5/lib/libmpi.so -lgomp 
