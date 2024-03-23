@@ -89,26 +89,9 @@ int main(int argc, char *argv[])
   const int local_rows = (rank < remaining_rows) ? rows_per_process + 1 : rows_per_process;
 
   // Define the 2D matrix M of integers (short int) whose entries [j][i] are the image's pixels
-  short int **global_M = NULL;
-  // The master process allocates the memory for the global matrix M
-  if (rank == 0)
-  {
-    // Alllocate a multidimensional array of integers (short int)
-    global_M = (short int **)malloc(n_y * sizeof(short int *));
-    for (int p = 0; p < n_y; ++p)
-    {
-      global_M[p] = (short int *)malloc(n_x * sizeof(short int));
-    }
-  }
-
-  // Define the local part of the matrix M on each process
   // (Allocate only the memory for the local part of the matrix M on each process)
-  short int **local_M = (short int **)malloc(local_rows * sizeof(short int *));
-  for (int q = 0; q < local_rows; ++q)
-  {
-    local_M[q] = (short int *)malloc(n_x * sizeof(short int));
-  }
-  // (Each thread will compute a part of the local part of the global matrix M)
+  short int *local_M = (short int *)malloc(n_x * local_rows * sizeof(short int));
+  // (Each thread will compute a part of the local part of the matrix M)
   // (The number of threads is defined by the environment variable OMP_NUM_THREADS)
 
   // Loop over the number of iterations to measure the average time and the standard deviation
@@ -133,10 +116,11 @@ int main(int argc, char *argv[])
       for (int j = 0; j < local_rows; ++j)
       {
         const double y = y_L + (start_row + j * size) * dy;
+        const int index = j * n_x;
         for (int i = 0; i < n_x; ++i)
         {
           double complex c = x_L + i * dx + y * I;
-          local_M[j][i] = mandelbrot(c, I_max);
+          local_M[index + i] = mandelbrot(c, I_max);
         }
       }
 
@@ -153,16 +137,8 @@ int main(int argc, char *argv[])
     }
   }
 
-  // Gather the results to the master process and start the timer to measure the communication time
-  if (rank == 0)
-  {
-    timer = MPI_Wtime();
-  }
-
-  // Gather the local parts of the matrix M from all the processes to the master process
-  // (We need to use MPI_Gatherv because the number of rows computed by each process could
-  // be different and the master process needs to know the number of rows computed by each process:
-  // some process could have computed one more row than the others)
+  // Define the global matrix M to gather the results from all the processes
+  short int *global_M = NULL;
   
   // Define the variables receivedcounts and displs to be used in the MPI_Gatherv function
   int *receivedcounts = (int *)malloc(size * sizeof(int));
@@ -173,7 +149,19 @@ int main(int argc, char *argv[])
     displs[r] = r * rows_per_process * n_x + (r < remaining_rows ? r : remaining_rows) * n_x;
   }
 
-  MPI_Gatherv(local_M[0], local_rows * n_x, MPI_SHORT, global_M[0], receivedcounts, displs, MPI_SHORT, 0, MPI_COMM_WORLD);
+  // Gather the results to the master process and start the timer to measure the communication time
+  if (rank == 0)
+  {
+    global_M = (short int *)malloc(n_x * n_y * sizeof(short int));
+    timer = MPI_Wtime();
+  }
+
+  // Gather the local parts of the matrix M from all the processes to the master process
+  // (We need to use MPI_Gatherv because the number of rows computed by each process could
+  // be different and the master process needs to know the number of rows computed by each process:
+  // some process could have computed one more row than the others)
+
+  MPI_Gatherv(local_M, n_x * local_rows, MPI_SHORT, global_M, receivedcounts, displs, MPI_SHORT, 0, MPI_COMM_WORLD);
 
   // Stop the timer to measure the communication time
   if (rank == 0)
@@ -182,11 +170,11 @@ int main(int argc, char *argv[])
   }
 
   // Free the memory for the local part of the matrix M on each process
-  for (int q = 0; q < local_rows; ++q)
-  {
-    free(local_M[q]);
-  }
   free(local_M);
+
+  // Free the memory for the receivedcounts and displs arrays
+  free(receivedcounts);
+  free(displs);
 
   // The master process writes the results to the csv file
   if (rank == 0)
@@ -216,10 +204,6 @@ int main(int argc, char *argv[])
     write_pgm_image(global_M, I_max, n_x, n_y, "mandelbrot.pgm");
 
     // Free the memory for the reordered matrix M
-    for (int j = 0; j < n_y; ++j)
-    {
-      free(global_M[j]);
-    }
     free(global_M);
   }
 
