@@ -165,15 +165,15 @@ int main(int argc, char *argv[])
   // some process could have computed one more row than the others)
   int *sendcounts = (int *)malloc(size * sizeof(int));
   int *displs = (int *)malloc(size * sizeof(int));
+  int local_size = local_rows * n_x;
+  MPI_Allgather(&local_size, 1, MPI_INT, sendcounts, 1, MPI_INT, MPI_COMM_WORLD);
 
-  for (int r = 0; r < size; ++r)
-  {
-    sendcounts[r] = (r < remaining_rows) ? (rows_per_process + 1) * n_x : rows_per_process * n_x;
-    displs[r] = r * rows_per_process * n_x + (r < remaining_rows ? r * n_x : remaining_rows * n_x);
+  displs[0] = 0;
+  for (int i = 1; i < size; i++) {
+    displs[i] = displs[i - 1] + sendcounts[i - 1];
   }
 
-  // The master process gathers the local parts of the matrix M from all the processes
-  MPI_Gatherv(local_M[0], local_rows * n_x, MPI_SHORT, global_M[0], sendcounts, displs, MPI_SHORT, 0, MPI_COMM_WORLD);
+  MPI_Gatherv(&(local_M[0][0]), local_size, MPI_SHORT, &(global_M[0][0]), sendcounts, displs, MPI_SHORT, 0, MPI_COMM_WORLD);
 
   // Free the memory for the sendcounts and displs arrays
   free(sendcounts);
@@ -216,9 +216,10 @@ int main(int argc, char *argv[])
   // The master process writes the image to a pgm file in the build/bin directory and frees the memory
   if (rank == 0)
   {
+    // Write the image to a pgm file
     write_pgm_image(global_M, I_max, n_x, n_y, "mandelbrot.pgm");
 
-    // Free the memory for the global matrix M
+    // Free the memory for the reordered matrix M
     for (int j = 0; j < n_y; ++j)
     {
       free(global_M[j]);
