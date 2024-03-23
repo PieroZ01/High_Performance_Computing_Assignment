@@ -203,6 +203,7 @@ int main(int argc, char *argv[])
       // Free the memory for the global matrix M
       free(global_M);
 
+      // Set the reordered matrix M as the global matrix M
       global_M = reordered_M;
     }
   }
