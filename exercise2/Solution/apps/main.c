@@ -163,21 +163,17 @@ int main(int argc, char *argv[])
   // (We need to use MPI_Gatherv because the number of rows computed by each process could
   // be different and the master process needs to know the number of rows computed by each process:
   // some process could have computed one more row than the others)
-  int *sendcounts = (int *)malloc(size * sizeof(int));
+  
+  // Define the variables receivedcounts and displs to be used in the MPI_Gatherv function
+  int *receivedcounts = (int *)malloc(size * sizeof(int));
   int *displs = (int *)malloc(size * sizeof(int));
-  int local_size = local_rows * n_x;
-  MPI_Allgather(&local_size, 1, MPI_INT, sendcounts, 1, MPI_INT, MPI_COMM_WORLD);
-
-  displs[0] = 0;
-  for (int i = 1; i < size; i++) {
-    displs[i] = remaining_rows * (rows_per_process + 1) * n_x + (i - remaining_rows) * rows_per_process * n_x;
+  for (int r = 0; r < size; ++r)
+  {
+    receivedcounts[r] = (r < remaining_rows) ? (rows_per_process + 1) * n_x : rows_per_process * n_x;
+    displs[r] = r * rows_per_process * n_x + (r < remaining_rows ? r : remaining_rows) * n_x;
   }
 
-  MPI_Gatherv(&(local_M[0][0]), local_size, MPI_SHORT, &(global_M[0][0]), sendcounts, displs, MPI_SHORT, 0, MPI_COMM_WORLD);
-
-  // Free the memory for the sendcounts and displs arrays
-  free(sendcounts);
-  free(displs);
+  MPI_Gatherv(local_M[0], local_rows * n_x, MPI_SHORT, global_M[0], receivedcounts, displs, MPI_SHORT, 0, MPI_COMM_WORLD);
 
   // Stop the timer to measure the communication time
   if (rank == 0)
