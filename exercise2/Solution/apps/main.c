@@ -170,7 +170,7 @@ int main(int argc, char *argv[])
 
   displs[0] = 0;
   for (int i = 1; i < size; i++) {
-    displs[i] = displs[i - 1] + sendcounts[i - 1];
+    displs[i] = remaining_rows * (rows_per_process + 1) * n_x + (i - remaining_rows) * rows_per_process * n_x;
   }
 
   MPI_Gatherv(&(local_M[0][0]), local_size, MPI_SHORT, &(global_M[0][0]), sendcounts, displs, MPI_SHORT, 0, MPI_COMM_WORLD);
