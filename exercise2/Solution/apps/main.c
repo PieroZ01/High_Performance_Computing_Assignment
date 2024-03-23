@@ -254,7 +254,7 @@ int main(int argc, char *argv[])
       }
     }
 
-    write_pgm_image(global_M, I_max, n_x, n_y, "mandelbrot.pgm");
+    write_pgm_image(global_M_flat, I_max, n_x, n_y, "mandelbrot.pgm");
 
     // Free the memory for the global matrix M
     for (int j = 0; j < n_y; ++j)
