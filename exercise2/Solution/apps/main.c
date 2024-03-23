@@ -201,10 +201,11 @@ int main(int argc, char *argv[])
        }
       }
 
+      // Free the memory for the global matrix M
+      free(global_M);
+
       global_M = reordered_M;
 
-      // Free the memory for the reordered matrix M
-      free(reordered_M);
     }
   }
 
