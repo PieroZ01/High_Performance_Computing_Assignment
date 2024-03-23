@@ -191,24 +191,26 @@ int main(int argc, char *argv[])
 
   // Loop over the number of remaining rows: the first remaining_rows processes send their (rows_per_process + 1) row
   // to the master process
-  for (int q = 0; q < remaining_rows; ++q)
+  if (remaining_rows != 0)
   {
-    if (rank == q)
+    for (int q = 0; q < remaining_rows; ++q)
     {
-      MPI_Ssend(local_M + rows_per_process * n_x, n_x, MPI_SHORT, 0, q, MPI_COMM_WORLD);
-    }
+      if (rank == q)
+      {
+        MPI_Ssend(local_M + rows_per_process * n_x, n_x, MPI_SHORT, 0, q, MPI_COMM_WORLD);
+      }
 
-    if (rank == 0)
-    {
-      MPI_Recv(global_M + (rows_per_process + q) * n_x, n_x, MPI_SHORT, q, q, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-    }
+      if (rank == 0)
+      {
+        MPI_Recv(global_M + (rows_per_process + q) * n_x, n_x, MPI_SHORT, q, q, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+      }
 
-    // Sinchronize all the processes after the communication
-    if (size > 1)
-    {
-      MPI_Barrier(MPI_COMM_WORLD);
+      // Sinchronize all the processes after the communication
+      if (size > 1)
+      {
+        MPI_Barrier(MPI_COMM_WORLD);
+      }
     }
-
   }
   
   // Stop the timer to measure the communication time
