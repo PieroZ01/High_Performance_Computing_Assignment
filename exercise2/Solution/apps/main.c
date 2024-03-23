@@ -182,7 +182,6 @@ int main(int argc, char *argv[])
 
     // Increment the position
     position += size;
-      
   }
 
   // Manage case where the number of rows is not divisible by the number of processes
@@ -244,17 +243,7 @@ int main(int argc, char *argv[])
   // The master process writes the image to a pgm file in the build/bin directory and frees the memory
   if (rank == 0)
   {
-    // Flatten the global matrix M into a 1D array to write the image to a pgm file
-    short int *global_M_flat = (short int *)malloc(n_x * n_y * sizeof(short int));
-    for (int j = 0; j < n_y; ++j)
-    {
-      for (int i = 0; i < n_x; ++i)
-      {
-        global_M_flat[j * n_x + i] = global_M[j][i];
-      }
-    }
-
-    write_pgm_image(global_M_flat, I_max, n_x, n_y, "mandelbrot.pgm");
+    write_pgm_image(global_M, I_max, n_x, n_y, "mandelbrot.pgm");
 
     // Free the memory for the global matrix M
     for (int j = 0; j < n_y; ++j)
