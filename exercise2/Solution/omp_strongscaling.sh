@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=omp_scaling_mandelbrot
+#SBATCH --job-name=omp_strongscaling_mandelbrot
 #SBATCH --nodes=1
 #SBATCH --partition=EPYC
 #SBATCH --exclusive
@@ -18,8 +18,8 @@ cd ./build/bin
 max_threads=64
 step=2
 
-# Run the scaling test with threads from 2 to 128 with a step of 2:
-# (Run the program with 1 MPI task and 2 to 128 OMP threads)
+# Run the scaling test with threads from 2 to 64 with a step of 2:
+# (Run the program with 1 MPI task and 2 to 64 OMP threads)
 for ((threads_n=2; threads_n<=$max_threads; threads_n+=$step))
 do
     echo "----------------------------------------------------------------------------------------------------------------------------------"

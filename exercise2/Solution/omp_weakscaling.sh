@@ -1,10 +1,12 @@
 #!/bin/bash
 
-#SBATCH --job-name=mpi_strongscaling_mandelbrot
-#SBATCH --nodes=2
+#SBATCH --job-name=omp_weakscaling_mandelbrot
+#SBATCH --nodes=1
 #SBATCH --partition=EPYC
 #SBATCH --exclusive
 #SBATCH --time=02:00:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=64
 
 # Load the required module
 module load openMPI/4.1.5/gnu/12.2.1
@@ -13,20 +15,25 @@ module load openMPI/4.1.5/gnu/12.2.1
 cd ./build/bin
 
 # Define variables
-max_tasks=254
-step=4
+max_threads=64
+step=2
 
-# Run the scaling test with tasks from 4 to 254 with a step of 4:
-# (Run the program with 4 to 254 MPI tasks and 1 OMP thread per task)
-for ((tasks=4; tasks<=$max_tasks; tasks+=$step))
+# Run the scaling test with threads from 2 to 64 with a step of 2:
+# (Run the program with 1 MPI task and 2 to 64 OMP threads)
+for ((threads_n=2; threads_n<=$max_threads; threads_n+=$step))
 do
     echo "----------------------------------------------------------------------------------------------------------------------------------"
-    echo "Running mandelbrot with $tasks tasks"
-    # Set the number of OMP threads per MPI task to 1
-    export OMP_NUM_THREADS=1
-    # Run the program (pass the desired arguments to the program)
-    # (Choose the mapping policy (core, socket, node))
-    mpirun -np $tasks --map-by core ./main 1000 1000 -2.75 -2.0 1.25 2.0 65535
+    echo "Running mandelbrot with $threads_n threads"
+    # Export OpenMP environment variables
+    export OMP_NUM_THREADS=$threads_n
+    # Choose the places and the binding policy (threads, cores, sockets - close, spread)
+    export OMP_PLACES=cores
+    export OMP_PROC_BIND=close
+    # Define the problem size for the weak scaling test (problem_size = 125000 * threads_n):
+    # each OMP thread will process 125000 pixels
+    problem_size=$((125000 * threads_n))
+    # Run the program (pass the desired arguments to the program) with a single MPI task
+    mpirun -np 1 --map-by socket --bind-to socket ./main problem_size problem_size -2.75 -2.0 1.25 2.0 65535
     echo "----------------------------------------------------------------------------------------------------------------------------------"
 done
 
