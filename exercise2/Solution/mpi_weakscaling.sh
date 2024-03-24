@@ -25,7 +25,7 @@ do
     export OMP_NUM_THREADS=1
     # Define the problem size for the weak scaling test (problem_size = 1000 * tasks)
     problem_size=$((100 * $tasks))
-    echo "Running mandelbrot with $tasks tasks and problem size $problem_size"
+    echo "Running mandelbrot with $tasks tasks and problem size $problem_size * 1000"
     # Run the program (pass the desired arguments to the program)
     # (Choose the mapping policy (core, socket, node))
     mpirun -np $tasks --map-by core ./main $problem_size 1000 -2.75 -2.0 1.25 2.0 65535
