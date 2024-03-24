@@ -112,7 +112,7 @@ int main(int argc, char *argv[])
     // Compute the local part of the matrix M on each process
     // (Each thread will compute a part of the local part of the matrix M;
     // each process is assigned its rows to be computed in a round robin fashion)
-    #pragma omp parallel for schedule(dynamic)
+    #pragma omp parallel for schedule(static)
       for (int j = 0; j < local_rows; ++j)
       {
         const double y = y_L + (start_row + j * size) * dy;
