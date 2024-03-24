@@ -32,7 +32,7 @@ do
     problem_size=$((1000 * $threads_n))
     echo "Running mandelbrot with $threads_n threads and problem size $problem_size"
     # Run the program (pass the desired arguments to the program) with a single MPI task
-    mpirun -np 1 --map-by socket --bind-to socket ./main problem_size problem_size -2.75 -2.0 1.25 2.0 65535
+    mpirun -np 1 --map-by socket --bind-to socket ./main $problem_size $problem_size -2.75 -2.0 1.25 2.0 65535
     echo "----------------------------------------------------------------------------------------------------------------------------------"
 done
 

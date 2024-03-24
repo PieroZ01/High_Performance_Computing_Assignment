@@ -28,7 +28,7 @@ do
     echo "Running mandelbrot with $tasks tasks and problem size $problem_size"
     # Run the program (pass the desired arguments to the program)
     # (Choose the mapping policy (core, socket, node))
-    mpirun -np $tasks --map-by core ./main problem_size problem_size -2.75 -2.0 1.25 2.0 65535
+    mpirun -np $tasks --map-by core ./main $problem_size $problem_size -2.75 -2.0 1.25 2.0 65535
     echo "----------------------------------------------------------------------------------------------------------------------------------"
 done
 
