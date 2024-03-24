@@ -21,12 +21,12 @@ step=4
 for ((tasks=4; tasks<=$max_tasks; tasks+=$step))
 do
     echo "----------------------------------------------------------------------------------------------------------------------------------"
-    echo "Running mandelbrot with $tasks tasks"
     # Set the number of OMP threads per MPI task to 1
     export OMP_NUM_THREADS=1
     # Define the problem size for the weak scaling test (problem_size = 125000 * tasks):
     # each MPI task will process 125000 pixels
-    problem_size=$((125000 * tasks))
+    problem_size=$((125000 * $tasks))
+    echo "Running mandelbrot with $tasks tasks and problem size $problem_size"
     # Run the program (pass the desired arguments to the program)
     # (Choose the mapping policy (core, socket, node))
     mpirun -np $tasks --map-by core ./main problem_size problem_size -2.75 -2.0 1.25 2.0 65535

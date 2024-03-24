@@ -23,7 +23,6 @@ step=2
 for ((threads_n=2; threads_n<=$max_threads; threads_n+=$step))
 do
     echo "----------------------------------------------------------------------------------------------------------------------------------"
-    echo "Running mandelbrot with $threads_n threads"
     # Export OpenMP environment variables
     export OMP_NUM_THREADS=$threads_n
     # Choose the places and the binding policy (threads, cores, sockets - close, spread)
@@ -31,7 +30,8 @@ do
     export OMP_PROC_BIND=close
     # Define the problem size for the weak scaling test (problem_size = 125000 * threads_n):
     # each OMP thread will process 125000 pixels
-    problem_size=$((125000 * threads_n))
+    problem_size=$((125000 * $threads_n))
+    echo "Running mandelbrot with $threads_n threads and problem size $problem_size"
     # Run the program (pass the desired arguments to the program) with a single MPI task
     mpirun -np 1 --map-by socket --bind-to socket ./main problem_size problem_size -2.75 -2.0 1.25 2.0 65535
     echo "----------------------------------------------------------------------------------------------------------------------------------"
