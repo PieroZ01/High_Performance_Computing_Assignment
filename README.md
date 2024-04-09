@@ -1,4 +1,4 @@
-# High_Performance_Computing_Assignment
+# High Performance Computing final project
 
 ## Student's Info
 
