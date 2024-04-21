@@ -18,7 +18,7 @@ This folder is organized with the following structure:
 │   ├── compilation_EPYC.sh # Bash script to compile the OSU benchmark on the EPYC nodes of the ORFEO cluster
 │   └── osu-micro-benchmarks-7.3 # OSU benchmark
 ├── Report_and_slides # Final report and slides for the presentation
-│   ├── slides_ex1
+│   ├── slides_ex1.pdf
 │   └── Zappi_ex1_report.pdf
 ├── README.MD # This file
 ├── barrier # Bash scripts to automate the data collection process and notebook for the analysis of the results
