@@ -17,7 +17,7 @@ This folder is organized with the following structure:
 │   ├── mandelbrot_5000x5000x65535.pgm
 │   └── mandelbrot_5000x5000x65535.png
 ├── Report_and_slides # Final report and slides for the presentation
-│   ├── slides_ex2C
+│   ├── slides_ex2C.pdf
 │   └── Zappi_ex2C_report.pdf
 ├── README.MD # This file
 ├── Results # Data collected on the ORFEO cluster (csv files)
