@@ -8,7 +8,7 @@
 
 ## Project Organization
 
-This GitHub repository contains all the materials and codes of my final project for the exam of the **High Performance Computing** course of the **Scientific and Data-Intensive Computing** master degree at *Università degli Studi di Trieste* (2023-2024).
+This GitHub repository contains all the materials and codes of my final project for the exam of the **High Performance Computing** course of the **Scientific and Data-Intensive Computing** master degree at *Università degli Studi di Trieste* & *SISSA* (2023-2024).
 
 This repository contains two main subfolders, one for each exercise of the assignment:
 
