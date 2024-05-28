@@ -14,6 +14,6 @@ This repository contains two main subfolders, one for each exercise of the assig
 
 * **exercise1**: comparison and assessment of different openMPI algorithms for collective operations and models to predict their latencies
 
-* **exercise2**: hybrid MPI+OpenMP code to compute the Mandelbrot set
+* **exercise2**: hybrid MPI+OpenMP code to compute the Mandelbrot set efficiently in parallel
 
 Each of these two folders contains the requests/tasks of the exercises in the **Assignment** folder, while the **Solution** folder provides the proposed solutions; further details and explanations can be found in the **Solution** folders, specifically in the README files and above all in the **Report_and_slides** subfolders.
